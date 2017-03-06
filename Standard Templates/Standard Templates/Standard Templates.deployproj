@@ -43,6 +43,7 @@
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <Content Include="WindowsVirtualMachineScaleSet.json" />
     <Content Include="WindowsVirtualMachineScaleSet.parameters.json" />
+    <None Include="NetworkComponents\LoadBalancer.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.parameters.json" />
     <None Include="VMs\VirtualMachines.json" />

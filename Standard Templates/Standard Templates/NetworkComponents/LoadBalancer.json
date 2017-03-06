@@ -1,0 +1,161 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "Admin username"
+      }
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Admin password"
+      }
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1,
+      "allowedValues": [
+        "dev",
+        "test",
+        "uat",
+        "prod"
+      ],
+      "metadata": {
+        "description": "The name of the environment"
+      }
+    },
+    "tier": {
+      "type": "string",
+      "minLength": 1,
+      "allowedValues": [
+        "web",
+        "app",
+        "dba"
+      ],
+      "metadata": {
+        "description": "The tier for these servers"
+      }
+    }, /*
+    "appContainer": {
+      "type": "string",
+      "minLength": 1,
+      "allowedValues": [
+        "sms",
+        "edw",
+        "dar"
+      ],
+      "metadata": {
+        "description": "The application that you are creating resources for"
+      }
+    }, */ /*
+    "appFunction": {
+      "type": "string",
+      "defaultValue": "base",
+      "minLength": 1,
+      "allowedValues": [
+        "base",
+        "fme",
+        "geo",
+        "map",
+        "msg",
+        "red"
+      ],
+      "metadata": {
+        "description": "The application that you are creating resources for"
+      }
+    },*/
+    "loadBalancerIP": {
+      "type": "string",
+      "minLength": 7,
+      "maxLength": 15,
+      "metadata": {
+        "description": "Provide the IP for the load balancer"
+      }
+    }
+  },
+  "variables": {
+    //"appEnvName": "[concat(parameters('appContainer'),parameters('environment'))]",
+    "appEnvTierName": "[concat(variables('appEnvName'), parameters('tier'))]", 
+    //"vmNamePrefix": "[concat(variables('appEnvTierName'), replace(parameters('appFunction'),'base',''))]",
+    "virtualNetworkName": "[concat('vnet-', parameters('appContainer'), parameters('environment'))]",
+    "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+    "virtualNetworkSubnetName": "[concat('snet-',variables('appEnvTierName'))]",
+    "virtualNetworkSubnetRepName": "[concat('snet-',variables('appEnvName'),'rep')]",
+    "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('virtualNetworkSubnetName'))]",
+    "subnetRepRef": "[concat(variables('vnetId'), '/subnets/', variables('virtualNetworkSubnetRepName'))]",
+    "loadBalancerName": "[concat(variables('vmNamePrefix'),'-lb01')]",
+    "lbProbeName": "[concat(variables('vmNamePrefix'),'-prb01')]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-03-30",
+      "type": "Microsoft.Network/loadBalancers",
+      "name": "[variables('loadBalancerName')]",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "LoadBalancer",
+        "environment": "[parameters('environment')]",
+        "application": "[parameters('appContainer')]",
+        "tier": "[parameters('tier')]"
+      }, /*
+      "dependsOn": [
+        "[variables('vnetId')]"
+      ],*/
+    "properties": {
+      "frontendIPConfigurations": [
+        {
+          "properties": {
+            "subnet": {
+              "id": "[variables('subnetRef')]"
+            },
+            "privateIPAddress": "[parameters('loadBalancerIP')]",
+            "privateIPAllocationMethod": "Static"
+          },
+          "name": "LoadBalancerFrontend"
+        }
+      ],
+      "backendAddressPools": [
+        {
+          "name": "BackendPool1"
+        }
+      ],
+      "loadBalancingRules": [
+        {
+          "properties": {
+            "frontendIPConfiguration": {
+              "id": "[concat(resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName')), '/frontendIPConfigurations/LoadBalancerFrontend')]"
+            },
+            "backendAddressPool": {
+              "id": "[concat(resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName')), '/backendAddressPools/BackendPool1')]"
+            },
+            "probe": {
+              "id": "[concat(resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName')), '/probes/', variables('lbProbeName'))]"
+            },
+            "protocol": "Tcp",
+            "frontendPort": 80,
+            "backendPort": 80,
+            "idleTimeoutInMinutes": 15
+          },
+          "name": "lbrule"
+        }
+      ],
+      "probes": [
+        {
+          "properties": {
+            "protocol": "Tcp",
+            "port": 80,
+            "intervalInSeconds": 15,
+            "numberOfProbes": 2
+          },
+          "name": "[variables('lbProbeName')]"
+        }
+      ]
+    }
+  }
+    }
+  ]
+}
