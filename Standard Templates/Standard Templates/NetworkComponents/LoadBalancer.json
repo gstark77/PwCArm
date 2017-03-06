@@ -14,7 +14,7 @@
       "metadata": {
         "description": "Admin password"
       }
-    },
+    }, /*
     "environment": {
       "type": "string",
       "minLength": 1,
@@ -27,7 +27,7 @@
       "metadata": {
         "description": "The name of the environment"
       }
-    },
+    },*/ /*
     "tier": {
       "type": "string",
       "minLength": 1,
@@ -39,7 +39,7 @@
       "metadata": {
         "description": "The tier for these servers"
       }
-    }, /*
+    }, */ /*
     "appContainer": {
       "type": "string",
       "minLength": 1,
@@ -79,14 +79,12 @@
   },
   "variables": {
     //"appEnvName": "[concat(parameters('appContainer'),parameters('environment'))]",
-    "appEnvTierName": "[concat(variables('appEnvName'), parameters('tier'))]", 
+    //"appEnvTierName": "[concat(variables('appEnvName'), parameters('tier'))]", 
     //"vmNamePrefix": "[concat(variables('appEnvTierName'), replace(parameters('appFunction'),'base',''))]",
-    "virtualNetworkName": "[concat('vnet-', parameters('appContainer'), parameters('environment'))]",
-    "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
-    "virtualNetworkSubnetName": "[concat('snet-',variables('appEnvTierName'))]",
-    "virtualNetworkSubnetRepName": "[concat('snet-',variables('appEnvName'),'rep')]",
-    "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('virtualNetworkSubnetName'))]",
-    "subnetRepRef": "[concat(variables('vnetId'), '/subnets/', variables('virtualNetworkSubnetRepName'))]",
+    //"vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+    //"virtualNetworkSubnetName": "[concat('snet-',variables('appEnvTierName'))]",
+    //"virtualNetworkSubnetRepName": "[concat('snet-',variables('appEnvName'),'rep')]",
+    //"subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('virtualNetworkSubnetName'))]",
     "loadBalancerName": "[concat(variables('vmNamePrefix'),'-lb01')]",
     "lbProbeName": "[concat(variables('vmNamePrefix'),'-prb01')]"
   },
