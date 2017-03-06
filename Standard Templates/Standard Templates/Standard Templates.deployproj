@@ -25,12 +25,28 @@
   <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
   <!-- vertag<:>end -->
   <ItemGroup>
+    <None Include="AD\New Domain HA\.gitignore" />
+    <None Include="AD\New Domain HA\azuredeploy.json" />
+    <None Include="AD\New Domain HA\azuredeploy.parameters.json" />
+    <None Include="AD\New Domain HA\DSC\ConfigureADBDC.ps1.zip" />
+    <None Include="AD\New Domain HA\DSC\CreateADPDC.ps1.zip" />
+    <None Include="AD\New Domain HA\DSC\PrepareADBDC.ps1.zip" />
+    <None Include="AD\New Domain HA\metadata.json" />
+    <None Include="AD\New Domain HA\nestedtemplates\configureADBDC.json" />
+    <None Include="AD\New Domain HA\nestedtemplates\nic.json" />
+    <None Include="AD\New Domain HA\nestedtemplates\vnet-with-dns-server.json" />
+    <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
+    <None Include="AD\New Domain HA\README.md" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <Content Include="WindowsVirtualMachineScaleSet.json" />
     <Content Include="WindowsVirtualMachineScaleSet.parameters.json" />
+    <None Include="VMs\LoadBalancedVirtualMachine.json" />
+    <None Include="VMs\LoadBalancedVirtualMachine.parameters.json" />
+    <None Include="VMs\VirtualMachines.json" />
+    <None Include="VMs\VirtualMachines.parameters.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>

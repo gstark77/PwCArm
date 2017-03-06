@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "value": "claradmin"
+        },
+        "vmSize": {
+            "value": "Standard_D2_v2"
+        },
+        "environment": {
+            "value": "dev"
+        },
+        "tier": {
+            "value": "app"
+        },
+        "appContainer": {
+            "value": "sms"
+        },
+        "startIP": {
+            "value": "10.100.1.40"
+        },
+        "loadBalancerIP": {
+            "value": "10.100.1.7"
+        },
+        "adminPassword": {
+            "value": "C1aRi7A5!Rocks"
+        },
+        "numberOfInstances": {
+            "value": 2
+        },
+        "imagePublisher": {
+            "value": "MicrosoftWindowsServer"
+        },
+        "imageSKU": {
+            "value": "2016-Datacenter"
+        },
+        "imageOffer": {
+            "value": "WindowsServer"
+        },
+        "appFunction": {
+            "value": "red"
+        }
+    }
+}
