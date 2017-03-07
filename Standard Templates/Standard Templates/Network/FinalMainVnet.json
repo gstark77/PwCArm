@@ -154,7 +154,7 @@
       /* vnet-insdev */
       "vnetName": "[concat('vnet-',parameters('appContainer'),'dev')]",
       /* 10.200.0.0/21 */
-      "vnetPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]",
+      "vnetPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]"
       /* URI information
       "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
       "vnetTemplateFolderPath": "Network/",

@@ -26,9 +26,8 @@
     "location":"[resourceGroup().location]",
     "properties":{
       "addressSpace": {
-        "addressPrefixes": [
-          "[parameters('vnetNetworkInfo').vnetPrefix]"
-        ]
+        "addressPrefixes": "[variables('vnetDevPrefix')]",
+          /*"[parameters('vnetNetworkInfo').vnetPrefix]" */
       },
       "subnets": [
         {
