@@ -137,8 +137,8 @@
     "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
     "vnetTemplateFolderPath": "Network/",
     "vnetTemplateFileName": "FinalVnetLinked.json",
-    "vnetPath": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/VnetLinked.json",
-    "vnetPathParameters": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/nestedtemplates/VnetLinked2.parameters.json",
+    "vnetPath": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/FinalVnetLinked.json",
+    "vnetPathParameters": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/nestedtemplates/VnetLinked.parameters.json",
     "networkArray": "[split(parameters('networkBase'), '.')]",
     "networkInfo": {
       "dnsServer": "192.168.0.1",
