@@ -168,7 +168,6 @@
             "name": "vnet",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-09-01",
-            "dependsOn": [ ],
             "properties": {
             "mode": "Incremental",
             "templateLink": {
