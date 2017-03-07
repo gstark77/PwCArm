@@ -6,7 +6,7 @@
     "vnetNetworkInfo": { "type": "object" }
     },
   "variables": {
-    "networkBase": [ "parameters('vnetNetworkInfo').vnetPrefix" ],
+    "networkBase": "[parameters('vnetNetworkInfo').vnetPrefix]",
     "networkArray": "[split(variables('networkBase'), '.')]",
 
     "vnetNameDev": "[concat('vnet-','ins','dev')]",
