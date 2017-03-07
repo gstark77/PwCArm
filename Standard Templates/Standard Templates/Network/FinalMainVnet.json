@@ -137,14 +137,11 @@
     "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
     "vnetTemplateFolderPath": "Network/",
     "vnetTemplateFileName": "FinalVnetLinked.json",
-    "vnetPath": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/FinalVnetLinked.json",
-    "vnetPathParameters": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/nestedtemplates/VnetLinked.parameters.json",
     "networkArray": "[split(parameters('networkBase'), '.')]",
     "networkInfo": {
       "dnsServer": "192.168.0.1",
       /*  Yes */
-      /*"webTierValue": "[parameters('webTier')]",*/
-      "webTierValue": "10.50.1.0/24",
+      "webTierValue": "[parameters('webTier')]",
       "appTierValue": "[parameters('appTier')]",
       "dbaTierValue": "[parameters('dbaTier')]",
       "bkpTierValue": "[parameters('bkpTier')]",
@@ -152,11 +149,11 @@
       "op1TierValue": "[parameters('secTier')]",
       "op2TierValue": "[parameters('op1Tier')]"
     },
-    "vnetNetworkInfo": {
+    "devVnetNetworkInfo": {
       /* vnet-insdev */
       "vnetName": "[concat('vnet-',parameters('appContainer'),'dev')]",
       /* 10.200.0.0/21 */
-      "vnetPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]"
+      "vnetPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]",
     }
   },
     "resources": [
@@ -168,16 +165,15 @@
             "properties": {
             "mode": "Incremental",
             "templateLink": {
-                "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
-             /* "uri": "[variables('vnetPath')]",*/
+              "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
               "contentVersion": "1.0.0.0"
             },
             "parameters": {
               "vnetNetworkInfo": {
-                "value": "[variables('vnetNetworkInfo')]"
+              "value": "[variables('devVnetNetworkInfo')]"
               },
               "networkInfo": {
-                "value": "[variables('networkInfo')]"
+              "value": "[variables('networkInfo')]"
               }
             }
           }
