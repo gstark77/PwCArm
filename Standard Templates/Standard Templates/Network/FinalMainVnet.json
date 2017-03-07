@@ -175,10 +175,10 @@
             "parameters": {
               "vnetNetworkInfo": {
                 "value": "[variables('vnetNetworkInfo')]"
-              },/*
+              },
               "networkInfo": {
                 "value": "[variables('networkInfo')]"
-              }*/
+              }
             }
           }
 
