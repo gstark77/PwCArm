@@ -150,7 +150,7 @@
       "op1TierValue": "[parameters('secTier')]",
       "op2TierValue": "[parameters('op1Tier')]"
     },
-    "devVnetNetworkInfo": {
+    "vnetNetworkInfo": {
       /* vnet-insdev */
       "vnetName": "[concat('vnet-',parameters('appContainer'),'dev')]",
       /* 10.200.0.0/21 */
@@ -176,7 +176,7 @@
             },
             "parameters": {
               "vnetNetworkInfo": {
-                "value": "[variables('devVnetNetworkInfo')]"
+                "value": "[variables('vnetNetworkInfo')]"
               },
               "networkInfo": {
               "value": "[variables('networkInfo')]"

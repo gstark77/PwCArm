@@ -1,10 +1,10 @@
 ﻿{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
   "parameters": {
-    "networkInfo": {"type": "object"},
+    "networkInfo": { "type": "object" },
     "vnetNetworkInfo": { "type": "object" }
-    },
+  },
   "variables": {
     "networkBase": "[parameters('vnetNetworkInfo').vnetPrefix]",
     "networkArray": "[split(variables('networkBase'), '.')]",
@@ -24,29 +24,23 @@
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('vnetNetworkInfo').vnetName]",
       "location": "[resourceGroup().location]",
-        "properties": {
-          "addressSpace": {
-            "addressPrefixes": [ "10.60.0.0/21"
-              /*"[variables('vnetDevPrefix')]"*/ 
-            ]
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.60.0.0/21"
+          ]
         },
         "subnets": [
           {
-            "name": "[variables('snetNameDevWeb')]",
+            "name": "snet-insdevweb",
             "properties": {
-              "addressPrefix": "[variables('snetDevWebPrefix')]"
-            }
-          },
-          {
-            "name": "[variables('snetNameDevApp')]",
-            "properties": {
-              "addressPrefix": "[variables('snetDevAppPrefix')]"
+              "addressPrefix": "10.60.1.0/24"
             }
           }
         ]
       }
     }
   ],
-    "outputs": {
-    }
+  "outputs": {
+  }
 }
