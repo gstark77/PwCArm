@@ -143,12 +143,10 @@
     }
   },
   "variables": {
-    /*
-    "vnetTemplateFolder": "nestedtemplates",
-    "vnetTemplateFileName": "vnet.json",
-    "vnetTemplateParametersFileName": "vnet.parameters.json",
-    */
-    "templateBaseUrl": "https:"
+    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "vnetTemplateFolderPath": "Network/",
+    "vnetTemplateFileName": "VnetLinked.json",
+
     "networkArray": "[split(parameters('networkBase'), '.')]",
     "GeneralNetworkInfo": {
       "dnsServer": "192.168.0.1",
@@ -163,9 +161,9 @@
     },
     "DevNetworkInfo": {
       /* vnet-abcdev */
-      "vnetNameDev": "[concat('vnet-',parameters('appContainer'),'dev')]",
+      "vnetName": "[concat('vnet-',parameters('appContainer'),'dev')]",
       /* 10.200.0.0/21 */
-      "vnetDevPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]",
+      "vnetPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]"
     }
   },
     "resources": [
@@ -175,11 +173,11 @@
             "apiVersion": "2016-09-01",
             "dependsOn": [ ],
             "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(parameters('_artifactsLocation'), '/', variables('vnetTemplateFolder'), '/', variables('vnetTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
-                    "contentVersion": "1.0.0.0"
-                },
+              "mode": "Incremental",
+              "templateLink": {
+                "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
+                "contentVersion": "1.0.0.0"
+              },
                 "parametersLink": {
                     "uri": "[concat(parameters('_artifactsLocation'), '/', variables('vnetTemplateFolder'), '/', variables('vnetTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
                     "contentVersion": "1.0.0.0"

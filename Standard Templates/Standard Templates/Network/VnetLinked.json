@@ -1,12 +1,36 @@
 ﻿{
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
+  "parameters": {
+    "networkInfo": {
+      "type": "object"
+    }
     },
     "variables": {
     },
-    "resources": [
-    ],
+  "resources": [
+    {
+    "apiVersion":"2015-05-01-preview",
+    "type": "Microsoft.Network/virtualNetworks",
+    "name":"[parameters('networkInfo').vnetName]",
+    "location":"[resourceGroup().location]",
+    "properties":{
+      "addressSpace": {
+        "addressPrefixes": [
+          "[parameters('networkInfo').vnetPrefix]"
+        ]
+      },
+      "subnets": [
+        {
+          "name": "test",
+          "properties": {
+            "addressPrefix": "10.200.0.0/24"
+          }
+        }
+      ]
+    }
+  }
+  ],
     "outputs": {
     }
 }
