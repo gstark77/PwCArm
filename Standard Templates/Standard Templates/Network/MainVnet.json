@@ -140,7 +140,7 @@
     "vnetPath": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/VnetLinked.json",
     "vnetPathParameters": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/VnetLinked.parameters.json",
     "networkArray": "[split(parameters('networkBase'), '.')]",
-    "GeneralNetworkInfo": {
+    "networkInfo": {
       "dnsServer": "192.168.0.1",
       /*  Yes */
       /*"webTierValue": "[parameters('webTier')]",*/
@@ -152,7 +152,7 @@
       "op1TierValue": "[parameters('secTier')]",
       "op2TierValue": "[parameters('op1Tier')]"
     },
-    "DevVnetNetworkInfo": {
+    "vnetNetworkInfo": {
       /* vnet-insdev */
       "vnetName": "[concat('vnet-',parameters('appContainer'),'dev')]",
       /* 10.200.0.0/21 */
@@ -176,11 +176,11 @@
             },
             "parameters": {
               "vnetNetworkInfo": {
-                "value": "[variables('DevVnetNetworkInfo')]"
-              },
+                "value": "[variables('vnetNetworkInfo')]"
+              },/*
               "networkInfo": {
-                "value": "[variables('GeneralNetworkInfo')]"
-              }
+                "value": "[variables('networkInfo')]"
+              }*/
             }
           }
 
