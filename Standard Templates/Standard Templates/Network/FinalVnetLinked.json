@@ -15,7 +15,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "https://github.com/gstark77/PwCArm/blob/master/Standard%20Templates/Standard%20Templates/Network/FinalSnetLinked.json",
+          "uri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/FinalSnetLinked.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
