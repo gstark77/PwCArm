@@ -5,7 +5,20 @@
     },
   "variables": {
   },
-  "resources": [],
+        "resources": [
+          {
+            "apiVersion": "2015-01-01",
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+              "mode": "Incremental",
+              "templateLink": {
+                "uri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/simpleSubnetLinked.json",
+                "contentVersion": "1.0.0.0"
+              }
+            }
+          }
+    ],
     "outputs": {
     }
 }

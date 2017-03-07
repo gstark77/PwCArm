@@ -15,10 +15,7 @@
               "templateLink": {
                 "uri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/simpleLinked.json",
                 "contentVersion": "1.0.0.0"
-              }/*
-              "parameters": {
-                "StorageAccountName": { "value": "[parameters('StorageAccountName')]" }
-              }*/
+              }
             }
           }
     ],
