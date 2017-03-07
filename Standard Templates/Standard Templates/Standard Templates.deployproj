@@ -48,5 +48,8 @@
     <None Include="VMs\VirtualMachines.json" />
     <None Include="VMs\VirtualMachines.parameters.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mains\" />
+  </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
