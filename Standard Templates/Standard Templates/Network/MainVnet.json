@@ -116,12 +116,9 @@
       "type": "string",
       "minLength": 1,
       "allowedValues": [
-        "abc",
-        "def",
-        "ghi",
-        "jkl",
-        "mno",
-        "pqr"
+        "ins",
+        "dar",
+        "edw"
       ],
       "metadata": {
         "description": "The application that you are creating resources for"
@@ -154,8 +151,8 @@
       "op1TierValue": "[parameters('secTier')]",
       "op2TierValue": "[parameters('op1Tier')]"
     },
-    "DevNetworkInfo": {
-      /* vnet-abcdev */
+    "DevVnetNetworkInfo": {
+      /* vnet-insdev */
       "vnetName": "[concat('vnet-',parameters('appContainer'),'dev')]",
       /* 10.200.0.0/21 */
       "vnetPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]"
@@ -175,14 +172,13 @@
                 */
               "uri": "[variables('vnetPath')]",
               "contentVersion": "1.0.0.0"
-            },/*
-            "parametersLink": {
-              "uri": "[variables('vnetPathParameters')]",
-              "contentVersion": "1.0.0.0"
-            },*/
+            },
             "parameters": {
+              "vnetNetworkInfo": {
+                "value": "[variables('DevVnetNetworkInfo')]"
+              },
               "networkInfo": {
-                "value": "[variables('DevNetworkInfo')]"
+                "value": "[variables('GeneralNetworkInfo')]"
               }
             }
           }
