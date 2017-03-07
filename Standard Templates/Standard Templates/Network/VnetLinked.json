@@ -6,8 +6,8 @@
       "type": "object"
     }
     },
-    "variables": {
-    },
+  "variables": {
+  },
   "resources": [
     {
     "apiVersion":"2015-05-01-preview",
@@ -24,7 +24,7 @@
         {
           "name": "test",
           "properties": {
-            "addressPrefix": "10.200.0.0/24"
+            "addressPrefix": "10.30.0.0/24"
           }
         }
       ]

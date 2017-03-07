@@ -134,19 +134,14 @@
       "metadata": {
         "description": "Enter the base network for the network container"
       }
-    },
-    "_artifactsLocation": {
-      "type": "string"
-    },
-    "_artifactsLocationSasToken": {
-      "type": "securestring"
     }
   },
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
     "vnetTemplateFolderPath": "Network/",
     "vnetTemplateFileName": "VnetLinked.json",
-
+    "vnetPath": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/VnetLinked.json",
+    "vnetPathParameters": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/VnetLinked.parameters.json",
     "networkArray": "[split(parameters('networkBase'), '.')]",
     "GeneralNetworkInfo": {
       "dnsServer": "192.168.0.1",
@@ -172,18 +167,26 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-09-01",
             "dependsOn": [ ],
-            "properties": {
-              "mode": "Incremental",
-              "templateLink": {
+          "properties": {
+            "mode": "Incremental",
+            "templateLink": {
+              /*
                 "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
-                "contentVersion": "1.0.0.0"
-              },
-                "parameters": {
-                  "networkInfo": {
-                    "value": "[variables('DevNetworkInfo')]"
-                  }
-                }
+                */
+              "uri": "[variables('vnetPath')]",
+              "contentVersion": "1.0.0.0"
+            },
+            "parametersLink": {
+              "uri": "[variables('vnetPathParameters')]",
+              "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+              "networkInfo": {
+                "value": "[variables('DevNetworkInfo')]"
+              }
             }
+          }
+
         }
     ],
     "outputs": {
