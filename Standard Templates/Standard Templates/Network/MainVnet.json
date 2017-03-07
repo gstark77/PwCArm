@@ -178,9 +178,10 @@
                 "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
                 "contentVersion": "1.0.0.0"
               },
-                "parametersLink": {
-                    "uri": "[concat(parameters('_artifactsLocation'), '/', variables('vnetTemplateFolder'), '/', variables('vnetTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
-                    "contentVersion": "1.0.0.0"
+                "parameters": {
+                  "networkInfo": {
+                    "value": "[variables('DevNetworkInfo')]"
+                  }
                 }
             }
         }

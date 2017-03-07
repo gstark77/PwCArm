@@ -47,6 +47,8 @@
     <Content Include="nestedtemplates\vnet.parameters.json" />
     <None Include="Network\MainVnet.json" />
     <None Include="Network\SubnetLinked.json" />
+    <None Include="Network\MainVnet.parameters.json" />
+    <None Include="Network\VnetLinked.parameters.json" />
     <None Include="Network\vnet.parameters.json" />
     <None Include="Network\vnet.json" />
     <None Include="Network\VnetLinked.json" />
