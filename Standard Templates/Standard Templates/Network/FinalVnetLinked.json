@@ -1,0 +1,35 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "networkInfo": {"type": "object"},
+    "vnetNetworkInfo": { "type": "object" }
+    },
+  "variables": {
+  },
+  "resources": [
+    {
+      "name": "vnet",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/FinalSnetLinked.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "vnetNetworkInfo": {
+            "value": "[parameters('vnetNetworkInfo')]"
+          },
+          "networkInfo": {
+            "value": "[parameters('networkInfo')]"
+          }
+        }
+      }
+
+    }
+  ],
+    "outputs": {
+    }
+}

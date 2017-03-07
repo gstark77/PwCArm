@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+      "devEnvironment": {
+          "value": "Yes"
+      },
+      "testEnvironment": {
+          "value": "Yes"
+      },
+      "webTier": {
+          "value": "Yes"
+      },
+      "appTier": {
+          "value": "Yes"
+      },
+      "appContainer": {
+          "value": "ins"
+      },
+      "networkBase": {
+          "value": "10.60.0.0"
+      },
+      "dbaTier": {
+          "value": "Yes"
+      },
+      "bkpTier": {
+          "value": "Yes"
+      },
+      "repTier": {
+          "value": "Yes"
+      },
+      "secTier": {
+          "value": "Yes"
+      },
+      "op1Tier": {
+          "value": "Yes"
+      },
+      "op2Tier": {
+          "value": "Yes"
+      }}
+}
