@@ -14,9 +14,7 @@
 
     "snetNameDevWeb": "[concat('snet-','ins','devweb')]",
     "snetDevWebPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',add(int(variables('networkArray')[2]),0),'.',variables('networkArray')[3],'/24')]",
-
-    "snetNameDevApp": "[concat('snet-','ins','devapp')]",
-    "snetDevAppPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',add(int(variables('networkArray')[2]),1),'.',variables('networkArray')[3],'/24')]"
+  
   },
   "resources": [
     {
