@@ -16,14 +16,14 @@
     "properties":{
       "addressSpace": {
         "addressPrefixes": [
-          "[parameters('networkInfo').vnetPrefix]"
+          "[parameters('vnetNetworkInfo').vnetPrefix]"
         ]
       },
       "subnets": [
         {
           "name": "test",
           "properties": {
-            "addressPrefix": "10.30.0.0/24"
+            "addressPrefix": "[parameters('networkInfo').webTierValue]"
           }
         }
       ]
