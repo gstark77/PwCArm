@@ -134,6 +134,10 @@
     }
   },
   "variables": {
+    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "vnetTemplateFolderPath": "Network/",
+    "vnetTemplateFileName": "FinalVnetLinked.json",
+    "snetTemplateFileName": "FinalSnetLinked.json",
     "networkArray": "[split(parameters('networkBase'), '.')]",
     "networkInfo": {
       "dnsServer": "192.168.0.1",
@@ -155,7 +159,7 @@
       "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
       "vnetTemplateFolderPath": "Network/",
       "vnetTemplateFileName": "FinalVnetLinked.json",
-      "snetTemplateFileName":  "FinalSnetLinked.json"
+      "snetTemplateFileName": "FinalSnetLinked.json"
     }
   },
     "resources": [
