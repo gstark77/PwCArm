@@ -16,18 +16,15 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          [ "parameters('vnetNetworkInfo').vnetPrefix" ],
-          "uri": "[concat(parameters('vnetNetworkInfo').templateBaseUrl, \"parameters('vnetNetworkInfo').templateFolderPath\", \"parameters('vnetNetworkInfo').vnetTemplateFileName\"],
-          "uri": "[concat(parameters('vnetNetworkInfo')
-          "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
+          "uri": "https://github.com/gstark77/PwCArm/blob/master/Standard%20Templates/Standard%20Templates/Network/FinalSnetLinked.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "vnetNetworkInfo": {
-            "value": "[variables('devVnetNetworkInfo')]"
+            "value": "[parameters('vnetNetworkInfo')]"
           },
           "networkInfo": {
-            "value": "[variables('networkInfo')]"
+            "value": "[parameters('networkInfo')]"
           }
         }
       }
