@@ -45,13 +45,15 @@
     <Content Include="WindowsVirtualMachineScaleSet.parameters.json" />
     <Content Include="nestedtemplates\vnet.json" />
     <Content Include="nestedtemplates\vnet.parameters.json" />
+    <None Include="nestedtemplates\VnetLinked2.json" />
+    <None Include="nestedtemplates\VnetLinked2.parameters.json" />
     <None Include="Network\simpleMainLinked.json" />
     <None Include="Network\MainVnet.json" />
     <None Include="Network\SubnetLinked.json" />
     <None Include="Network\MainVnet.parameters.json" />
     <None Include="Network\simpleLinked.json" />
     <None Include="Network\simpleMainLinked.parameters.json" />
-    <None Include="Network\VnetLinked - Copy.parameters.json" />
+    <None Include="Network\VnetLinked.parameters.json" />
     <None Include="Network\vnet.parameters.json" />
     <None Include="Network\vnet.json" />
     <None Include="Network\VnetLinked.json" />
