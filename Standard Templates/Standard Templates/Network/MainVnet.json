@@ -167,7 +167,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-09-01",
             "dependsOn": [ ],
-          "properties": {
+            "properties": {
             "mode": "Incremental",
             "templateLink": {
               /*
@@ -175,11 +175,11 @@
                 */
               "uri": "[variables('vnetPath')]",
               "contentVersion": "1.0.0.0"
-            },
+            },/*
             "parametersLink": {
               "uri": "[variables('vnetPathParameters')]",
               "contentVersion": "1.0.0.0"
-            },
+            },*/
             "parameters": {
               "networkInfo": {
                 "value": "[variables('DevNetworkInfo')]"
