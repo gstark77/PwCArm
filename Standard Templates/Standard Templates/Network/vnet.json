@@ -1,0 +1,135 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "devEnvironment": {
+      "type": "string",
+      "defaultvalue": "No",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Will the application or suite of applications require a dev environment?"
+      }
+    },
+    "testEnvironment": {
+      "type": "string",
+      "defaultvalue": "No",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Will the application or suite of applications require a dev environment?"
+      }
+    },
+    "webTier": {
+      "type": "string",
+      "defaultvalue": "No",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Will the application require an web tier?"
+      }
+    },
+    "appTier": {
+      "type": "string",
+      "defaultvalue": "No",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Will the application require an app tier?"
+      }
+    },
+        "appContainer": {
+          "type": "string",
+          "minLength": 1,
+          "allowedValues": [
+            "abc",
+            "def",
+            "ghi",
+            "jkl",
+            "mno",
+            "pqr"
+          ],
+          "metadata": {
+            "description": "The application that you are creating resources for"
+          }
+        },
+        "networkBase": {
+          "type": "string",
+          "minLength": 7,
+          "maxLength": 15,
+          "metadata": {
+            "description": "Enter the base network for the network container"
+          }
+        }
+      },
+       "variables": {
+            /*
+        "vnetNameDevTemplate": "[concat('vnet-',parameters('appContainer'),'dev',parameters('devEnvironment'))]",
+        "vnetNameTestTemplate": "[concat('vnet-',parameters('appContainer'),'tst',parameters('testEnvironment'))]",
+        */
+            "dnsServer": "192.168.0.1",
+            "networkArray": "[split(parameters('networkBase'), '.')]",
+            "vnetNameDev": "[concat('vnet-',parameters('appContainer'),'dev')]",
+            "vnetDevPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]",
+            
+            "snetNameDevWeb": "[concat('snet-',parameters('appContainer'),'devweb',parameters('webTier'))]",
+            "snetDevWebPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',add(int(variables('networkArray')[2]),0),'.',variables('networkArray')[3],'/24')]",
+           
+            "snetNameDevApp": "[concat('snet-',parameters('appContainer'),'devapp',parameters('appTier'))]",
+            "snetDevAppPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',add(int(variables('networkArray')[2]),1),'.',variables('networkArray')[3],'/24')]",
+            
+            "vnetNameTest": "[concat('vnet-',parameters('appContainer'),'tst')]",
+            "vnetTestPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),1),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]",
+            
+            "snetNameTestWeb": "[concat('snet-',parameters('appContainer'),'tst',parameters('webTier'))]",
+            "snetTestWebPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),1),'.',add(int(variables('networkArray')[2]),0),'.',variables('networkArray')[3],'/24')]",
+            
+            "snetNameTestApp": "[concat('snet-',parameters('appContainer'),'tst',parameters('appTier'))]",
+            "snetTestAppPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),1),'.',add(int(variables('networkArray')[2]),1),'.',variables('networkArray')[3],'/24')]",
+            /*
+        "vnetUATPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),2),'.',variables('networkArray')[2],'.',variables('networkArray'[3]))",
+        "vnetProdPrefix": "[concat(variables('networkArray')[0],'.', add(int(variables('networkArray')[1]),3),'.',variables('networkArray')[2],'.',variables('networkArray'[3]))",
+        */
+          },
+          "resources": [
+            {
+              "apiVersion": "2015-05-01-preview",
+              "type": "Microsoft.Network/virtualNetworks",
+              "name": "[variables('vnetNameDev')]",
+              "location": "[resourceGroup().location]",
+              "properties": {
+                "addressSpace": {
+                  "addressPrefixes": [
+                    "[variables('vnetDevPrefix')]"
+                  ]
+                },
+                "subnets": [
+                  {
+                    "name": "[variables('snetNameDevWeb')]",
+                    "properties": {
+                      "addressPrefix": "[variables('snetDevWebPrefix')]"
+                    }
+                  },
+                  {
+                    "name": "[variables('snetNameDevApp')]",
+                    "properties": {
+                      "addressPrefix": "[variables('snetDevAppPrefix')]"
+                    }
+                  }
+                ],
+                "dhcpOptions": {
+                  "dnsServers": [ "[variables('dnsServer')]" ]
+                }
+              }
+            }
+          ],
+          "outputs": {}
+        }

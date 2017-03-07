@@ -1,45 +1,72 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminUsername": {
-            "value": "claradmin"
-        },
-        "vmSize": {
-            "value": "Standard_D2_v2"
-        },
-        "environment": {
-            "value": "dev"
-        },
-        "tier": {
-            "value": "app"
-        },
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "devEnvironment": {
+      "type": "string",
+      "defaultvalure": "No",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Will the application or suite of applications require a dev environment?"
+      }
+    },
+    "testEnvironment": {
+      "type": "string",
+      "defaultvalure": "No",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Will the application or suite of applications require a dev environment?"
+      }
+    },
+    "webTier": {
+      "type": "string",
+      "defaultvalue": "No",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Will the application require an web tier?"
+      },
+    },
+    "appTier": {
+      "type": "string",
+      "defaultvalue": "No",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Will the application require an app tier?"
+      },
+    },
         "appContainer": {
-            "value": "sms"
+          "type": "string",
+          "minLength": 1,
+          "allowedValues": [
+            "abc",
+            "def",
+            "ghi",
+            "jkl",
+            "mno",
+            "pqr"
+          ],
+          "metadata": {
+            "description": "The application that you are creating resources for"
+          }
         },
-        "startIP": {
-            "value": "10.100.1.40"
-        },
-        "loadBalancerIP": {
-            "value": "10.100.1.7"
-        },
-        "adminPassword": {
-            "value": "C1aRi7A5!Rocks"
-        },
-        "numberOfInstances": {
-            "value": 2
-        },
-        "imagePublisher": {
-            "value": "MicrosoftWindowsServer"
-        },
-        "imageSKU": {
-            "value": "2016-Datacenter"
-        },
-        "imageOffer": {
-            "value": "WindowsServer"
-        },
-        "appFunction": {
-            "value": "red"
+        "networkBase": {
+          "type": "string",
+          "minLength": 7,
+          "maxLength": 15,
+          "metadata": {
+            "description": "Enter the base network for the network container"
+          }
         }
-    }
-}
+      },

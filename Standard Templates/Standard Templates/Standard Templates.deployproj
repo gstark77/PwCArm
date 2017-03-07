@@ -43,6 +43,13 @@
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <Content Include="WindowsVirtualMachineScaleSet.json" />
     <Content Include="WindowsVirtualMachineScaleSet.parameters.json" />
+    <Content Include="nestedtemplates\vnet.json" />
+    <Content Include="nestedtemplates\vnet.parameters.json" />
+    <None Include="Network\MainVnet.json" />
+    <None Include="Network\SubnetLinked.json" />
+    <None Include="Network\vnet.parameters.json" />
+    <None Include="Network\vnet.json" />
+    <None Include="Network\VnetLinked.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.parameters.json" />
     <None Include="VMs\VirtualMachines.json" />
