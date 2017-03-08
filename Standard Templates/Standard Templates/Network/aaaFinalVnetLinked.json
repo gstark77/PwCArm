@@ -5,7 +5,7 @@
     "strEnvironment": { "type": "string" },
     "strVnetName": { "type": "string" },
     "strVnetPrefix": { "type": "string" },
-    "strSnetName": { "type": "array" },
+    "strSnetName": { "type": "string" },
     "strSnetPrefix": { "type": "array" },
     "strDnsServer": { "type": "string" }
   },
