@@ -20,7 +20,7 @@
   },
     "resources": [
         {
-          "name": "[concat('main_fromVISUALSTUDIO', uniquestring(resourcegroup().id))]",
+          "name": "testMain",
           "type": "Microsoft.Resources/deployments",
           "apiVersion": "2016-09-01",
 
@@ -36,11 +36,12 @@
                   "contentVersion": "1.0.0.0"
               },
             "parameters": {
-              "strVnetName": { "value": "[variables('strVnetName')]" },
-              "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" },
-              "strSnetName": { "value": "[variables('strSnetName')]" },
-              "strSnetPrefix": { "value": "[variables('strSnetPrefix')]" },
-              "strDnsServer": { "value": "[variables('strDnsServer')]" }
+              "strEnvironment": { "value": "[variables('arrEnvironment')[copyIndex()]]" }, /* dev   |   prd   */
+              "strVnetName": { "value": "[variables('strVnetName')]" },   /*  edw  */
+              "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" },  /*  10.60.0.0   */
+              "strSnetName": { "value": "[variables('strSnetName')]" },   /* web   |   app   |   dba   */
+              "strSnetPrefix": { "value": "[variables('strSnetPrefix')]" },  /* 10.60.0.0  |  10.60.1.0  |  10.60.2.0  */
+              "strDnsServer": { "value": "[variables('strDnsServer')]" }  /* 192.168.0.1   */
             }
           }
         }

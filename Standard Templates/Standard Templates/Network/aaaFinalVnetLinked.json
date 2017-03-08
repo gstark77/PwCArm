@@ -2,18 +2,14 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "strEnvironment": { "type": "string" },
     "strVnetName": { "type": "string" },
     "strVnetPrefix": { "type": "string" },
     "strSnetName": { "type": "array" },
     "strSnetPrefix": { "type": "array" },
     "strDnsServer": { "type": "string" }
-
-
   },
   "variables": {
-
-    "ipArray": "[concat('1','2')]"
-
   },
   "resources": [
     {
@@ -31,11 +27,12 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
+          "strEnvironment": { "value": "[parameters('strEnvironment')]" }, /* dev |  prd  */
           "strVnetName": { "value": "[parameters('strVnetName')]" }, /* edw */
           "strVnetPrefix": { "value": "[parameters('strVnetPrefix')]" }, /* 10.60.0.0 */
-          "strSnetTierName": "[parameters('strSnetName')[copyIndex()]]", /* web   |   app   |   dev   */
-          "strSnetTierPrefix": "[parameters('strSnetPrefix')[copyIndex()]]",  /* 10.60.0.0  | 10.60.1.0  |  10.60.2.0  */
-          "strDnsServer": { "value": "[parameters('strDnsServer')]" }  /* 192.168.0.1 */
+          "strSnetTierName": { "value": "[parameters('strSnetName')[copyIndex()]]" }, /* web   |   app   |   dev   */
+          "strSnetTierPrefix": "[parameters('strSnetPrefix')[copyIndex()]]", /* 10.60.0.0  | 10.60.1.0  |  10.60.2.0  */
+          "strDnsServer": { "value": "[parameters('strDnsServer')]" } /* 192.168.0.1 */
         }
       }
 
