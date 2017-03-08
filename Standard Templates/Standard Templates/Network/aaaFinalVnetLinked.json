@@ -1,0 +1,43 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "strVnetName": { "type": "string" },
+    "strVnetPrefix": { "type": "string" },
+    "strSnetName": { "type": "array" },
+    "strSnetPrefix": { "type": "array" },
+    "strDnsServer": { "type": "string" }
+
+
+  },
+  "variables": {
+
+    "ipArray": "[concat('1','2')]"
+
+  },
+  "resources": [
+    {
+      "name": "vnet",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+      "snetLoop": { "count": "[length(parameters('strSnetName'))]" },
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/aaaFinalSnetLinked.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "strVnetName": { "value": "[parameters('strVnetName')]" }, /* edw */
+          "strVnetPrefix": { "value": "[parameters('strVnetPrefix')]" }, /* 10.60.0.0 */
+          "strSnetTierName": "[parameters('strSnetName')[copyIndex()]]", /* web   |   app   |   dev   */
+          "strSnetTierPrefix": "[parameters('strSnetPrefix')[copyIndex()]]",  /* 10.60.0.0  | 10.60.1.0  |  10.60.2.0  */
+          "strDnsServer": { "value": "[parameters('strDnsServer')]" }  /* 192.168.0.1 */
+        }
+      }
+
+    }
+  ],
+  "outputs": {
+  }
+}

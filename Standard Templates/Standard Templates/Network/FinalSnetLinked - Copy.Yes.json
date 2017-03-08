@@ -2,14 +2,9 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-
-    "strVnetName": { "type": "string" }, /* edw */
-    "strVnetPrefix": { "type": "string" }, /* 10.60.0.0 */
-    "strSnetName": { "type": "string" }, /* web   |   app   |   dev   */
-    "strSnetPrefix": { "type": "string" }, /* 10.60.0.0  | 10.60.1.0  |  10.60.2.0  */
-    "strDnsServer": { "type": "string" } /* 192.168.0.1 */
-
-
+    "networkInfo": { "type": "object" },
+    "vnetNetworkInfo": { "type": "object" },
+    "snetNetworkInfo":{"type": "object"}
   },
   "variables": {
   },
@@ -17,19 +12,19 @@
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/virtualNetworks",
-      "name": "[parameters('strVnetName').vnetName]",
+      "name": "[parameters('vnetNetworkInfo').vnetName]",
       "location": "[resourceGroup().location]",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[parameters('strVnetPrefix')]"
+            "10.60.0.0/21"
           ]
         },
         "subnets": [
           {
-            "name": "[parameters('strSnetName')]",
+            "name": "snet-insdevweb",
             "properties": {
-              "addressPrefix": "[parameters('strSnetPrefix')]"
+              "addressPrefix": "10.60.1.0/24"
             }
           }
         ]

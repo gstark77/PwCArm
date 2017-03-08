@@ -1,0 +1,47 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+  },
+
+  "variables": {
+    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "vnetTemplateFolderPath": "Network/",
+    "vnetTemplateFileName": "aaaFinalVnetLinked.json",
+    "snetTemplateFileName": "aaaFinalSnetLinked.json",
+
+    "arrEnvironment": "[concat('dev','prd')]",
+    "strVnetName": "edw",
+    "strVnetPrefix": "10.60.0.0",
+    "strSnetName": "[concat('web','app','dba')]",
+    "strSnetPrefix": "[concat('10.60.0.0','10.60.1.0','10.60.2.0')]",
+    "strDnsServer": "192.168.0.1"
+
+  },
+    "resources": [
+        {
+          "name": "[concat('vnet_fromVISUALSTUDIO', uniquestring(resourcegroup().id))]",
+          "type": "Microsoft.Resources/deployments",
+          "apiVersion": "2016-09-01",
+
+          "vnetLoop": { "count": "[length(variables('arrEnvironment'))]" },       
+           
+          "properties": {
+              "mode": "Incremental",
+              "templateLink": {
+                 "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
+                  "contentVersion": "1.0.0.0"
+              },
+            "parameters": {
+              "strVnetName": { "value": "[variables('strVnetName')]" },
+              "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" },
+              "strSnetName": { "value": "[variables('strSnetName')]" },
+              "strSnetPrefix": { "value": "[variables('strSnetPrefix')]" },
+              "strDnsServer": { "value": "[variables('strDnsServer')]" }
+            }
+          }
+        }
+    ],
+    "outputs": {
+    }
+}
