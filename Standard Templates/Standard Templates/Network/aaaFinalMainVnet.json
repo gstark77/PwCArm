@@ -10,7 +10,7 @@
     "vnetTemplateFileName": "aaaFinalVnetLinked.json",
     "snetTemplateFileName": "aaaFinalSnetLinked.json",
 
-    "arrEnvironment": "[concat('dev','prd')]",
+    "arrEnvironment": "[concat('dev')]",
     "strVnetName": "edw",
     "strVnetPrefix": "10.60.0.0",
     "strSnetName": "[concat('web','app','dba')]",
