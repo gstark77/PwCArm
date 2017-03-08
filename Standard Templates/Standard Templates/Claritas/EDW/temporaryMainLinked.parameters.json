@@ -30,7 +30,7 @@
       "value": "7.2"
     },
     "appFunction": {
-      "value": null // left blank for now
+      "value": "red" // must figure out how to make blank
     },
     "imagePublisher": {
       "value": "RedHat"

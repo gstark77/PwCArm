@@ -129,7 +129,6 @@
       "defaultValue": "base",
       "minLength": 1,
       "allowedValues": [
-        null,
         "bas",
         "base",
         "fme",
