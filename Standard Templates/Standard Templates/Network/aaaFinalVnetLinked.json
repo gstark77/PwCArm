@@ -13,7 +13,7 @@
   },
   "resources": [
     {
-      "name": "[concat('snet_fromVISUALSTUDIO', uniquestring(resourcegroup().id))]",
+      "name": "[concat('snet_fromVISUALSTUDIO',copyIndex(), uniquestring(resourcegroup().id))]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
       "copy": {
