@@ -5,7 +5,7 @@
   },
 
   "variables": {
-    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/aaaFinalVnetLinked.json",
     "vnetTemplateFolderPath": "Network/",
     "vnetTemplateFileName": "aaaFinalVnetLinked.json",
     "snetTemplateFileName": "aaaFinalSnetLinked.json",
@@ -20,16 +20,19 @@
   },
     "resources": [
         {
-          "name": "[concat('vnet_fromVISUALSTUDIO', uniquestring(resourcegroup().id))]",
+          "name": "[concat('main_fromVISUALSTUDIO', uniquestring(resourcegroup().id))]",
           "type": "Microsoft.Resources/deployments",
           "apiVersion": "2016-09-01",
 
-          "copy": { "count": "[length(variables('arrEnvironment'))]" },       
+          "copy": {
+            "name": "vnetLoop",
+            "count": "[length(variables('arrEnvironment'))]" 
+          },       
            
           "properties": {
               "mode": "Incremental",
               "templateLink": {
-                 "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
+                 "uri": "[variables('templateBaseUrl')]",
                   "contentVersion": "1.0.0.0"
               },
             "parameters": {

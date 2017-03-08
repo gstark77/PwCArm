@@ -17,10 +17,13 @@
   },
   "resources": [
     {
-      "name": "vnet",
+      "name": "[concat('snet_fromVISUALSTUDIO', uniquestring(resourcegroup().id))]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "copy": { "count": "[length(parameters('strSnetName'))]" },
+      "copy": {
+        "name": "snetLoop",
+        "count": "[length(parameters('strSnetName'))]" 
+      },
       "properties": {
         "mode": "Incremental",
         "templateLink": {
