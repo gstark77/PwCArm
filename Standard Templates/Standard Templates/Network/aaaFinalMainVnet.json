@@ -40,8 +40,10 @@
           "strEnvironment": { "value": "dev" },
           "strVnetName": { "value": "[variables('strVnetName')]" }, /*  edw  */
           "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" }, /*  10.60.0.0   */
-          "strSnetName": { "value": "[variables('strSnetName')]" }, /* web   |   app   |   dba   */
-          "strSnetPrefix": { "value": "[variables('strSnetPrefix')]" }, /* 10.60.0.0  |  10.60.1.0  |  10.60.2.0  */
+          /*"strSnetName": { "value": "[variables('strSnetName')]" },*/ /* web   |   app   |   dba   */
+          "strSnetName": { "value": "web" },
+          /*"strSnetPrefix": { "value": "[variables('strSnetPrefix')]" }*/, /* 10.60.0.0  |  10.60.1.0  |  10.60.2.0  */
+          "strSnetPreifx": {"value": "10.60.0.0"},
           "strDnsServer": { "value": "[variables('strDnsServer')]" } /* 192.168.0.1   */
         }
       }
@@ -63,11 +65,14 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "strEnvironment": { "value": "prd" },
+          /*"strEnvironment": { "value": "[variables('arrEnvironment')[copyIndex()]]" },*/ /* dev   |   prd   */
+          "strEnvironment": { "value": "prd},
           "strVnetName": { "value": "[variables('strVnetName')]" }, /*  edw  */
           "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" }, /*  10.60.0.0   */
-          "strSnetName": { "value": "[variables('strSnetName')]" }, /* web   |   app   |   dba   */
-          "strSnetPrefix": { "value": "[variables('strSnetPrefix')]" }, /* 10.60.0.0  |  10.60.1.0  |  10.60.2.0  */
+          /*"strSnetName": { "value": "[variables('strSnetName')]" },*/ /* web   |   app   |   dba   */
+          "strSnetName": { "value": "app" },
+          /*"strSnetPrefix": { "value": "[variables('strSnetPrefix')]" }*/ /* 10.60.0.0  |  10.60.1.0  |  10.60.2.0  */
+          "strSnetPreifx": { "value": "10.60.10" },
           "strDnsServer": { "value": "[variables('strDnsServer')]" } /* 192.168.0.1   */
         }
       }

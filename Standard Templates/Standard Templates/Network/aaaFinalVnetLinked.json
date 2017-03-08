@@ -6,7 +6,7 @@
     "strVnetName": { "type": "string" },
     "strVnetPrefix": { "type": "string" },
     "strSnetName": { "type": "string" },
-    "strSnetPrefix": { "type": "array" },
+    "strSnetPrefix": { "type": "string" },
     "strDnsServer": { "type": "string" }
   },
   "variables": {
