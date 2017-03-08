@@ -37,6 +37,11 @@
     <None Include="AD\New Domain HA\nestedtemplates\vnet-with-dns-server.json" />
     <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
     <None Include="AD\New Domain HA\README.md" />
+    <None Include="Claritas\EDW\zzz_Example_simpleLinked.json" />
+    <None Include="Claritas\EDW\zzz_Example_simpleMainLinked.json" />
+    <None Include="Claritas\EDW\zzz_Example_simpleMainLinked.parameters.json" />
+    <None Include="Claritas\EDW\zzz_Example_simpleSubnetLinked.json" />
+    <None Include="Claritas\EDW\zzz_Example_SubnetLinked.json" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
@@ -66,6 +71,9 @@
     <None Include="VMs\LoadBalancedVirtualMachine.parameters.json" />
     <None Include="VMs\VirtualMachines.json" />
     <None Include="VMs\VirtualMachines.parameters.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Claritas\SMS\" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>

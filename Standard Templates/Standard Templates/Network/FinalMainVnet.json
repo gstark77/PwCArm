@@ -139,7 +139,6 @@
     "vnetTemplateFileName": "FinalVnetLinked.json",
     "snetTemplateFileName": "FinalSnetLinked.json",
 
-    "environmentArray": "[concat('dev',parameters('devEnvironment'),'test',parameters('testEnvironment'))]",
     "networkArray": "[split(parameters('networkBase'), '.')]",
 
     "networkInfo": {
@@ -151,7 +150,8 @@
       "bkpTierValue": "[parameters('bkpTier')]",
       "repTierValue": "[parameters('repTier')]",
       "op1TierValue": "[parameters('secTier')]",
-      "op2TierValue": "[parameters('op1Tier')]"
+      "op2TierValue": "[parameters('op1Tier')]",
+      "environmentArray": "[concat('dev',parameters('devEnvironment'),'test',parameters('testEnvironment'))]"
     },
 
     "vnetNetworkInfo": {
