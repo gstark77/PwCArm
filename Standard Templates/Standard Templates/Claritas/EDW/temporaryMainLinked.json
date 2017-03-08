@@ -176,7 +176,7 @@
       "appFunctionValue": "[parameters('appFunction')]",
       "startIPValue": "[parameters('startIP')]",
       "numberOfInstancesValue": "[parameters('numberOfInstances')]"
-
+      // NOTE: requires manual or separate creation of VNET / SNET
     },
   },
   "resources": [
