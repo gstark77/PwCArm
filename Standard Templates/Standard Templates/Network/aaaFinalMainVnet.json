@@ -20,7 +20,7 @@
   },
     "resources": [
       {
-        "name": "[concat('testMain_fromVISUALSTUDIO',copyIndex(), uniquestring(resourcegroup().id))]",
+        "name": "[concat('testMain_fromVISUALSTUDIO_',copyIndex(),'____', uniquestring(resourcegroup().id))]",
         "type": "Microsoft.Resources/deployments",
         "apiVersion": "2016-09-01",
 
