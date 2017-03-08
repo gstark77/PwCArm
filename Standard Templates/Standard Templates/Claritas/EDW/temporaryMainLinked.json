@@ -172,11 +172,11 @@
       "imageOfferValue": "[parameters('imageOffer')]",
       "vmSizeValue": "[parameters('vmSize')]",
       "environmentValue": "[parameters('environment')]",
-      "op2TierValue": "[parameters('tier')]",
-      "tierValue": "[parameters('appContainer')]",
+      "tierValue": "[parameters('tier')]",
+      "appContainerValue": "[parameters('appContainer')]",
       "appFunctionValue": "[parameters('appFunction')]",
       "startIPValue": "[parameters('startIP')]",
-      "numberOfInstancesValue": "[parameters('numberOfInstances')]",
+      "numberOfInstancesValue": "[parameters('numberOfInstances')]"
 
     },
   },
