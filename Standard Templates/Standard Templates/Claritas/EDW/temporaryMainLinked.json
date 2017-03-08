@@ -130,7 +130,7 @@
       "minLength": 1,
       "allowedValues": [
         "bas",
-        "base",
+        "notapplicable", // using 'notapplicable' when not using appFunction
         "fme",
         "geo",
         "map",

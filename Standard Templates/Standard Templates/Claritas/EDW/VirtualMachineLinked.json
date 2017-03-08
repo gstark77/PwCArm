@@ -7,7 +7,7 @@
   "variables": {
     "appEnvName": "[concat(parameters('vmInfo').appContainerValue,parameters('vmInfo').environmentValue)]",
     "appEnvTierName": "[concat(variables('appEnvName'), parameters('vmInfo').tierValue)]",
-    "vmNamePrefix": "[concat(variables('appEnvTierName'), replace(parameters('vmInfo').appFunctionValue,'base',''))]",
+    "vmNamePrefix": "[concat(variables('appEnvTierName'), replace(parameters('vmInfo').appFunctionValue,'notapplicable',''))]", // using 'notapplicable' when not using appFunction
     "availabilitySetName": "[concat(variables('vmNamePrefix'),'-as01')]",
     "vhdStorageType": "Standard_LRS",
     "vhdStorageAccountName": "[concat(variables('appEnvTierName'), uniqueString(resourceGroup().id))]",
@@ -21,24 +21,9 @@
     "diagnosticsStorageAccountName": "[variables('vhdStorageAccountName')]",
     "ipArray": "[split(parameters('vmInfo').startIPValue, '.')]",
     "ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",
-    "ipOct4": "[variables('ipArray')[3]]",
-    "lbProbeName": "[concat(variables('vmNamePrefix'),'-prb01')]",
-    "repFirst3": "10.100.4.",
-    "repOct4": "20"
+    "ipOct4": "[variables('ipArray')[3]]"
   },
-  "resources": [ /*
-    {
-      "apiVersion": "2015-01-01",
-      "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/simpleSubnetLinked.json",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    }*/
+  "resources": [ 
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Storage/storageAccounts",
