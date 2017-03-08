@@ -5,13 +5,13 @@
     "vmInfo": { "type": "object" }
   },
   "variables": {
-    "appEnvName": "[concat(parameters('vmInfo').appContainer,parameters('vmInfo').environment)]",
-    "appEnvTierName": "[concat(variables('appEnvName'), parameters('vmInfo').tier)]",
-    "vmNamePrefix": "[concat(variables('appEnvTierName'), replace(parameters('vmInfo').appFunction,'base',''))]",
+    "appEnvName": "[concat(parameters('vmInfo').appContainerValue,parameters('vmInfo').environmentValue)]",
+    "appEnvTierName": "[concat(variables('appEnvName'), parameters('vmInfo').tierValue)]",
+    "vmNamePrefix": "[concat(variables('appEnvTierName'), replace(parameters('vmInfo').appFunctionValue,'base',''))]",
     "availabilitySetName": "[concat(variables('vmNamePrefix'),'-as01')]",
     "vhdStorageType": "Standard_LRS",
     "vhdStorageAccountName": "[concat(variables('appEnvTierName'), uniqueString(resourceGroup().id))]",
-    "virtualNetworkName": "[concat('vnet-', parameters('vmInfo').appContainer, parameters('vmInfo').environment)]",
+    "virtualNetworkName": "[concat('vnet-', parameters('vmInfo').appContainerValue, parameters('vmInfo').environmentValue)]",
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
     "virtualNetworkSubnetName": "[concat('snet-',variables('appEnvTierName'))]",
     "virtualNetworkSubnetRepName": "[concat('snet-',variables('appEnvName'),'rep')]",
@@ -19,7 +19,7 @@
     "subnetRepRef": "[concat(variables('vnetId'), '/subnets/', variables('virtualNetworkSubnetRepName'))]",
     "networkInterfaceNamePrefix": "[concat(variables('vmNamePrefix'),'-nic')]",
     "diagnosticsStorageAccountName": "[variables('vhdStorageAccountName')]",
-    "ipArray": "[split(parameters('vmInfo').startIP, '.')]",
+    "ipArray": "[split(parameters('vmInfo').startIPValue, '.')]",
     "ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",
     "ipOct4": "[variables('ipArray')[3]]",
     "lbProbeName": "[concat(variables('vmNamePrefix'),'-prb01')]",
@@ -46,9 +46,9 @@
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "StorageAccount",
-        "environment": "[parameters('vmInfo').environment]",
-        "application": "[parameters('vmInfo').appContainer]",
-        "tier": "[parameters('vmInfo').tier]"
+        "environment": "[parameters('vmInfo').environmentValue]",
+        "application": "[parameters('vmInfo').appContainerValue]",
+        "tier": "[parameters('vmInfo').tierValue]"
       },
       "properties": {
         "accountType": "[variables('vhdStorageType')]"
@@ -61,9 +61,9 @@
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "AvailabilitySet",
-        "environment": "[parameters('vmInfo').environment]",
-        "application": "[parameters('vmInfo').appContainer]",
-        "tier": "[parameters('vmInfo').tier]"
+        "environment": "[parameters('vmInfo').environmentValue]",
+        "application": "[parameters('vmInfo').appContainerValue]",
+        "tier": "[parameters('vmInfo').tierValue]"
       },
       "properties": {}
     },
@@ -74,13 +74,13 @@
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "NetworkInterface",
-        "environment": "[parameters('vmInfo').environment]",
-        "application": "[parameters('vmInfo').appContainer]",
-        "tier": "[parameters('vmInfo').tier]"
+        "environment": "[parameters('vmInfo').environmentValue]",
+        "application": "[parameters('vmInfo').appContainerValue]",
+        "tier": "[parameters('vmInfo').tierValue]"
       },
       "copy": {
         "name": "nicLoop",
-        "count": "[parameters('vmInfo').numberOfInstances]"
+        "count": "[parameters('vmInfo').numberOfInstancesValue]"
       },
       "properties": {
         "ipConfigurations": [
@@ -103,7 +103,7 @@
       "name": "[concat(variables('vmNamePrefix'), padleft(copyindex(1),2,'0'))]",
       "copy": {
         "name": "virtualMachineLoop",
-        "count": "[parameters('vmInfo').numberOfInstances]"
+        "count": "[parameters('vmInfo').numberOfInstancesValue]"
       },
       "location": "[resourceGroup().location]",
       "tags": {
@@ -119,18 +119,18 @@
           "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySetName'))]"
         },
         "hardwareProfile": {
-          "vmSize": "[parameters('vmInfo').vmSize]"
+          "vmSize": "[parameters('vmInfo').vmSizeValue]"
         },
         "osProfile": {
           "computerName": "[concat(variables('vmNamePrefix'), padleft(copyindex(1),2,'0'))]",
-          "adminUsername": "[parameters('vmInfo').adminUsername]",
-          "adminPassword": "[parameters('vmInfo').adminPassword]"
+          "adminUsername": "[parameters('vmInfo').adminUsernameValue]",
+          "adminPassword": "[parameters('vmInfo').adminPasswordValue]"
         },
         "storageProfile": {
           "imageReference": {
-            "publisher": "[parameters('vmInfo').imagePublisher]",
-            "offer": "[parameters('vmInfo').imageOffer]",
-            "sku": "[parameters('vmInfo').imageSKU]",
+            "publisher": "[parameters('vmInfo').imagePublisherValue]",
+            "offer": "[parameters('vmInfo').imageOfferValue]",
+            "sku": "[parameters('vmInfo').imageSKUValue]",
             "version": "latest"
           },
           "osDisk": {
