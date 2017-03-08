@@ -139,6 +139,7 @@
     "vnetTemplateFileName": "FinalVnetLinked.json",
     "snetTemplateFileName": "FinalSnetLinked.json",
 
+    "environmentArray": "[concat('dev',parameters('devEnvironment'),'test',parameters('testEnvironment'))]",
     "networkArray": "[split(parameters('networkBase'), '.')]",
 
     "networkInfo": {
@@ -162,9 +163,13 @@
   },
     "resources": [
         {
-            "name": "vnet3141",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2016-09-01",
+          "name": "[concat('vnet_fromVISUALSTUDIO', uniquestring(resourcegroup().id))]",
+          "type": "Microsoft.Resources/deployments",
+          "apiVersion": "2016-09-01",
+          "copy": {
+            "name": "testiteration",
+            "count": 4
+          },        
             "properties": {
             "mode": "Incremental",
             "templateLink": {
@@ -176,7 +181,7 @@
                 "value": "[variables('vnetNetworkInfo')]"
               },
               "networkInfo": {
-              "value": "[variables('networkInfo')]"
+                "value": "[variables('networkInfo')]"
               }
             }
           }
