@@ -66,7 +66,7 @@
         },
         "parameters": {
           /*"strEnvironment": { "value": "[variables('arrEnvironment')[copyIndex()]]" },*/ /* dev   |   prd   */
-          "strEnvironment": { "value": "prd},
+          "strEnvironment": { "value": "prd"},
           "strVnetName": { "value": "[variables('strVnetName')]" }, /*  edw  */
           "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" }, /*  10.60.0.0   */
           /*"strSnetName": { "value": "[variables('strSnetName')]" },*/ /* web   |   app   |   dba   */
