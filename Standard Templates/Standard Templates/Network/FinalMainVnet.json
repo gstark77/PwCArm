@@ -140,6 +140,8 @@
     "snetTemplateFileName": "FinalSnetLinked.json",
 
     "networkArray": "[split(parameters('networkBase'), '.')]",
+    "environmentArraySelections": "[concat(parameters('devEnvironment'),parameters('testEnvironment'))]",
+    "environmentArray":  "[concat('dev','tst','uat','prd')]",
 
     "networkInfo": {
       "dnsServer": "192.168.0.1",
@@ -151,7 +153,8 @@
       "repTierValue": "[parameters('repTier')]",
       "op1TierValue": "[parameters('secTier')]",
       "op2TierValue": "[parameters('op1Tier')]",
-      "environmentArray": "[concat('dev',parameters('devEnvironment'),'test',parameters('testEnvironment'))]"
+      "environmentArraySelections": "[concat(parameters('devEnvironment'),parameters('testEnvironment'))]",
+      "environmentArray": "[concat('dev','tst','uat','prd')]"
     },
 
     "vnetNetworkInfo": {
@@ -159,6 +162,12 @@
       "vnetName": "[concat('vnet-',parameters('appContainer'),'dev')]",
       /* 10.200.0.0/21 */
       "vnetPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3])]"
+    },
+    "snetNetworkInfo": {
+      "snetDevName": "smsdevweb",
+      "snetDevPrefix": "10.60.0.0/24",
+      "snetWebName": "smsdevapp",
+      "snetWebPrefix":"10.60.1.0/24"
     }
   },
     "resources": [
@@ -166,26 +175,22 @@
           "name": "[concat('vnet_fromVISUALSTUDIO', uniquestring(resourcegroup().id))]",
           "type": "Microsoft.Resources/deployments",
           "apiVersion": "2016-09-01",
-          "copy": {
-            "name": "testiteration",
-            "count": 4
-          },        
-            "properties": {
-            "mode": "Incremental",
-            "templateLink": {
-              "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
-              "contentVersion": "1.0.0.0"
-            },
-            "parameters": {
-              "vnetNetworkInfo": {
-                "value": "[variables('vnetNetworkInfo')]"
+
+          "vnetLoop": { "count": "[length(variables('environmentArraySelections'))]" },       
+           
+          "properties": {
+              "mode": "Incremental",
+              "templateLink": {
+                 "uri": "[concat(variables('templateBaseURL'), variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
+                  "contentVersion": "1.0.0.0"
               },
-              "networkInfo": {
-                "value": "[variables('networkInfo')]"
-              }
+            "parameters": {
+              "intArrayLoc": "[copyIndex()]",
+              "vnetNetworkInfo": { "value": "[variables('vnetNetworkInfo')]" },
+              "networkInfo": { "value": "[variables('networkInfo')]" },
+              "snetNeforkInfo": { "value": "[variables('snetNetworkInfo')]" }
             }
           }
-
         }
     ],
     "outputs": {
