@@ -20,7 +20,7 @@
       "name": "vnet",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "snetLoop": { "count": "[length(parameters('strSnetName'))]" },
+      "copy": { "count": "[length(parameters('strSnetName'))]" },
       "properties": {
         "mode": "Incremental",
         "templateLink": {

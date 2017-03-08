@@ -24,7 +24,7 @@
           "type": "Microsoft.Resources/deployments",
           "apiVersion": "2016-09-01",
 
-          "vnetLoop": { "count": "[length(variables('arrEnvironment'))]" },       
+          "copy": { "count": "[length(variables('arrEnvironment'))]" },       
            
           "properties": {
               "mode": "Incremental",
