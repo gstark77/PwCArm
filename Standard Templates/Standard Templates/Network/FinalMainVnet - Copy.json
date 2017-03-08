@@ -142,17 +142,11 @@
     "networkArray": "[split(parameters('networkBase'), '.')]",
     "environmentArraySelections": "[concat(parameters('devEnvironment'),parameters('testEnvironment'))]",
     "environmentArray":  "[concat('dev','tst','uat','prd')]",
+    "tierArray": "[concat(parameters('webTier'),parameters('appTier'),parameters('dbaTier'),parameters('repTier'),parameters('bkpTier'),parameters('secTier'),parameters('op1Tier'),parameters('op2Tier'))]",
 
     "networkInfo": {
       "dnsServer": "192.168.0.1",
-      /*  Yes */
-      "webTierValue": "[parameters('webTier')]",
-      "appTierValue": "[parameters('appTier')]",
-      "dbaTierValue": "[parameters('dbaTier')]",
-      "bkpTierValue": "[parameters('bkpTier')]",
-      "repTierValue": "[parameters('repTier')]",
-      "op1TierValue": "[parameters('secTier')]",
-      "op2TierValue": "[parameters('op1Tier')]",
+      "tierArray": "[concat(parameters('webTier'),parameters('appTier'),parameters('dbaTier'),parameters('repTier'),parameters('bkpTier'),parameters('secTier'),parameters('op1Tier'),parameters('op2Tier'))]",
       "environmentArraySelections": "[concat(parameters('devEnvironment'),parameters('testEnvironment'))]",
       "environmentArray": "[concat('dev','tst','uat','prd')]"
     },
@@ -167,7 +161,7 @@
       "snetDevName": "smsdevweb",
       "snetDevPrefix": "10.60.0.0/24",
       "snetWebName": "smsdevapp",
-      "snetWebPrefix":"10.60.1.0/24"
+      "snetWebPrefix": "10.60.1.0/24"
     }
   },
     "resources": [

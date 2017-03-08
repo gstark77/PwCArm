@@ -8,13 +8,19 @@
     "snetNetworkInfo": { "type": "object" }
   },
   "variables": {
+    "networkConfiguration": {
+      "dnsServer": "[parameters('networkInfo').dnsServer]",
+      "vnetEnvironment": "[parameters('networkInfo').enviromentArraySelections[parameters('intArrayLoc')]]",
+      "vnetName": "[parameters('vnetNetworkInfo').vnetName]",
+      "vnetPrefix": "[parameters('vnetNetworkInfo').vnetPrefix]"
+    }
   },
   "resources": [
     {
       "name": "vnet",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "vnetLoop": { "count": "[length(parameters('snetNetworkInfo'))]",
+      "snetLoop": { "count": "[length(parameters('networkInfo').tierArray)]" },
       "properties": {
         "mode": "Incremental",
         "templateLink": {
