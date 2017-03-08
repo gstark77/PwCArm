@@ -37,6 +37,9 @@
     <None Include="AD\New Domain HA\nestedtemplates\vnet-with-dns-server.json" />
     <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
     <None Include="AD\New Domain HA\README.md" />
+    <None Include="Claritas\EDW\temporaryMainLinked.parameters.json" />
+    <None Include="Claritas\EDW\temporaryMainLinked.json" />
+    <None Include="Claritas\EDW\VirtualMachineLinked.json" />
     <None Include="Claritas\EDW\zzz_Example_simpleLinked.json" />
     <None Include="Claritas\EDW\zzz_Example_simpleMainLinked.json" />
     <None Include="Claritas\EDW\zzz_Example_simpleMainLinked.parameters.json" />

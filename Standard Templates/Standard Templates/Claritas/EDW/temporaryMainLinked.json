@@ -1,0 +1,204 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "Admin username"
+      }
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Admin password"
+      }
+    },
+    "imagePublisher": {
+      "type": "string",
+      "defaultValue": "MicrosoftWindowsServer",
+      "allowedValues": [
+        "MicrosoftWindowsServer",
+        "RedHat"
+      ],
+      "metadata": {
+        "description": "The publisher for the image"
+      }
+    },
+
+    "imageSKU": {
+      "type": "string",
+      "defaultValue": "2012-R2-Datacenter",
+      "allowedValues": [
+        "2008-R2-SP1",
+        "2012-Datacenter",
+        "2012-R2-Datacenter",
+        "2016-Datacenter",
+        "7.2"
+      ],
+      "metadata": {
+        "description": "The Windows or linux version for the VM"
+      }
+    },
+    "imageOffer": {
+      "type": "string",
+      "defaultValue": "WindowsServer",
+      "allowedValues": [
+        "WindowsServer",
+        "RHEL"
+      ],
+      "metadata": {
+        "description": "The image offer for the VM"
+      }
+    },
+
+    "vmSize": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "Standard_D2_v2",
+      "allowedValues": [
+        "Basic_A0",
+        "Basic_A1",
+        "Basic_A2",
+        "Basic_A3",
+        "Basic_A4",
+        "Standard_A0",
+        "Standard_A1",
+        "Standard_A2",
+        "Standard_A3",
+        "Standard_A4",
+        "Standard_A5",
+        "Standard_A6",
+        "Standard_A7",
+        "Standard_D1_v2",
+        "Standard_D2_v2",
+        "Standard_D3_v2",
+        "Standard_D4_v2",
+        "Standard_D11_v2",
+        "Standard_D12_v2",
+        "Standard_D13_v2",
+        "Standard_D14_v2"
+      ],
+      "metadata": {
+        "description": "Size of the virtual machine, must be available in the virtual machine's location"
+      }
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1,
+      "allowedValues": [
+        "dev",
+        "prd",
+        "tst",
+        "uat"
+      ],
+      "metadata": {
+        "description": "The name of the environment"
+      }
+    },
+    "tier": {
+      "type": "string",
+      "minLength": 1,
+      "allowedValues": [
+        "app",
+        "dba",
+        "web"
+      ],
+      "metadata": {
+        "description": "The tier for these servers"
+      }
+    },
+    "appContainer": {
+      "type": "string",
+      "minLength": 1,
+      "allowedValues": [
+        "com",
+        "dar",
+        "edw",
+        "ins",
+        "ops",
+        "sms"
+      ],
+      "metadata": {
+        "description": "The application that you are creating resources for"
+      }
+    },
+    "appFunction": {
+      "type": "string",
+      "defaultValue": "base",
+      "minLength": 1,
+      "allowedValues": [
+        " ",
+        "bas",
+        "base",
+        "fme",
+        "geo",
+        "map",
+        "msg",
+        "red"
+      ],
+      "metadata": {
+        "description": "The application that you are creating resources for"
+      }
+    },
+    "startIP": {
+      "type": "string",
+      "minLength": 7,
+      "maxLength": 15,
+      "metadata": {
+        "description": "Provide the starting IP for the server within the availability set"
+      }
+    },
+    "numberOfInstances": {
+      "type": "int",
+      "minValue": 1,
+      "defaultValue": 2,
+      "metadata": {
+        "description": "Number of VM instances to be created"
+      }
+    }
+  },
+  "variables": {
+    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "vmTemplateFolderPath": "Claritas/EDW",
+    "vmTemplateFileName": "VirtualMachineLinked.json",
+
+    "vmInfo": {
+      "adminUsernameValue": "[parameters('adminUsername')]",
+      "adminPasswordValue": "[parameters('adminPassword')]",
+      "imagePublisherValue": "[parameters('imagePublisher')]",
+      "imageSKUValue": "[parameters('imageSKU')]",
+      "imageOfferValue": "[parameters('imageOffer')]",
+      "vmSizeValue": "[parameters('vmSize')]",
+      "environmentValue": "[parameters('environment')]",
+      "op2TierValue": "[parameters('tier')]",
+      "tierValue": "[parameters('appContainer')]",
+      "appFunctionValue": "[parameters('appFunction')]",
+      "startIPValue": "[parameters('startIP')]",
+      "numberOfInstancesValue": "[parameters('numberOfInstances')]",
+
+    },
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-01-01",
+      "name": "linkedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('templateBaseURL'), variables('vmTemplateFolderPath'), variables('vmTemplateFileName'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "networkInfo": {
+            "value": "[variables('vmInfo')]"
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
