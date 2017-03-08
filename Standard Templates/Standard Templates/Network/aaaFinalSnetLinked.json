@@ -22,14 +22,14 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[parameters('strVnetPrefix')]"
+            "[concat(parameters('strVnetPrefix'),'/21']"
           ]
         },
         "subnets": [
           {
             "name": "[concat('snet-',parameters('strVnetName'), parameters('strEnvironment'), parameters('strSnetTierName'))]",
             "properties": {
-              "addressPrefix": "[parameters('strSnetTierPrefix')]"
+              "addressPrefix": "[concat(parameters('strSnetTierPrefix'),'/24')]"
             }
           }
         ]
