@@ -24,10 +24,10 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
 
-      /*"copy": {
+      "copy": {
           "name": "vnetLoop",
           "count": "[length(variables('arrEnvironment'))]"
-        },*/
+        },
 
       "properties": {
         "mode": "Incremental",
