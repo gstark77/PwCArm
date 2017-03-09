@@ -15,19 +15,7 @@
     "deliminators": [".","/"],
     "arrSnetPrefixOctet": "[split(parameters('strEnvironmentPrefix'),variables('deliminators'))]",
     "strRevisedSnetPrefix": "[concat(variables('arrSnetPrefixOctet')[0],'.',variables('arrSnetPrefixOctet')[1],'.',variables('arrSnetPrefixOctet')[2],variables('arrSnetPrefixOctet')[3],'/24')]"
-    /*"strRevisedSnetPrefix": "[concat(variables('arrSnetPrefixOctet')[0],'.',add(int(variables('arrSnetPrefixOctet')[1]),int(parameters('arrSnetPrefixIncrementor')[0])),variables('arrSnetPrefixOctet')[2],variables('arrSnetPrefixOctet')[3])]"
-    */
-
-    /*
-
-      10.100.0.0/21
-
-
-
-
-   */
-
-
+ 
   },
   "resources": [
     {
@@ -49,14 +37,14 @@
           }
         ]
       }
-    }/*,
+    },
     {
-      "name": "[concat('from_Vnet__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
+      "name": "[concat('from_vnet_send__to__snet__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
       "copy": {
         "name": "snetLoop",
-        "count": "[add(length(parameters('arrSnetName')),-1)]"
+        "count": "[add(length(parameters('arrSnetName')),-1)]" /* decrease count by one since first subnet created with original vnet */
       },
       "properties": {
         "mode": "Incremental",
@@ -68,13 +56,13 @@
           "strApplication": { "value": "[parameters('strApplication')]" },
           "strEnvironment": { "value": "[parameters('strEnvironment')]" },
           "strEnvironmentPrefix": { "value": "[parameters('strEnvironmentPrefix')]" },
-          "strSnetName": { "value": "[parameters('arrSnetName')[add(copyIndex(),1)]]" },
+          "strSnetName": { "value": "[parameters('arrSnetName')[add(copyIndex(),1)]]" }, /* adding one to copyIndex skips the web snet that was created with vnet */
           "strSnetPrefix": { "value": "[parameters('arrSnetPrefix')[add(copyIndex(),1)]]" },
           "strDnsServer": { "value": "[parameters('strDnsServer')]" }
         }
       }
 
-    }*/
+    }
   ],
   "outputs": {
   }

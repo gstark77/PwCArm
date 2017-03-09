@@ -39,6 +39,7 @@
     <None Include="AD\New Domain HA\README.md" />
     <None Include="Claritas\EDW\Network\aNetwork_Main.json" />
     <None Include="Claritas\EDW\Network\aNetwork_Main.parameters.json" />
+    <None Include="Claritas\EDW\Network\azuredeploy.json" />
     <None Include="Claritas\EDW\Network\Network_Main.json" />
     <None Include="Claritas\EDW\Network\Network_Main.parameters.json" />
     <None Include="Claritas\EDW\Network\aSnet.json" />
