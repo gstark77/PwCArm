@@ -45,7 +45,7 @@
           "strVnetName": { "value": "edw" },
           "strVnetPrefix": { "value": "10.60.0.0" }, /*  10.60.0.0   */
           "strSnetName": { "value": "web" },
-          "strSnetPreifx": { "value": "10.60.0.0" },
+          "strSnetPrefix": { "value": "10.60.0.0" },
           "strDnsServer": { "value": "192.168.0.1" } /* 192.168.0.1   */
         }
       }
@@ -71,7 +71,7 @@
           "strVnetName": { "value": "edw" },
           "strVnetPrefix": { "value": "10.60.0.0" }, /*  10.60.0.0   */
           "strSnetName": { "value": "app" },
-          "strSnetPreifx": { "value": "10.60.1.0" }, /*  10.60.1.0 */
+          "strSnetPrefix": { "value": "10.60.1.0" }, /*  10.60.1.0 */
           "strDnsServer": { "value": "192.168.0.1" } /* 192.168.0.1   */
         }
       }
