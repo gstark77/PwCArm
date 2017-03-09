@@ -5,10 +5,10 @@
     "strEnvironment": { "type": "string" }, 
     "strApplication": { "type": "string" }, 
     "strVnetPrefix": { "type": "string" }, 
-    "strSnetTierName": { "type": "string" },
-    "strSnetTierPrefix": { "type": "string" }, 
+    "strSnetName": { "type": "string" },
+    "strSnetPrefix": { "type": "string" }, 
     "strDnsServer": { "type": "string" } 
-
+    /*10.60.0.0*/
 
   },
   "variables": {
@@ -21,15 +21,13 @@
       "location": "[resourceGroup().location]",
       "properties": {
         "addressSpace": {
-          "addressPrefixes": [
-            "10.60.0.0/21"
-          ]
+          "addressPrefixes": [ "[parameters('strVnetPrefix')]" ]
         },
         "subnets": [
           {
             "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('strSnetTierName'))]",
             "properties": {
-              "addressPrefix": "[concat(parameters('strSnetTierPrefix'),'/24')]"
+              "addressPrefix":"[parameters('strSnetPrefix')]"
             }
           }
         ]

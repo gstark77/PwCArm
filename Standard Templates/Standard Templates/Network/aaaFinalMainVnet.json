@@ -20,6 +20,17 @@
       ]
     },
 
+    "arrSnetPrefix": {
+      {
+        "type": "array",
+        "defaulValue": [
+          "10.60.0.0",
+          "10.60.1.0",
+          "10.60.2.0"
+        ]
+      }
+    },
+
     "arrApplication": {
       "type": "array",
       "defaultValue": [
@@ -38,7 +49,6 @@
       /*"snetTemplateFileName": "aaaFinalSnetLinked.json",*/
 
       "strVnetPrefix": "10.60.0.0",
-      "strSnetPrefix": "[concat('10.60.0.0','10.60.1.0','10.60.2.0')]",
       "strDnsServer": "192.168.0.1"
 
     },
@@ -64,7 +74,7 @@
             "strApplication": { "value": "[parameters('arrApplication')[0]]" }, 
             "strVnetPrefix": { "value": "10.60.0.0" },
             "arrSnetName": { "value": "[parameters('arrSnetName')]" },
-            "strSnetPrefix": { "value": "10.60.0.0" },
+            "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
             "strDnsServer": { "value": "192.168.0.1" }
           }
         }
