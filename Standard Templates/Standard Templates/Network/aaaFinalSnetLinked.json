@@ -26,7 +26,7 @@
           {
             "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('strSnetName'))]",
             "properties": {
-              "addressPrefix":"[concat(parameters('strSnetPrefix'),'/24')]"
+              "addressPrefix":"[parameters('strSnetPrefix')]"
             }
           }
         ]

@@ -14,9 +14,9 @@
     "arrSnetPrefix": {
       "type": "array",
       "defaultValue": [
-        "10.60.0.0",
-        "10.60.1.0",
-        "10.60.2.0"
+        "10.60.0.0/24",
+        "10.60.1.0/24",
+        "10.60.2.0/24"
       ]
 
     },
@@ -58,7 +58,6 @@
           "name": "vnetLoop",
           "count": "[length(parameters('arrEnvironment'))]"
         },
-
         "properties": {
           "mode": "Incremental",
           "templateLink": {
@@ -67,7 +66,7 @@
           },
           "parameters": {
             "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" },
-            "strApplication": { "value": "[parameters('arrApplication')[0]]" }, 
+            "strApplication": { "value": "[parameters('arrApplication')[0]]" },
             "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" },
             "arrSnetName": { "value": "[parameters('arrSnetName')]" },
             "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
