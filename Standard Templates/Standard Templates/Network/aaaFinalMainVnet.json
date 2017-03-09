@@ -42,8 +42,8 @@
           /*"strSnetName": { "value": "[variables('strSnetName')]" },*/ /* web   |   app   |   dba   */
           /*"strSnetPrefix": { "value": "[variables('strSnetPrefix')]" }*/ /* 10.60.0.0  |  10.60.1.0  |  10.60.2.0  */
 
-          "strEnvironment": { "value": "[variables('arrEnvironment')[0]]" }, /* dev */
-          /*"strEnvironment": { "value": "dev" },*/
+          /*"strEnvironment": { "value": "[variables('arrEnvironment')[0]]" }, *//* dev */
+          "strEnvironment": { "value": "dev" },
           "strVnetName": { "value": "edw" },
           "strVnetPrefix": { "value": "10.60.0.0" }, /*  10.60.0.0   */
           "strSnetName": { "value": "web" },
