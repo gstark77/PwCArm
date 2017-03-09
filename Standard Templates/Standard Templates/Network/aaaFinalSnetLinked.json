@@ -20,7 +20,7 @@
       "location": "[resourceGroup().location]",
       "properties": {
         "addressSpace": {
-          "addressPrefixes": [ "[parameters('strVnetPrefix')]" ]
+          "addressPrefixes": [ "[parameters('strEnvironmentPrefix')]" ]
         },
         "subnets": [
           {
