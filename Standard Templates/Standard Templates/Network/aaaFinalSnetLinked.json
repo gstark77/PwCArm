@@ -21,13 +21,13 @@
       "location": "[resourceGroup().location]",
       "properties": {
         "addressSpace": {
-          "addressPrefixes": [ "[parameters('strVnetPrefix')]" ]
+          "addressPrefixes": [ "[concat(parameters('strVnetPrefix'),'/21')]" ]
         },
         "subnets": [
           {
             "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('strSnetName'))]",
             "properties": {
-              "addressPrefix":"[parameters('strSnetPrefix')]"
+              "addressPrefix":"[concat(parameters('strSnetPrefix'),'/24')]"
             }
           }
         ]
