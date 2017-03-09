@@ -14,7 +14,7 @@
   "variables": {
     "deliminators": [".","/"],
     "arrSnetPrefixOctet": "[split(parameters('strEnvironmentPrefix'),variables('deliminators'))]",
-    "strRevisedSnetPrefix": "[concat(parameters('strEnvironmentPrefix'),'/24')]"
+    "strRevisedSnetPrefix": "[concat(variables('arrSnetPrefixOctet')[0],'.',variables('arrSnetPrefixOctet')[1],'.',variables('arrSnetPrefixOctet')[2],variables('arrSnetPrefixOctet')[3],'/24')]"
     /*"strRevisedSnetPrefix": "[concat(variables('arrSnetPrefixOctet')[0],'.',add(int(variables('arrSnetPrefixOctet')[1]),int(parameters('arrSnetPrefixIncrementor')[0])),variables('arrSnetPrefixOctet')[2],variables('arrSnetPrefixOctet')[3])]"
     */
 
