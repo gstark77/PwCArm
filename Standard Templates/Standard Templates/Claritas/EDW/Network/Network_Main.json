@@ -47,19 +47,6 @@
     "strDnsServer": "192.168.0.1"
 
 
-    /*
-    "objApplicationNetworkContainerInfo": {
-      "strApplication": { "value": "[parameters('arrApplication')[0]]" },
-      "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" },
-      "arrEnvironmentPrefix": { "value": "[parameters('arrEnvironmentPrefix')[copyIndex()]]" },
-      "arrSnetName": { "value": "[parameters('arrSnetName')]" },
-      "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
-      "strDnsServer": { "value": "[variables('strDnsServer')]" },
-      "strUri": {"value": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'),variables('snetTemplateFileName'))]"
-      }
-    */
-
-
     },
     "resources": [
       {
