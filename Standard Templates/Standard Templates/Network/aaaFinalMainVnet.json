@@ -35,13 +35,13 @@
       ]
     },
 
-      "arrSnetPrefix": {
-        "type": "array",
-        "defaultValue": [
-          "10.60.0.0/24",
-          "10.60.1.0/24",
-          "10.60.2.0/24"
-        ]
+    "arrSnetPrefix": {
+      "type": "array",
+      "defaultValue": [
+        "10.60.0.0/24",
+        "10.60.1.0/24",
+        "10.60.2.0/24"
+      ]
 
 
     }
