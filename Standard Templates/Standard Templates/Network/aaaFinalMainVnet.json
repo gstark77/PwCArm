@@ -20,14 +20,15 @@
   },
   "resources": [
     {
-      "name": "[concat('testMain_fromVISUALSTUDIO_1', uniquestring(resourcegroup().id))]",
+      /*"name": "[concat('testMain_fromVISUALSTUDIO_1', uniquestring(resourcegroup().id))]",*/
+      "name": "[concat('testMain_fromVISUALSTUDIO_',copyIndex())]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
 
-      /*"copy": {
+      "copy": {
           "name": "vnetLoop",
-          "count": "[length(variables('arrEnvironment'))]"
-        },*/
+          "count": 2
+        },
 
       "properties": {
         "mode": "Incremental",
@@ -51,7 +52,7 @@
           "strDnsServer": { "value": "192.168.0.1" } /* 192.168.0.1   */
         }
       }
-    },
+    }/*,
     {
       "name": "[concat('testMain_fromVISUALSTUDIO_2', uniquestring(resourcegroup().id))]",
       "type": "Microsoft.Resources/deployments",
@@ -71,7 +72,7 @@
           "strDnsServer": { "value": "192.168.0.1" } 
         }
       }
-    }
+    }*/
   ],
   "outputs": {
   }
