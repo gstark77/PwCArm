@@ -22,7 +22,7 @@
       "strVnetName": "edw",
       "strVnetPrefix": "10.60.0.0",
       /*"strSnetName": "[concat('web','app','dba')]",
-    "strSnetPrefix": "[concat('10.60.0.0','10.60.1.0','10.60.2.0')]",*/
+      "strSnetPrefix": "[concat('10.60.0.0','10.60.1.0','10.60.2.0')]",*/
       "strDnsServer": "192.168.0.1"
 
     },
@@ -35,7 +35,7 @@
 
         "copy": {
           "name": "vnetLoop",
-          "count": "[parameters('arrEnvironment')]"
+          "count": "[length(parameters('arrEnvironment'))]"
         },
 
         "properties": {
