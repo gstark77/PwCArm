@@ -37,14 +37,14 @@
           }
         ]
       }
-    },
+    }/*,
     {
       "name": "[concat('from_vnet_send__to__snet__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
       "copy": {
         "name": "snetLoop",
-        "count": "[add(length(parameters('arrSnetName')),-1)]" /* decrease count by one since first subnet created with original vnet */
+        "count": "[add(length(parameters('arrSnetName')),-1)]" 
       },
       "properties": {
         "mode": "Incremental",
@@ -56,13 +56,12 @@
           "strApplication": { "value": "[parameters('strApplication')]" },
           "strEnvironment": { "value": "[parameters('strEnvironment')]" },
           "strEnvironmentPrefix": { "value": "[parameters('strEnvironmentPrefix')]" },
-          "strSnetName": { "value": "[parameters('arrSnetName')[add(copyIndex(),1)]]" }, /* adding one to copyIndex skips the web snet that was created with vnet */
+          "strSnetName": { "value": "[parameters('arrSnetName')[add(copyIndex(),1)]]" }, 
           "strSnetPrefix": { "value": "[parameters('arrSnetPrefix')[add(copyIndex(),1)]]" },
           "strDnsServer": { "value": "[parameters('strDnsServer')]" }
         }
       }
-
-    }
+    }*/
   ],
   "outputs": {
   }
