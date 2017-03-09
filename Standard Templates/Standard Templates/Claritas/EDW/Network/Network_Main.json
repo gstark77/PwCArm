@@ -6,7 +6,7 @@
       "type": "array",
       "defaultValue": [
         "dev",
-        "prd"
+       /* "prd"*/
       ]
     },
     "arrApplication": {
@@ -19,7 +19,7 @@
       "type": "array",
       "defaultValue": [
         "10.100.0.0/21",
-        "10.103.0.0/21"
+       /* "10.103.0.0/21"*/
       ]
     },
     "arrSnetName": {
