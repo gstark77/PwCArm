@@ -2,12 +2,12 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "strEnvironment": { "type": "string" },  /*  dev  | prd  */
-    "strApplication": { "type": "string" }, /* edw */
-    "strVnetPrefix": { "type": "string" }, /* 10.60.0.0 */
-    "strSnetTierName": { "type": "string" }, /* web   |   app   |   dba   */
-    "strSnetTierPrefix": { "type": "string" }, /* 10.60.0.0  | 10.60.1.0  |  10.60.2.0  */
-    "strDnsServer": { "type": "string" } /* 192.168.0.1 */
+    "strEnvironment": { "type": "string" }, 
+    "strApplication": { "type": "string" }, 
+    "strVnetPrefix": { "type": "string" }, 
+    "strSnetTierName": { "type": "string" },
+    "strSnetTierPrefix": { "type": "string" }, 
+    "strDnsServer": { "type": "string" } 
 
 
   },

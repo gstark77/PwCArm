@@ -6,7 +6,7 @@
     "strEnvironment": { "value": null },
     "strApplication": { "value": null },
     "strVnetPrefix": { "value": null },
-    "strSnetName": { "value": null },
+    "arrSnetName": {"value": null},
     "strSnetPrefix": { "value": null },
     "strDnsServer": { "value": null }
   }

@@ -6,7 +6,7 @@
     "strEnvironment": { "type": "string" },
     "strApplication": { "type": "string" },
     "strVnetPrefix": { "type": "string" },
-    "strSnetName": { "type": "string" },
+    "arrSnetName": {"type": "array"},
     "strSnetPrefix": { "type": "string" },
     "strDnsServer": { "type": "string" }
   },
@@ -28,11 +28,10 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "strEnvironment": { "value": "[parameters('strEnvironment')]" }, /* dev |  prd  */
-          "strApplication": { "value": "[parameters('strApplication')]" }, /* edw */
-          "strVnetPrefix": { "value": "[parameters('strVnetPrefix')]" }, /* 10.60.0.0 */
-          /*"strSnetTierName": { "value": "[parameters('strSnetName')[copyIndex()]]" },*/ /* web   |   app   |   dev   */
-          "strSnetTierName": { "value": "web" },
+          "strEnvironment": { "value": "[parameters('strEnvironment')]" },
+          "strApplication": { "value": "[parameters('strApplication')]" },
+          "strVnetPrefix": { "value": "[parameters('strVnetPrefix')]" },
+          "strSnetTierName": { "value": "[parameters('arrSnetName')[0]]" },
           /*"strSnetTierPrefix": "[parameters('strSnetPrefix')[copyIndex()]]",*/ /* 10.60.0.0  | 10.60.1.0  |  10.60.2.0  */
           "strSnetTierPrefix": { "value": "10.60.0.0"},
           "strDnsServer": { "value": "[parameters('strDnsServer')]" } /* 192.168.0.1 */

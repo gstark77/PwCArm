@@ -71,10 +71,10 @@
             /*"strEnvironment": { "value": "[variables('arrEnvironment')[1]]" },*/ /* dev */
             "intCounter": { "value": "[variables('intCounter')]" },
 
-            "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" }, /* dev then prd */
+            "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" },
             "strApplication": { "value": "[parameters('arrApplication')[0]]" }, 
-            "strVnetPrefix": { "value": "10.60.0.0" }, /*  10.60.0.0   */ /**/
-            "strSnetName": { "value": "web" },
+            "strVnetPrefix": { "value": "10.60.0.0" },
+            "arrSnetName": { "value": "[parameters('arrSnetName)]" },
             "strSnetPrefix": { "value": "10.60.0.0" },
             "strDnsServer": { "value": "192.168.0.1" } /* 192.168.0.1   */
           }
