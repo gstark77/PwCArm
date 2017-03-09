@@ -5,8 +5,8 @@
     "arrEnvironment": {
       "type": "array",
       "defaultValue": [
-        "dev"
-       /* "prd"*/
+        "dev",
+       "prd"
       ]
     },
     "arrApplication": {
@@ -18,8 +18,8 @@
     "arrEnvironmentPrefix": {
       "type": "array",
       "defaultValue": [
-        "10.100.0.0/21"
-       /* "10.103.0.0/21"*/
+        "10.100.0.0/21",
+        "10.103.0.0/21"
       ]
     },
     "arrSnetName": {
@@ -69,7 +69,7 @@
 
         "copy": {
           "name": "vnetLoop",
-          "count": "[length(parameters('arrEnvironment'))]"
+          "count": 1 /*"[length(parameters('arrEnvironment'))]"*/
         },
         "properties": {
           "mode": "Incremental",
