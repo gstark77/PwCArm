@@ -3,19 +3,19 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
 
+    "arrEnvironment": {
+      "type": "array",
+      "defaultValue": [
+        "dev",
+        "prd"
+      ]
+    },
     "arrApplication": {
       "type": "array",
       "defaultValue": [
         "edw"
       ],
 
-      "arrEnvironment": {
-        "type": "array",
-        "defaultValue": [
-          "dev",
-          "prd"
-        ]
-      },
 
       "arrEnvironmentPrefix": {
         "type": "array",
