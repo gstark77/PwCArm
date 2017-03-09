@@ -22,7 +22,6 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            /*"[concat(parameters('strVnetPrefix'),'/21')]"*/
             "10.60.0.0/21"
           ]
         },
