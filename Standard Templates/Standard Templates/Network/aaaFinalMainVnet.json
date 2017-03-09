@@ -5,10 +5,10 @@
   },
 
   "variables": {
-    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/aaaFinalVnetLinked.json",
-    /*"vnetTemplateFolderPath": "Network/",
+    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "vnetTemplateFolderPath": "Network/",
     "vnetTemplateFileName": "aaaFinalVnetLinked.json",
-    "snetTemplateFileName": "aaaFinalSnetLinked.json",*/
+    /*"snetTemplateFileName": "aaaFinalSnetLinked.json",*/
 
     "arrEnvironment": "[concat('dev','prd')]",
     "intCounter": "[length(variables('arrEnvironment'))]",
@@ -28,13 +28,13 @@
 
       "copy": {
           "name": "vnetLoop",
-          "count": "[variables('intCounter')]"
+          "count": 2/*"[variables('intCounter')]"*/
         },
 
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[variables('templateBaseUrl')]",
+          "uri": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
