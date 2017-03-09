@@ -32,7 +32,7 @@
           }
         ]
       }
-    },
+    }/*,
     {
       "name": "[concat('from_Vnet__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
       "type": "Microsoft.Resources/deployments",
@@ -57,7 +57,7 @@
         }
       }
 
-    }
+    }*/
   ],
   "outputs": {
   }
