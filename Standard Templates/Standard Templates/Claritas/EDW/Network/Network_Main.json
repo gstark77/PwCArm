@@ -80,7 +80,7 @@
           "parameters": {
             "strApplication": { "value": "[parameters('arrApplication')[0]]" },
             "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" },
-            "arrEnvironmentPrefix": { "value": "[parameters('arrEnvironmentPrefix')[copyIndex()]]" },
+            "strEnvironmentPrefix": { "value": "[parameters('arrEnvironmentPrefix')[copyIndex()]]" },
             "arrSnetName": { "value": "[parameters('arrSnetName')]" },
             "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
             "strDnsServer": { "value": "[variables('strDnsServer')]" },
