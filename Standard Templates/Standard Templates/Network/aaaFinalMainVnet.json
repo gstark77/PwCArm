@@ -27,7 +27,7 @@
 
       "copy": {
           "name": "vnetLoop",
-          "count": 2
+          "count": "[length(variables('arrEnvironment'))]"
         },
 
       "properties": {
