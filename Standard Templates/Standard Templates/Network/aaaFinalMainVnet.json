@@ -3,21 +3,27 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
 
-    "arrEnvironment": {
+    "arrApplication": {
       "type": "array",
       "defaultValue": [
-        "dev",
-        "prd"
-      ]
-    },
+        "edw"
+      ],
 
-    "arrSnetPrefix": {
-      "type": "array",
-      "defaultValue": [
-        "10.60.0.0/24",
-        "10.60.1.0/24",
-        "10.60.2.0/24"
-      ]
+      "arrEnvironment": {
+        "type": "array",
+        "defaultValue": [
+          "dev",
+          "prd"
+        ]
+      },
+
+      "arrEnvironmentPrefix": {
+        "type": "array",
+        "defaultValue": [
+          "10.60.0.0/21",
+          "10.60.3.0/21"
+        ]
+      }
 
     },
     "arrSnetName": {
@@ -29,11 +35,14 @@
       ]
     },
 
-    "arrApplication": {
-      "type": "array",
-      "defaultValue": [
-        "edw"
-      ]
+      "arrSnetPrefix": {
+        "type": "array",
+        "defaultValue": [
+          "10.60.0.0/24",
+          "10.60.1.0/24",
+          "10.60.2.0/24"
+        ]
+
 
     }
   },
@@ -43,8 +52,6 @@
       "vnetTemplateFolderPath": "Network/",
       "vnetTemplateFileName": "aaaFinalVnetLinked.json",
       /*"snetTemplateFileName": "aaaFinalSnetLinked.json",*/ /**/
-
-      "strVnetPrefix": "10.60.0.0/21",
       "strDnsServer": "192.168.0.1"
 
     },
@@ -65,9 +72,9 @@
             "contentVersion": "1.0.0.0"
           },
           "parameters": {
-            "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" },
             "strApplication": { "value": "[parameters('arrApplication')[0]]" },
-            "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" },
+            "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" },
+            "arrEnvironmentPrefix": { "value": "[parameters('arrEnvironmentPrefix')[copyIndex()]]" },
             "arrSnetName": { "value": "[parameters('arrSnetName')]" },
             "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
             "strDnsServer": { "value": "[variables('strDnsServer')]" }

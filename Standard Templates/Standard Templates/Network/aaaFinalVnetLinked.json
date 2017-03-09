@@ -2,10 +2,10 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "strEnvironment": { "type": "string" },
     "strApplication": { "type": "string" },
-    "strVnetPrefix": { "type": "string" },
-    "arrSnetName": {"type": "array"},
+    "strEnvironment": { "type": "string" },
+    "arrEnvironmentPrefix": { "type": "array" },
+    "arrSnetName": { "type": "array" },
     "arrSnetPrefix": { "type": "array" },
     "strDnsServer": { "type": "string" }
   },
@@ -27,9 +27,9 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "strEnvironment": { "value": "[parameters('strEnvironment')]" },
           "strApplication": { "value": "[parameters('strApplication')]" },
-          "strVnetPrefix": { "value": "[parameters('strVnetPrefix')]" },
+          "strEnvironment": { "value": "[parameters('strEnvironment')]" },
+          "strEnvironmentPrefix": { "value": "[parameters('arrEnvironmentPrefix')[copyIndex()]]" },
           "strSnetName": { "value": "[parameters('arrSnetName')[copyIndex()]]" },
           "strSnetPrefix": { "value": "[parameters('arrSnetPrefix')[copyIndex()]]" },
           "strDnsServer": { "value": "[parameters('strDnsServer')]" }

@@ -4,7 +4,7 @@
   "parameters": {
     "strEnvironment": { "type": "string" }, 
     "strApplication": { "type": "string" }, 
-    "strVnetPrefix": { "type": "string" }, 
+    "strEnvironmentPrefix": { "type": "string" }, 
     "strSnetName": { "type": "string" },
     "strSnetPrefix": { "type": "string" }, 
     "strDnsServer": { "type": "string" } 

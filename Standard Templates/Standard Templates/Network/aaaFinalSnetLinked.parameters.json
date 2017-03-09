@@ -2,9 +2,9 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
   "parameters": {
-    "strEnvironment": { "value": null },
     "strApplication": { "value": null },
-    "strVnetPrefix": { "value": null },
+    "strEnvironment": { "value": null },
+    "strEnvironmentPrefix": { "value": null },
     "strSnetTierName": { "value": null },
     "strSnetTierPrefix": { "value": null },
     "strDnsServer": { "value": null }
