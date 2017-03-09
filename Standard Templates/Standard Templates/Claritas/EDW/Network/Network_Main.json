@@ -50,7 +50,7 @@
     },
     "resources": [
       {
-        "name": "[concat('from_main__',copyIndex())]",
+        "name": "[concat('from_main__',copyIndex(),'   ',uniqueString(resourceGroup().id))]",
         "type": "Microsoft.Resources/deployments",
         "apiVersion": "2016-09-01",
 
@@ -71,7 +71,7 @@
             "arrSnetName": { "value": "[parameters('arrSnetName')]" },
             "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
             "strDnsServer": { "value": "[variables('strDnsServer')]" },
-            "strUri": {"value": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'),variables('snetTemplateFileName'))]"}
+            "strUri": { "value": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'),variables('snetTemplateFileName'))]" }
           }
         }
       } 

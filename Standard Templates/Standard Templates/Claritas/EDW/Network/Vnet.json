@@ -14,7 +14,7 @@
   },
   "resources": [
     {
-      "name": "[concat('from_vnet__',copyIndex())]",
+      "name": "[concat('from_vnet__',copyIndex(),'   ',uniqueString(resourceGroup().id))]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
       "copy": {
