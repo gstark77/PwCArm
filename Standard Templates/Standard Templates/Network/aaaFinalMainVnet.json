@@ -45,6 +45,7 @@
           /*"strSnetPrefix": { "value": "[variables('strSnetPrefix')]" }*/ /* 10.60.0.0  |  10.60.1.0  |  10.60.2.0  */
           /*"ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",*/
           /*"strEnvironment": { "value": "[variables('arrEnvironment')[1]]" },*/ /* dev */
+          "intCounter": {"value": "[variables('intCounter')]"},
           "strEnvironment": { "value": "dev" },
           "strVnetName": { "value": "edw" },
           "strVnetPrefix": { "value": "10.60.0.0" }, /*  10.60.0.0   */
