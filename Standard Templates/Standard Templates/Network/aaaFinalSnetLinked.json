@@ -22,7 +22,7 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[concat(parameters('strVnetPrefix'),'/21']"
+            "[concat(parameters('strVnetPrefix'),'/21')]"
           ]
         },
         "subnets": [
