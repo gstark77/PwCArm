@@ -22,7 +22,7 @@
         "addressSpace": {
           "addressPrefixes": [ "[parameters('strEnvironmentPrefix')]" ]
         },
-        /* Create first subnet in vnet */
+        /* Create first subnet in vnet  */
         "subnets": [
           {
             "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('arrSnetName')[0])]",
