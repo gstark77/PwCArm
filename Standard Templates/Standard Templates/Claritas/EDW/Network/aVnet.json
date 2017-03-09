@@ -12,7 +12,7 @@
     "strUri": { "type": "string" }
   },
   "variables": {
-    "arrSnetPrefixOctet": "[split(parameters('arrSnetPrefix'),'.')]",
+    "arrSnetPrefixOctet": "[split(parameters('strEnvironmentPrefix'),'.')]",
     "strRevisedSnetPrefix": "[concat(variables('arrSnetPrefixOctet')[0],'.',add(variables('arrSnetPrefixOctet')[1],1),skip(variables('arrSnetPrefixOctet'),2))]"
   },
   "resources": [
