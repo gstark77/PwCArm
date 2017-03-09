@@ -7,6 +7,7 @@
     "arrEnvironmentPrefix": { "value": null },
     "arrSnetName": { "value": null },
     "strSnetPrefix": { "value": null },
-    "strDnsServer": { "value": null }
+    "strDnsServer": { "value": null },
+    "strUri": {"value": null}
   }
   }

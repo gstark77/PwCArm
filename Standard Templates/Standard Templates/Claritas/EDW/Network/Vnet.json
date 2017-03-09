@@ -7,7 +7,8 @@
     "arrEnvironmentPrefix": { "type": "array" },
     "arrSnetName": { "type": "array" },
     "arrSnetPrefix": { "type": "array" },
-    "strDnsServer": { "type": "string" }
+    "strDnsServer": { "type": "string" },
+    "strUri": {"type":"string"}
   },
   "variables": {
   },
@@ -23,7 +24,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/aaaFinalSnetLinked.json",
+          "uri": "[parameters('strUri')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
