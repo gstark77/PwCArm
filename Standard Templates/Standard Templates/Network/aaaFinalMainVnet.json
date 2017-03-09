@@ -22,7 +22,10 @@
 
     "arrApplication": {
       "type": "array",
-      "defaultValue": "edw"
+      "defaultValue": [
+        "edw"
+      ]
+
     }
 
 
