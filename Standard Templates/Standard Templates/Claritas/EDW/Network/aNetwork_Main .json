@@ -42,8 +42,8 @@
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
     "vnetTemplateFolderPath": "Claritas/EDW/Network/",
-    "vnetTemplateFileName": "Vnet.json",
-    "snetTemplateFileName": "Snet.json",
+    "vnetTemplateFileName": "aVnet.json",
+    "snetTemplateFileName": "aSnet.json",
     "strDnsServer": "192.168.0.1"
 
 

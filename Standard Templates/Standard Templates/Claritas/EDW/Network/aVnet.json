@@ -16,29 +16,30 @@
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/virtualNetworks",
-      "name": "[concat('initial-vnet-snet-','___',uniqueString(resourceGroup().id))]",
+      "name": "[concat('vnet-',parameters('strApplication'),parameters('strEnvironment'))]",
       "location": "[resourceGroup().location]",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [ "[parameters('strEnvironmentPrefix')]" ]
         },
+        /* Create first subnet in vnet */
         "subnets": [
           {
-            "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('strSnetName'))]",
+            "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('arrSnetName')[0])]",
             "properties": {
-              "addressPrefix": "[parameters('strSnetPrefix')]"
+              "addressPrefix": "[parameters('arrSnetPrefix')[0]]"
             }
           }
         ]
       }
     },
     {
-      "name": "[concat('from_vnet__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
+      "name": "[concat('vnet-',parameters('strApplication'),parameters('strEnvironment'))]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
       "copy": {
         "name": "snetLoop",
-        "count": "[length(parameters('arrSnetName'))]"
+        "count": "[add(length(parameters('arrSnetName')),-1)]"
       },
       "properties": {
         "mode": "Incremental",
@@ -50,8 +51,8 @@
           "strApplication": { "value": "[parameters('strApplication')]" },
           "strEnvironment": { "value": "[parameters('strEnvironment')]" },
           "strEnvironmentPrefix": { "value": "[parameters('strEnvironmentPrefix')]" },
-          "strSnetName": { "value": "[parameters('arrSnetName')[copyIndex()]]" },
-          "strSnetPrefix": { "value": "[parameters('arrSnetPrefix')[copyIndex()]]" },
+          "strSnetName": { "value": "[parameters('arrSnetName')[add(copyIndex(),1)]]" },
+          "strSnetPrefix": { "value": "[parameters('arrSnetPrefix')[add(copyIndex(),1)]]" },
           "strDnsServer": { "value": "[parameters('strDnsServer')]" }
         }
       }
