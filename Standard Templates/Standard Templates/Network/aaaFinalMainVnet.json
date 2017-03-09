@@ -46,7 +46,7 @@
       "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
       "vnetTemplateFolderPath": "Network/",
       "vnetTemplateFileName": "aaaFinalVnetLinked.json",
-      /*"snetTemplateFileName": "aaaFinalSnetLinked.json",*/
+      /*"snetTemplateFileName": "aaaFinalSnetLinked.json",*/ /**/
 
       "strVnetPrefix": "10.60.0.0",
       "strDnsServer": "192.168.0.1"
