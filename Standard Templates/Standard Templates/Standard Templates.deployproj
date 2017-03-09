@@ -37,10 +37,16 @@
     <None Include="AD\New Domain HA\nestedtemplates\vnet-with-dns-server.json" />
     <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
     <None Include="AD\New Domain HA\README.md" />
+    <None Include="Claritas\EDW\Network\aNetwork_Main .json" />
+    <None Include="Claritas\EDW\Network\aNetwork_Main.parameters.json" />
     <None Include="Claritas\EDW\Network\Network_Main.json" />
     <None Include="Claritas\EDW\Network\Network_Main.parameters.json" />
+    <None Include="Claritas\EDW\Network\aSnet.json" />
+    <None Include="Claritas\EDW\Network\aSnet.parameters.json" />
     <None Include="Claritas\EDW\Network\Snet.json" />
     <None Include="Claritas\EDW\Network\Snet.parameters.json" />
+    <None Include="Claritas\EDW\Network\aVnet.json" />
+    <None Include="Claritas\EDW\Network\aVnet.parameters.json" />
     <None Include="Claritas\EDW\Network\Vnet.json" />
     <None Include="Claritas\EDW\Network\Vnet.parameters.json" />
     <None Include="Claritas\EDW\temporaryMainLinked.parameters.json" />

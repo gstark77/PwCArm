@@ -13,11 +13,34 @@
   "variables": {
   },
   "resources": [
+    "resources",
+    [
+      29,
+      {
+
+        "apiVersion": "[variables('apiVersion')]",
+   
+        "type": "Microsoft.Network/virtualNetworks/subnets",
+
+        "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]",
+    
+        "location": "[resourceGroup().location]",
+  
+        "properties": {
+   
+          "addressPrefix": "[parameters('newSubnetAddressPrefix')]",
+  },
+        37
+      },
+      38
+    ],
+    
+    
+    
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/virtualNetworks",
-      /*"name": "[concat('vnet-snet-','___',uniqueString(resourceGroup().id))]",*/
-      "name":  "[concat('vnet-',parameters('strApplication'),parameters('strEnvironment'))]",
+      "name": "[concat('vnet-snet-','___',uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "properties": {
         "addressSpace": {

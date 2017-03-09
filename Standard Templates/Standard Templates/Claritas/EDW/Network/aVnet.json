@@ -1,0 +1,63 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "strApplication": { "type": "string" },
+    "strEnvironment": { "type": "string" },
+    "strEnvironmentPrefix": { "type": "string" },
+    "arrSnetName": { "type": "array" },
+    "arrSnetPrefix": { "type": "array" },
+    "strDnsServer": { "type": "string" },
+    "strUri": {"type":"string"}
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[concat('initial-vnet-snet-','___',uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [ "[parameters('strEnvironmentPrefix')]" ]
+        },
+        "subnets": [
+          {
+            "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('strSnetName'))]",
+            "properties": {
+              "addressPrefix": "[parameters('strSnetPrefix')]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "[concat('from_vnet__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+      "copy": {
+        "name": "snetLoop",
+        "count": "[length(parameters('arrSnetName'))]"
+      },
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[parameters('strUri')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "strApplication": { "value": "[parameters('strApplication')]" },
+          "strEnvironment": { "value": "[parameters('strEnvironment')]" },
+          "strEnvironmentPrefix": { "value": "[parameters('strEnvironmentPrefix')]" },
+          "strSnetName": { "value": "[parameters('arrSnetName')[copyIndex()]]" },
+          "strSnetPrefix": { "value": "[parameters('arrSnetPrefix')[copyIndex()]]" },
+          "strDnsServer": { "value": "[parameters('strDnsServer')]" }
+        }
+      }
+
+    }
+  ],
+  "outputs": {
+  }
+}
