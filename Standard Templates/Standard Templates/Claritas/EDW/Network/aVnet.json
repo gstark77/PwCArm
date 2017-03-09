@@ -34,7 +34,7 @@
       }
     },
     {
-      "name": "[concat('vnet-',parameters('strApplication'),parameters('strEnvironment'))]",
+      "name": "[concat('from_Vnet__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
       "copy": {
