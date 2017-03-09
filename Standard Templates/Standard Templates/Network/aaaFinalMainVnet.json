@@ -44,7 +44,7 @@
     },
     "resources": [
       {
-        "name": "[concat('testMain_fromVISUALSTUDIO_',copyIndex())]",
+        "name": "[concat('from_main__',copyIndex())]",
         "type": "Microsoft.Resources/deployments",
         "apiVersion": "2016-09-01",
 
