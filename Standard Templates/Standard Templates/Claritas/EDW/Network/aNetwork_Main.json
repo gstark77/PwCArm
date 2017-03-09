@@ -56,7 +56,7 @@
 
         "copy": {
           "name": "vnetLoop",
-          "count": 1 /*"[length(parameters('arrEnvironment'))]"*/
+          "count": "[length(parameters('arrEnvironment'))]"
         },
         "properties": {
           "mode": "Incremental",
