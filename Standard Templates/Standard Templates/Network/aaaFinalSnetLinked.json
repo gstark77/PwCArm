@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "strEnvironment": { "type": "string" },  /*  dev  | prd  */
-    "strVnetName": { "type": "string" }, /* edw */
+    "strApplication": { "type": "string" }, /* edw */
     "strVnetPrefix": { "type": "string" }, /* 10.60.0.0 */
     "strSnetTierName": { "type": "string" }, /* web   |   app   |   dba   */
     "strSnetTierPrefix": { "type": "string" }, /* 10.60.0.0  | 10.60.1.0  |  10.60.2.0  */
@@ -17,7 +17,7 @@
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/virtualNetworks",
-      "name": "[concat('vnet-',parameters('strVnetName'),parameters('strEnvironment'))]",
+      "name": "[concat('vnet-',parameters('strApplication'),parameters('strEnvironment'))]",
       "location": "[resourceGroup().location]",
       "properties": {
         "addressSpace": {
@@ -28,7 +28,7 @@
         },
         "subnets": [
           {
-            "name": "[concat('snet-',parameters('strVnetName'), parameters('strEnvironment'), parameters('strSnetTierName'))]",
+            "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('strSnetTierName'))]",
             "properties": {
               "addressPrefix": "[concat(parameters('strSnetTierPrefix'),'/24')]"
             }

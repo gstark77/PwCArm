@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
   "parameters": {
     "strEnvironment": { "value": null },
-    "strVnetName": { "value": null },
+    "strApplication": { "value": null },
     "strVnetPrefix": { "value": null },
     "strSnetTierName": { "value": null },
     "strSnetTierPrefix": { "value": null },

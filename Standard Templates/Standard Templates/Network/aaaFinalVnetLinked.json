@@ -4,7 +4,7 @@
   "parameters": {
     "intCounter": { "type": "int" },
     "strEnvironment": { "type": "string" },
-    "strVnetName": { "type": "string" },
+    "strApplication": { "type": "string" },
     "strVnetPrefix": { "type": "string" },
     "strSnetName": { "type": "string" },
     "strSnetPrefix": { "type": "string" },
@@ -29,7 +29,7 @@
         },
         "parameters": {
           "strEnvironment": { "value": "[parameters('strEnvironment')]" }, /* dev |  prd  */
-          "strVnetName": { "value": "[parameters('strVnetName')]" }, /* edw */
+          "strApplication": { "value": "[parameters('strApplication')]" }, /* edw */
           "strVnetPrefix": { "value": "[parameters('strVnetPrefix')]" }, /* 10.60.0.0 */
           /*"strSnetTierName": { "value": "[parameters('strSnetName')[copyIndex()]]" },*/ /* web   |   app   |   dev   */
           "strSnetTierName": { "value": "web" },

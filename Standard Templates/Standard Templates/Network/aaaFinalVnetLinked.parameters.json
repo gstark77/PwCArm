@@ -4,7 +4,7 @@
   "parameters": {
     "intCounter": { "value": null },
     "strEnvironment": { "value": null },
-    "strVnetName": { "value": null },
+    "strApplication": { "value": null },
     "strVnetPrefix": { "value": null },
     "strSnetName": { "value": null },
     "strSnetPrefix": { "value": null },
