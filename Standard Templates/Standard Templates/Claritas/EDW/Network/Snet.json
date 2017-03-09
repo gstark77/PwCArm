@@ -17,7 +17,7 @@
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/virtualNetworks",
       /*"name": "[concat('vnet-snet-','___',uniqueString(resourceGroup().id))]",*/
-      "name":  "[concat('vnet-',parameters('strApplication'),parameters('strEnvironment'))]",
+      "name":  "[concat('vnetterry-',parameters('strApplication'),parameters('strEnvironment'))]",
       "location": "[resourceGroup().location]",
       "properties": {
         "addressSpace": {
