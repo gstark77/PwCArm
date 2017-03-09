@@ -37,6 +37,13 @@
         "10.100.1.0/24",
         "10.100.2.0/24"
       ]
+    },
+    "arrSnetPrefixIncrementor": {
+      "type": "array",
+      "defaultvalue": [
+        "0",
+        "3"
+      ]
     }
   },
   "variables": {
@@ -70,6 +77,7 @@
             "strEnvironmentPrefix": { "value": "[parameters('arrEnvironmentPrefix')[copyIndex()]]" },
             "arrSnetName": { "value": "[parameters('arrSnetName')]" },
             "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
+            "arrSnetPrefixIncrementor": {"value": "[parameters('arrSnetPrefixIncrementor')]"},
             "strDnsServer": { "value": "[variables('strDnsServer')]" },
             "strUri": { "value": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'),variables('snetTemplateFileName'))]" }
           }

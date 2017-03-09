@@ -7,10 +7,13 @@
     "strEnvironmentPrefix": { "type": "string" },
     "arrSnetName": { "type": "array" },
     "arrSnetPrefix": { "type": "array" },
+    "arrSnetPrefixIncrementor": {"type": "array"},
     "strDnsServer": { "type": "string" },
-    "strUri": {"type":"string"}
+    "strUri": { "type": "string" }
   },
   "variables": {
+    "arrSnetPrefixOctet": "[split(parameters('arrSnetPrefix'),'.')]",
+    "strRevisedSnetPrefix": "[concat(variables('arrSnetPrefixOctet')[0],'.',add(variables('arrSnetPrefixOctet')[1],1),skip(variables('arrSnetPrefixOctet'),2))]"
   },
   "resources": [
     {
@@ -27,7 +30,7 @@
           {
             "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('arrSnetName')[0])]",
             "properties": {
-              "addressPrefix": "[parameters('arrSnetPrefix')[0]]"
+              "addressPrefix": "[variables('strRevisedSnetPrefix')]"
             }
           }
         ]
