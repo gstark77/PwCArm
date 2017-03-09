@@ -13,8 +13,10 @@
   },
   "variables": {
     "arrSnetPrefixOctet": "[split(parameters('strEnvironmentPrefix'),'.')]",
-    "strSecondOctet": "[add(int(variables('arrSnetPrefixOctet')[1]),2)",
-    "strRevisedSnetPrefix": "[concat(variables('arrSnetPrefixOctet')[0],'.',add(int(variables('arrSnetPrefixOctet')[1]),1),skip(variables('arrSnetPrefixOctet'),2))]"
+    "strSecondOctet": "[add(int(variables('arrSnetPrefixOctet')[1]),2)]",
+
+    /* ALL STRINGS OR ARRAYS */
+    "strRevisedSnetPrefix": "[concat(variables('arrSnetPrefixOctet')[0],'.',add(int(variables('arrSnetPrefixOctet')[1]),1),variables('arrSnetPrefixOctet')[2],variables('arrSnetPrefixOctet')[3])]"
   },
   "resources": [
     {
