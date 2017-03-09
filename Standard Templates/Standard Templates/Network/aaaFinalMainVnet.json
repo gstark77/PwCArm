@@ -9,8 +9,19 @@
         "dev",
         "prd"
       ]
-    }
     },
+
+    "arrSnetName": {
+      "type": "array",
+      "defaultValue": [
+        "web",
+        "app",
+        "dba"
+      ]
+    }
+
+
+  },
 
     "variables": {
       "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
@@ -19,16 +30,16 @@
       /*"snetTemplateFileName": "aaaFinalSnetLinked.json",*/
 
       "intCounter": "[length(parameters('arrEnvironment'))]",
+
+
       "strVnetName": "edw",
       "strVnetPrefix": "10.60.0.0",
-      /*"strSnetName": "[concat('web','app','dba')]",
-      "strSnetPrefix": "[concat('10.60.0.0','10.60.1.0','10.60.2.0')]",*/
+      "strSnetPrefix": "[concat('10.60.0.0','10.60.1.0','10.60.2.0')]",
       "strDnsServer": "192.168.0.1"
 
     },
     "resources": [
       {
-        /*"name": "[concat('testMain_fromVISUALSTUDIO_1', uniquestring(resourcegroup().id))]",*/
         "name": "[concat('testMain_fromVISUALSTUDIO_',copyIndex())]",
         "type": "Microsoft.Resources/deployments",
         "apiVersion": "2016-09-01",
@@ -53,7 +64,8 @@
             /*"ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",*/
             /*"strEnvironment": { "value": "[variables('arrEnvironment')[1]]" },*/ /* dev */
             "intCounter": { "value": "[variables('intCounter')]" },
-            "strEnvironment": { "value": "dev" },
+
+            "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" }, /* dev then prd */
             "strVnetName": { "value": "edw" },
             "strVnetPrefix": { "value": "10.60.0.0" }, /*  10.60.0.0   */
             "strSnetName": { "value": "web" },
