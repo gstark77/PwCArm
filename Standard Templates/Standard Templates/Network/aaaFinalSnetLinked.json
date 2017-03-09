@@ -8,7 +8,6 @@
     "strSnetName": { "type": "string" },
     "strSnetPrefix": { "type": "string" }, 
     "strDnsServer": { "type": "string" } 
-    /*10.60.0.0*/
 
   },
   "variables": {
