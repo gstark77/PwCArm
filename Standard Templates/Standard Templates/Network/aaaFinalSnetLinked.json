@@ -25,7 +25,7 @@
         },
         "subnets": [
           {
-            "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('strSnetTierName'))]",
+            "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('strSnetName'))]",
             "properties": {
               "addressPrefix":"[parameters('strSnetPrefix')]"
             }

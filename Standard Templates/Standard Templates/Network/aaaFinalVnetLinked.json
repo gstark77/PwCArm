@@ -32,7 +32,7 @@
           "strVnetPrefix": { "value": "[parameters('strVnetPrefix')]" },
           "strSnetName": { "value": "[parameters('arrSnetName')[copyIndex()]]" },
           "strSnetPrefix": { "value": "[parameters('arrSnetPrefix')[copyIndex()]]"},
-          "strDnsServer": { "value": "[parameters('strDnsServer')]" } /* 192.168.0.1 */
+          "strDnsServer": { "value": "[parameters('strDnsServer')]" }
         }
       }
 

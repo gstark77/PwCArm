@@ -78,27 +78,7 @@
             "strDnsServer": { "value": "192.168.0.1" }
           }
         }
-      } /*,
-    {
-      "name": "[concat('testMain_fromVISUALSTUDIO_2', uniquestring(resourcegroup().id))]",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2016-09-01",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templateBaseUrl')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "strEnvironment": { "value": "prd" },
-          "strVnetName": { "value": "edw" },
-          "strVnetPrefix": { "value": "10.60.0.0" }, 
-          "strSnetName": { "value": "app" },
-          "strSnetPrefix": { "value": "10.60.1.0" }, 
-          "strDnsServer": { "value": "192.168.0.1" } 
-        }
-      }
-    }*/
+      } 
     ],
     "outputs": {
     }
