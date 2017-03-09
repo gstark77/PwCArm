@@ -69,7 +69,7 @@
             "intCounter": { "value": "[variables('intCounter')]" },
 
             "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" }, /* dev then prd */
-            "strVnetName": { "value": "[parameters('arrApplication')[0])]",
+            "strVnetName": { "value": "[parameters('arrApplication')[0])]" },
             "strVnetPrefix": { "value": "10.60.0.0" }, /*  10.60.0.0   */
             "strSnetName": { "value": "web" },
             "strSnetPrefix": { "value": "10.60.0.0" },
