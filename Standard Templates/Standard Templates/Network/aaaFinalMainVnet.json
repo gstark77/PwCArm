@@ -49,17 +49,11 @@
           "strDnsServer": { "value": "192.168.0.1" } /* 192.168.0.1   */
         }
       }
-    },
+    }/*,
     {
       "name": "[concat('testMain_fromVISUALSTUDIO_2', uniquestring(resourcegroup().id))]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-
-      /*"copy": {
-          "name": "vnetLoop",
-          "count": "[length(variables('arrEnvironment'))]"
-        },*/
-
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -69,13 +63,13 @@
         "parameters": {
           "strEnvironment": { "value": "dev" },
           "strVnetName": { "value": "edw" },
-          "strVnetPrefix": { "value": "10.60.0.0" }, /*  10.60.0.0   */
+          "strVnetPrefix": { "value": "10.60.0.0" }, 
           "strSnetName": { "value": "app" },
-          "strSnetPrefix": { "value": "10.60.1.0" }, /*  10.60.1.0 */
-          "strDnsServer": { "value": "192.168.0.1" } /* 192.168.0.1   */
+          "strSnetPrefix": { "value": "10.60.1.0" }, 
+          "strDnsServer": { "value": "192.168.0.1" } 
         }
       }
-    }
+    }*/
   ],
   "outputs": {
   }
