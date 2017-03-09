@@ -44,7 +44,7 @@
       "vnetTemplateFileName": "aaaFinalVnetLinked.json",
       /*"snetTemplateFileName": "aaaFinalSnetLinked.json",*/ /**/
 
-      "strVnetPrefix": "10.60.0.0",
+      "strVnetPrefix": "10.60.0.0/21",
       "strDnsServer": "192.168.0.1"
 
     },
@@ -68,10 +68,10 @@
           "parameters": {
             "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" },
             "strApplication": { "value": "[parameters('arrApplication')[0]]" }, 
-            "strVnetPrefix": { "value": "10.60.0.0" },
+            "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" },
             "arrSnetName": { "value": "[parameters('arrSnetName')]" },
             "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
-            "strDnsServer": { "value": "192.168.0.1" }
+            "strDnsServer": { "value": "[variables('strDnsServer')]" }
           }
         }
       } 
