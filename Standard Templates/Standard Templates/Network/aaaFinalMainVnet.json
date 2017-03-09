@@ -10,7 +10,7 @@
     "vnetTemplateFileName": "aaaFinalVnetLinked.json",
     "snetTemplateFileName": "aaaFinalSnetLinked.json",*/
 
-    /*"arrEnvironment": "[concat('dev','prd')]",J*/
+    "arrEnvironment": "[concat('dev','prd')]",
     "strVnetName": "edw",
     "strVnetPrefix": "10.60.0.0",
     /*"strSnetName": "[concat('web','app','dba')]",
@@ -36,12 +36,14 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          /*"strEnvironment": { "value": "[variables('arrEnvironment')[copyIndex()]]" },*/ /* dev   |   prd   */
+          /*"strEnvironment": { "value": "[variables('arrEnvironment')[copyIndex()]]" }, */ /* dev   |   prd   */
           /*"strVnetName": { "value": "[variables('strVnetName')]" }, */ /*  edw  */
           /* "strVnetPrefix": { "value": "[variables('strVnetPrefix')]" }, */ /*  10.60.0.0   */
           /*"strSnetName": { "value": "[variables('strSnetName')]" },*/ /* web   |   app   |   dba   */
           /*"strSnetPrefix": { "value": "[variables('strSnetPrefix')]" }*/ /* 10.60.0.0  |  10.60.1.0  |  10.60.2.0  */
-          "strEnvironment": { "value": "dev" },
+
+          "strEnvironment": { "value": "[variables('arrEnvironment')[0]]" }, /* dev */
+          /*"strEnvironment": { "value": "dev" },*/
           "strVnetName": { "value": "edw" },
           "strVnetPrefix": { "value": "10.60.0.0" }, /*  10.60.0.0   */
           "strSnetName": { "value": "web" },
