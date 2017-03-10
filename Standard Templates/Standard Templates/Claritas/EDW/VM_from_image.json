@@ -1,0 +1,170 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmInfo": { "type": "object" }
+  },
+  "variables": {
+    "appEnvName": "[concat(parameters('vmInfo').appContainerValue,parameters('vmInfo').environmentValue)]",
+    "appEnvTierName": "[concat(variables('appEnvName'), parameters('vmInfo').tierValue)]",
+    "vmNamePrefix": "[concat(variables('appEnvTierName'), replace(parameters('vmInfo').appFunctionValue,'notapplicable',''))]", // using 'notapplicable' when not using appFunction
+    "availabilitySetName": "[concat(variables('vmNamePrefix'),'-as01')]",
+    "vhdStorageType": "Standard_LRS",
+    "vhdStorageAccountName": "[concat(variables('appEnvTierName'), uniqueString(resourceGroup().id))]",
+    "virtualNetworkName": "testvnet",
+    "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+    "virtualNetworkSubnetName": "[concat('snet-',variables('appEnvTierName'))]",
+    "virtualNetworkSubnetRepName": "[concat('snet-',variables('appEnvName'),'rep')]",
+    "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('virtualNetworkSubnetName'))]",
+    "subnetRepRef": "[concat(variables('vnetId'), '/subnets/', variables('virtualNetworkSubnetRepName'))]",
+    "networkInterfaceNamePrefix": "[concat(variables('vmNamePrefix'),'-nic')]",
+    "diagnosticsStorageAccountName": "[variables('vhdStorageAccountName')]",
+    "ipArray": "[split(parameters('vmInfo').startIPValue, '.')]",
+    "ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",
+    "ipOct4": "[variables('ipArray')[3]]"
+  },
+  "resources": [ 
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('vhdStorageAccountName')]",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "StorageAccount",
+        "environment": "[parameters('vmInfo').environmentValue]",
+        "application": "[parameters('vmInfo').appContainerValue]",
+        "tier": "[parameters('vmInfo').tierValue]"
+      },
+      "properties": {
+        "accountType": "[variables('vhdStorageType')]"
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/availabilitySets",
+      "name": "[variables('availabilitySetName')]",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "AvailabilitySet",
+        "environment": "[parameters('vmInfo').environmentValue]",
+        "application": "[parameters('vmInfo').appContainerValue]",
+        "tier": "[parameters('vmInfo').tierValue]"
+      },
+      "properties": {}
+    },
+    {
+      "apiVersion": "2016-03-30",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[concat(variables('vmNamePrefix'), padleft(copyindex(1),2,'0'),'-nic0')]",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "[parameters('vmInfo').environmentValue]",
+        "application": "[parameters('vmInfo').appContainerValue]",
+        "tier": "[parameters('vmInfo').tierValue]"
+      },
+      "copy": {
+        "name": "nicLoop",
+        "count": "[parameters('vmInfo').numberOfInstancesValue]"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "10.0.0.20",
+              "subnet": {
+                "id": "default"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[concat(variables('vmNamePrefix'), padleft(copyindex(1),2,'0'))]",
+      "copy": {
+        "name": "virtualMachineLoop",
+        "count": "[parameters('vmInfo').numberOfInstancesValue]"
+      },
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "VirtualMachines"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/', variables('vhdStorageAccountName'))]",
+        "nicLoop",
+        "[resourceId('Microsoft.Compute/availabilitySets/', variables('availabilitySetName'))]"
+      ],
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySetName'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "[parameters('vmInfo').vmSizeValue]"
+        },
+        "osProfile": {
+          "computerName": "[concat(variables('vmNamePrefix'), padleft(copyindex(1),2,'0'))]",
+          "adminUsername": "[parameters('vmInfo').adminUsernameValue]",
+          "adminPassword": "[parameters('vmInfo').adminPasswordValue]"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "[parameters('vmInfo').imagePublisherValue]",
+            "offer": "[parameters('vmInfo').imageOfferValue]",
+            "sku": "[parameters('vmInfo').imageSKUValue]",
+            "version": "latest"
+          },
+
+          // Use this to create from a custom image - change the URI to the location of the VHD you want to leverage - must be sysprepped and generalized
+          //"storageProfile": {
+          //  "osDisk": {
+          //    "name": "osdisk",
+          //    "osType": "Windows",
+          //    "vhd": {
+          //      "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vhdStorageAccountName')), '2016-01-01').primaryEndpoints.blob, 'vhds/',variables('vmNamePrefix'), copyindex(), '.vhd')]"
+          //    },
+          //    "caching": "ReadWrite",
+          //    "createOption": "FromImage",
+          //    "image": {
+          //      "uri": "https://smsdevapphgilsyqrr6rv2.blob.core.windows.net/copiedvhds/smsdevmap.vhd"
+          //    }
+          //  }
+          //},
+
+
+          "osDisk": {
+            "name": "osdisk",
+            "osType": "Windows",
+            "vhd": {
+              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vhdStorageAccountName')), '2016-01-01').primaryEndpoints.blob, 'vhds/osdisk', copyindex(), '.vhd')]"
+            },
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "image": {
+              "uri": "https://testtemplatergdisks754.blob.core.windows.net/vhds/test-clone-vm0120170310143055.vhd"
+            }
+          }
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('vmNamePrefix'), padleft(copyindex(1),2,'0'),'-nic0'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('vhdStorageAccountName')), '2016-01-01').primaryEndpoints.blob]"
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}

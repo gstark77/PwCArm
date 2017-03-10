@@ -62,8 +62,11 @@
     <None Include="Claritas\EDW\Network\aVnet.parameters.json" />
     <None Include="Claritas\EDW\Network\Vnet.json" />
     <None Include="Claritas\EDW\Network\Vnet.parameters.json" />
+    <None Include="Claritas\EDW\VM_from_image_Main.parameters.json" />
+    <None Include="Claritas\EDW\VM_from_image_Main.json" />
     <None Include="Claritas\EDW\temporaryMainLinked.parameters.json" />
     <None Include="Claritas\EDW\temporaryMainLinked.json" />
+    <None Include="Claritas\EDW\VM_from_image.json" />
     <None Include="Claritas\EDW\VirtualMachineLinked.json" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
