@@ -1,0 +1,53 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+
+    "strVnetName": { "type": "string" },
+    "strVnetPrefix": { "type": "string" },
+    "strSnetWebName": { "type": "string" },
+    "strSnetWebPrefix": { "type": "string" },
+    "strSnetAppName": { "type": "string" },
+    "strSnetAppPrefix": { "type": "string" },
+    "strSnetDbaName": { "type": "string" },
+    "strSnetDbaPrefix": { "type": "string" }
+
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters('strVnetName')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+      ],
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('strVnetPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('strSnetWebName')]",
+            "properties": {
+              "addressPrefix": "[parameters('strSnetWebPrefix')]"
+            }
+          },
+          {
+            "name": "[parameters('strSnetAppName')]",
+            "properties": {
+              "addressPrefix": "[parameters('strSnetAppPrefix')]"
+            }
+          },
+          {
+            "name": "[parameters('strSnetDbaName')]",
+            "properties": {
+              "addressPrefix": "[parameters('strSnetDbaPrefix')]"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
