@@ -45,6 +45,7 @@
     <None Include="Claritas\EDW\Network\aSnet.json" />
     <None Include="Claritas\EDW\Network\aSnet.parameters.json" />
     <None Include="Claritas\EDW\Network\revised\aMain.json" />
+    <None Include="Claritas\EDW\Network\revised\aMain.parameters.json" />
     <None Include="Claritas\EDW\Network\Snet.json" />
     <None Include="Claritas\EDW\Network\Snet.parameters.json" />
     <None Include="Claritas\EDW\Network\aVnet.json" />
