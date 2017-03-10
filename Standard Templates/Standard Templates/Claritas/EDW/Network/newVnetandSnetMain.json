@@ -73,7 +73,7 @@
   },
   "resources": [
     {
-      "name": "[concat('from_main__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
+      "name": "[concat('from_main__',uniqueString(resourceGroup().id))]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
 
