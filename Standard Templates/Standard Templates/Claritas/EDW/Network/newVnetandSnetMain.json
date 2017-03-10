@@ -14,7 +14,7 @@
 
 
 
-    "objNetwork": {
+    "objDevNetwork": {
       "vnetName": "vnet-edwdev",
       "vnetPrefix": "10.100.32.0/21",
       "subnets": {
@@ -39,7 +39,7 @@
           "vnet": "vnet-edwdev"
         }
       }
-    }/*,
+    },
     "objPrdNetwork": {
       "vnetName": "vnet-edwdprd",
       "vnetPrefix": "10.103.33.0/21",
@@ -65,7 +65,7 @@
           "vnet": "vnet-edwdev"
         }
       }
-    }*/
+    }
   },
   "resources": [
     {
@@ -82,7 +82,7 @@
         "parameters": {
 
           "objNetworkSettings": {
-            "value":"[variables('objNetwork')]"
+            "value":"[variables('objPrdNetwork')]"
             }
           }
         }
