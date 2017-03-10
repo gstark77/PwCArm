@@ -16,52 +16,52 @@
 
     "objDevNetwork": {
       "vnetName": "vnet-edwdev",
-      "vnetPrefix": "10.100.32.0/21",
+      "vnetPrefix": "10.100.24.0/21",
       "subnets": {
         "web": {
           "name": "snet-edwdevweb",
-          "prefix": "10.100.32.0/24",
+          "prefix": "10.100.24.0/24",
           "vnet": "vnet-edwdev"
         },
         "app": {
           "name": "snet-edwdevapp",
-          "prefix": "10.100.33.0/24",
+          "prefix": "10.100.25.0/24",
           "vnet": "vnet-edwdev"
         },
         "dba": {
           "name": "snet-edwdevdba",
-          "prefix": "10.100.34.0/24",
+          "prefix": "10.100.26.0/24",
           "vnet": "vnet-edwdev"
         },
         "rep": {
           "name": "snet-edwdevrep",
-          "prefix": "10.100.34.0/24",
+          "prefix": "10.100.27.0/24",
           "vnet": "vnet-edwdev"
         }
       }
     },
     "objPrdNetwork": {
       "vnetName": "vnet-edwprd",
-      "vnetPrefix": "10.103.33.0/21",
+      "vnetPrefix": "10.103.24.0/21",
       "subnets": {
         "web": {
           "name": "snet-edwprdweb",
-          "prefix": "10.103.32.0/24",
+          "prefix": "10.103.24.0/24",
           "vnet": "vnet-edwdev"
         },
         "app": {
           "name": "snet-edwprdapp",
-          "prefix": "10.103.33.0/24",
+          "prefix": "10.103.25.0/24",
           "vnet": "vnet-edwdev"
         },
         "dba": {
           "name": "snet-edwprddba",
-          "prefix": "10.103.34.0/24",
+          "prefix": "10.103.26.0/24",
           "vnet": "vnet-edwdev"
         },
         "rep": {
           "name": "snet-edwprdrep",
-          "prefix": "10.103.34.0/24",
+          "prefix": "10.103.27.0/24",
           "vnet": "vnet-edwdev"
         }
       }
