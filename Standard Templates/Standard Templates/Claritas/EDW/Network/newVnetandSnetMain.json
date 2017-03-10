@@ -41,7 +41,7 @@
       }
     },
     "objPrdNetwork": {
-      "vnetName": "vnet-edwdprd",
+      "vnetName": "vnet-edwprd",
       "vnetPrefix": "10.103.33.0/21",
       "subnets": {
         "web": {
