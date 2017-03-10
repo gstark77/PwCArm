@@ -27,7 +27,8 @@
       "defaultValue": [
         "web",
         "app",
-        "dba"
+        "dba",
+        "rep"
       ]
     },
     "arrSnetPrefix": {
