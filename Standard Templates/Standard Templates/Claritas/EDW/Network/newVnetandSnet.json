@@ -3,29 +3,8 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "objNetworkSettings": { "type": "object" }
-
-    /*
-    "strVnetName": { "type": "string" },
-    "strVnetPrefix": { "type": "string" },
-    "strSnetWebName": { "type": "string" },
-    "strSnetWebPrefix": { "type": "string" },
-    "strSnetAppName": { "type": "string" },
-    "strSnetAppPrefix": { "type": "string" },
-    "strSnetDbaName": { "type": "string" },
-    "strSnetDbaPrefix": { "type": "string" }
-      */
   },
   "variables": {
-    /*
-              "strVnetName": "[ variables('objNetwork').vnetName]",
-              "strVnetPrefix": "[ variables('objNetwork').vnetPrefix]",
-              "strSnetWebPrefix": "[ variables('objNetwork').subnets.web.prefix]",
-              "strSnetWebName": "[ variables('objNetwork').subnets.web.name]",
-              "strSnetAppName": "[ variables('objNetwork').subnets.app.name]",
-              "strSnetAppPrefix": "[ variables('objNetwork').subnets.app.prefix]",
-              "strSnetDbaName": "[ variables('objNetwork').subnets.dba.name]",
-              "strSnetDbaPrefix": "[ variables('objNetwork').subnets.dba.prefix]"
-              */
   },
   "resources": [
     {
