@@ -2,7 +2,8 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-
+    "objNetworkSettings" { "type": "object" }
+    /*
     "strVnetName": { "type": "string" },
     "strVnetPrefix": { "type": "string" },
     "strSnetWebName": { "type": "string" },
@@ -11,42 +12,51 @@
     "strSnetAppPrefix": { "type": "string" },
     "strSnetDbaName": { "type": "string" },
     "strSnetDbaPrefix": { "type": "string" }
-
+      */
   },
   "variables": {
-
+    /*
+              "strVnetName": "[ variables('objNetwork').vnetName]",
+              "strVnetPrefix": "[ variables('objNetwork').vnetPrefix]",
+              "strSnetWebPrefix": "[ variables('objNetwork').subnets.web.prefix]",
+              "strSnetWebName": "[ variables('objNetwork').subnets.web.name]",
+              "strSnetAppName": "[ variables('objNetwork').subnets.app.name]",
+              "strSnetAppPrefix": "[ variables('objNetwork').subnets.app.prefix]",
+              "strSnetDbaName": "[ variables('objNetwork').subnets.dba.name]",
+              "strSnetDbaPrefix": "[ variables('objNetwork').subnets.dba.prefix]"
+              */
   },
   "resources": [
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/virtualNetworks",
-      "name": "[parameters('strVnetName')]",
+      "name": "[parameters('objNetworkSettings').vnetName]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
       ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[parameters('strVnetPrefix')]"
+            "[parameters('objNetworkSettings').vnetPrefix]"
           ]
         },
         "subnets": [
           {
-            "name": "[parameters('strSnetWebName')]",
+            "name": "[parameters('objNetworkSettings').subnets.web.name]",
             "properties": {
-              "addressPrefix": "[parameters('strSnetWebPrefix')]"
+              "addressPrefix": "[parameters('objNetworkSettings').subnets.web.prefix]"
             }
           },
           {
-            "name": "[parameters('strSnetAppName')]",
+            "name": "[parameters('objNetworkSettings').subnets.app.name]",
             "properties": {
-              "addressPrefix": "[parameters('strSnetAppPrefix')]"
+              "addressPrefix": "[parameters('objNetworkSettings').subnets.app.prefix]"
             }
           },
           {
-            "name": "[parameters('strSnetDbaName')]",
+            "name": "[parameters('objNetworkSettings').subnets.dba.name]",
             "properties": {
-              "addressPrefix": "[parameters('strSnetDbaPrefix')]"
+              "addressPrefix": "[parameters('objNetworkSettings').subnets.dba.prefix]"
             }
           }
         ]
