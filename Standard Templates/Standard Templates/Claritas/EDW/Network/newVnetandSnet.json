@@ -11,6 +11,7 @@
     "strSnetAppPrefix": { "type": "string" },
     "strSnetDbaName": { "type": "string" },
     "strSnetDbaPrefix": { "type": "string" }
+
   },
   "resources": [
     {

@@ -87,14 +87,12 @@
               "strVnetName": "[ variables('objNetwork').vnetName ]",
               "strVnetPrefix": "[ variables('objNetwork').vnetPrefix ]",
               /*"strSnetWeb": "[variables('objNetwork').subnets.web]",*/
-              
               "strSnetWebName": "[ variables('objNetwork').subnets.web.name]",
               "strSnetWebPrefix": "[ variables('objNetwork').subnets.web.name]",
               "strSnetAppName": "[ variables('objNetwork').subnets.app.name]",
               "strSnetAppPrefix": "[ variables('objNetwork').subnets.app.name]",
               "strSnetDbaName": "[ variables('objNetwork').subnets.dba.name]",
               "strSnetDbaPrefix": "[ variables('objNetwork').subnets.dba.name]"
-               
             }
           }
         }
