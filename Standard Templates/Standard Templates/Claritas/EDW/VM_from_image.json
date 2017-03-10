@@ -152,7 +152,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('vmNamePrefix'), padleft(copyindex(1),2,'0'),'-nic0'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat('testvnet', padleft(copyindex(1),2,'0'),'-nic0'))]"
             }
           ]
         },
