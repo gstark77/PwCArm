@@ -1,5 +1,16 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-  "parameters": {}
+  "parameters": {
+
+    "strVnetName": { "value": null },
+    "strVnetPrefix": { "value": null },
+    "strSnetWebName": { "value": null },
+    "strSnetWebPrefix": { "value": null },
+    "strSnetAppName": { "value": null },
+    "strSnetAppPrefix": { "value": null },
+    "strSnetDbaName": { "value": null },
+    "strSnetDbaPrefix": { "value": null }
+
+  }
 }
