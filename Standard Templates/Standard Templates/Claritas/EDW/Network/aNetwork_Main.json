@@ -1,0 +1,90 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "arrEnvironment": {
+      "type": "array",
+      "defaultValue": [
+        "dev",
+       "prd"
+      ]
+    },
+    "arrApplication": {
+      "type": "array",
+      "defaultValue": [
+        "edw"
+      ]
+    },
+    "arrEnvironmentPrefix": {
+      "type": "array",
+      "defaultValue": [
+        "10.100.0.0/21",
+        "10.103.0.0/21"
+      ]
+    },
+    "arrSnetName": {
+      "type": "array",
+      "defaultValue": [
+        "web",
+        "app",
+        "dba",
+        "rep"
+      ]
+    },
+    "arrSnetPrefix": {
+      "type": "array",
+      "defaultValue": [
+        "10.100.0.0/24",
+        "10.100.1.0/24",
+        "10.100.2.0/24"
+      ]
+    },
+    "arrSnetPrefixIncrementor": {
+      "type": "array",
+      "defaultvalue": [
+        "0",
+        "3"
+      ]
+    }
+  },
+  "variables": {
+    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "vnetTemplateFolderPath": "Claritas/EDW/Network/",
+    "vnetTemplateFileName": "aVnet.json",
+    "snetTemplateFileName": "aSnet.json",
+    "strDnsServer": "192.168.0.1"
+
+
+    },
+    "resources": [
+      {
+        "name": "[concat('from_main__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2016-09-01",
+
+        "copy": {
+          "name": "vnetLoop",
+          "count": "[length(parameters('arrEnvironment'))]"
+        },
+        "properties": {
+          "mode": "Incremental",
+          "templateLink": {
+            "uri": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
+            "contentVersion": "1.0.0.0"
+          },
+          "parameters": {
+            "strApplication": { "value": "[parameters('arrApplication')[0]]" },
+            "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" },
+            "strEnvironmentPrefix": { "value": "[parameters('arrEnvironmentPrefix')[copyIndex()]]" },
+            "arrSnetName": { "value": "[parameters('arrSnetName')]" },
+            "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
+            "arrSnetPrefixIncrementor": {"value": "[parameters('arrSnetPrefixIncrementor')]"},
+            "strDnsServer": { "value": "[variables('strDnsServer')]" },
+            "strUri": { "value": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'),variables('snetTemplateFileName'))]" }
+          }
+        }
+      } 
+    ],
+    "outputs": {
+    }
+  }

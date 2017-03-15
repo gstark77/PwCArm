@@ -161,7 +161,7 @@
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
     "vmTemplateFolderPath": "Claritas/EDW/",
-    "vmTemplateFileName": "VirtualMachineLinked.json",
+    "vmTemplateFileName": "VM_from_image.json",
 
     "vmInfo": {
       "adminUsernameValue": "[parameters('adminUsername')]",

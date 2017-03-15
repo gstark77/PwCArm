@@ -1,0 +1,93 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+  },
+  "variables": {
+    /*  
+    +---------------------------------------------------------------------------------------------------------+
+    |  Enter the path for all linked templates using the following three variables.                           |
+    +---------------------------------------------------------------------------------------------------------+*/
+    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "vnetTemplateFolderPath": "Claritas/EDW/Network/",
+    "vnetTemplateFileName": "newVnetandSnet.json",
+
+
+
+    "objDevNetwork": {
+      "vnetName": "vnet-edwdev",
+      "vnetPrefix": "10.100.24.0/21",
+      "subnets": {
+        "web": {
+          "name": "snet-edwdevweb",
+          "prefix": "10.100.24.0/24",
+          "vnet": "vnet-edwdev"
+        },
+        "app": {
+          "name": "snet-edwdevapp",
+          "prefix": "10.100.25.0/24",
+          "vnet": "vnet-edwdev"
+        },
+        "dba": {
+          "name": "snet-edwdevdba",
+          "prefix": "10.100.26.0/24",
+          "vnet": "vnet-edwdev"
+        },
+        "rep": {
+          "name": "snet-edwdevrep",
+          "prefix": "10.100.27.0/24",
+          "vnet": "vnet-edwdev"
+        }
+      }
+    },
+    "objPrdNetwork": {
+      "vnetName": "vnet-edwprd",
+      "vnetPrefix": "10.103.24.0/21",
+      "subnets": {
+        "web": {
+          "name": "snet-edwprdweb",
+          "prefix": "10.103.24.0/24",
+          "vnet": "vnet-edwdev"
+        },
+        "app": {
+          "name": "snet-edwprdapp",
+          "prefix": "10.103.25.0/24",
+          "vnet": "vnet-edwdev"
+        },
+        "dba": {
+          "name": "snet-edwprddba",
+          "prefix": "10.103.26.0/24",
+          "vnet": "vnet-edwdev"
+        },
+        "rep": {
+          "name": "snet-edwprdrep",
+          "prefix": "10.103.27.0/24",
+          "vnet": "vnet-edwdev"
+        }
+      }
+    }
+  },
+  "resources": [
+    {
+      "name": "[concat('from_main__',uniqueString(resourceGroup().id))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+
+          "objNetworkSettings": {
+            "value":"[variables('objPrdNetwork')]"
+            }
+          }
+        }
+    }
+  ],
+  "outputs": {
+  }
+}

@@ -1,0 +1,180 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "arrAppEnvironment": {
+      "type": "array",
+      "defaultValue": ["dev","prd"]
+    }
+  },
+  "variables": {
+    /*  
+    +---------------------------------------------------------------------------------------------------------+
+    |  Enter the path for all linked templates using the following three variables.                           |
+    +---------------------------------------------------------------------------------------------------------+*/
+    "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "vnetTemplateFolderPath": "Claritas/EDW/Network/",
+    "vnetTemplateFileName": "VnetandSnet.json",
+
+    /*  
+    +---------------------------------------------------------------------------------------------------------+
+    |  Enter the three letter code for the application (e.g. sms) and remove the comment strings.             |
+    +---------------------------------------------------------------------------------------------------------+ */
+    "strAppName": "edw",
+
+    /*  
+    +---------------------------------------------------------------------------------------------------------+
+    |  Enter the network address and mask of the application container.  The mask for all containers is /21.  |
+    +---------------------------------------------------------------------------------------------------------+ */
+    "strBaseNetwork": "10.100.32.0/21",
+
+    /*  
+    +---------------------------------------------------------------------------------------------------------+
+    |  Remove the comment strings from the environments the application will require.                         |
+    +---------------------------------------------------------------------------------------------------------+*/
+    "strDevEnv": "dev",
+    /*"strTestEnv": "tst",*/
+    /*"strUatEnv": "uat",*/
+    "strPrdEnv": "prd",
+
+
+    /*  +---------------------------------------------------------------------------------------------------------+
+        |  The following set of variables calculate the subnet masks based on the provided network address        |
+        |  and mask of the application container.  Simply uncomment the ...................................       |
+        +---------------------------------------------------------------------------------------------------------+
+    */
+
+    "strdeliminators": [ ".", "/" ],
+    "arrBaseNetwork": "[split(variables('strBaseNetwork'),variables('strdeliminators'))]",
+
+    /*  Dev Environment and Subnets  */
+    "strVnetNameDev": "[concat('vnet-',variables('strAppName'),'strDevEnv')]",
+    "strVnetDevPrefix": "[concat(variables('arrBasenetwork')[0],'.',add(int(variables('arrBasenetwork')[1]),0),'.',variables('arrBasenetwork')[2],'.',variables('arrBasenetwork')[3],'/21')]",
+
+    "strSnetNameDevWeb": "[concat('snet-',variables('strAppName'),'web')]",
+    "strSnetDevWebPrefix": "[concat(variables('arrBasenetwork')[0],'.',add(int(variables('arrBasenetwork')[1]),0),'.',add(int(variables('arrBasenetwork')[2]),0),'.',variables('arrBasenetwork')[3],'/24')]",
+
+    "strSnetNameDevApp": "[concat('snet-',variables('strAppName'),'app')]",
+    "snetDevAppPrefix": "[concat(variables('arrBasenetwork')[0],'.',add(int(variables('arrBasenetwork')[1]),0),'.',add(int(variables('arrBasenetwork')[2]),1),'.',variables('arrBasenetwork')[3],'/24')]",
+
+    "strSnetNameDevDba": "[concat('snet-',variables('strAppName'),'dba')]",
+    "snetDevDbaPrefix": "[concat(variables('arrBasenetwork')[0],'.',add(int(variables('arrBasenetwork')[1]),0),'.',add(int(variables('arrBasenetwork')[2]),1),'.',variables('arrBasenetwork')[3],'/24')]",
+
+    /*  Production Environment and Subnets */
+    "strVnetNamePrd": "[concat('vnet-',variables('strAppName'),'strDevEnv')]",
+    "strVnetPrdPrefix": "[concat(variables('arrBasenetwork')[0],'.',add(int(variables('arrBasenetwork')[1]),0),'.',variables('arrBasenetwork')[2],'.',variables('arrBasenetwork')[3],'/21')]",
+
+    "strSnetNamePrdWeb": "[concat('snet-',variables('strAppName'),'web')]",
+    "strSnetPrdPrdPrefix": "[concat(variables('arrBasenetwork')[0],'.',add(int(variables('arrBasenetwork')[1]),0),'.',add(int(variables('arrBasenetwork')[2]),0),'.',variables('arrBasenetwork')[3],'/24')]",
+
+    "strSnetNamePrdApp": "[concat('snet-',variables('strAppName'),'app')]",
+    "snetPrdAppPrefix": "[concat(variables('arrBasenetwork')[0],'.',add(int(variables('arrBasenetwork')[1]),0),'.',add(int(variables('arrBasenetwork')[2]),1),'.',variables('arrBasenetwork')[3],'/24')]",
+
+    "strSnetNamePrdDba": "[concat('snet-',variables('strAppName'),'dba')]",
+    "snetPrdDbaPrefix": "[concat(variables('arrBasenetwork')[0],'.',add(int(variables('arrBasenetwork')[1]),0),'.',add(int(variables('arrBasenetwork')[2]),1),'.',variables('arrBasenetwork')[3],'/24')]",
+
+
+
+   
+
+
+    "objDevNetwork": {
+      "vnetName": "vnet-edwdev",
+      "addressPrefix": "10.100.32.0/21",
+      "subnets": {
+        "web": {
+          "name": "snet-edwdevweb",
+          "prefix": "10.100.32.0/24",
+          "vnet": "vnet-edwdev"
+        },
+        "app": {
+          "name": "snet-edwdevapp",
+          "prefix": "10.100.33.0/24",
+          "vnet": "vnet-edwdev"
+        },
+        "dba": {
+          "name": "snet-edwdevdba",
+          "prefix": "10.100.34.0/24",
+          "vnet": "vnet-edwdev"
+        },
+        "rep": {
+          "name": "snet-edwdevrep",
+          "prefix": "10.100.34.0/24",
+          "vnet": "vnet-edwdev"
+        }
+      },
+      "objPrdNetwork": {
+        "vnetName": "vnet-edwdprd",
+        "addressPrefix": "10.103.33.0/21",
+        "subnets": {
+          "web": {
+            "name": "snet-edwprdweb",
+            "prefix": "10.103.32.0/24",
+            "vnet": "vnet-edwdev"
+          },
+          "app": {
+            "name": "snet-edwprdapp",
+            "prefix": "10.103.33.0/24",
+            "vnet": "vnet-edwdev"
+          },
+          "dba": {
+            "name": "snet-edwprddba",
+            "prefix": "10.103.34.0/24",
+            "vnet": "vnet-edwdev"
+          },
+          "rep": {
+            "name": "snet-edwprdrep",
+            "prefix": "10.103.34.0/24",
+            "vnet": "vnet-edwdev"
+          }
+        }
+      }
+
+
+    },
+    "resources": [
+      {
+        "name": "[concat('from_main__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2016-09-01",
+
+        "copy": {
+          "name": "vnetLoop",
+          "count": "[length(parameters('arrAppEnvironment'))]"
+        },
+        "properties": {
+          "mode": "Incremental",
+          "templateLink": {
+            "uri": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'), variables('vnetTemplateFileName'))]",
+            "contentVersion": "1.0.0.0"
+          },
+          "parameters": {
+            "strNetworkSettings": "[variables(concat(parameters('arrEnvironment'), parameters('tshirtSize')))]",
+
+
+            "subnet": { "value": "[variables('networkSettings').subnets.data]" },
+
+            "machineSettings": {
+              "value": {
+                "vmSize": "[variables('tshirtSize').vmSize]",
+                "diskSize": "[variables('tshirtSize').diskSize]",
+                "vmCount": 1,
+                "availabilitySet": "[variables('availabilitySetSettings').name]"
+              },
+
+
+              "strApplication": { "value": "[parameters('arrApplication')[0]]" },
+              "strEnvironment": { "value": "[parameters('arrEnvironment')[copyIndex()]]" },
+              "strEnvironmentPrefix": { "value": "[parameters('arrEnvironmentPrefix')[copyIndex()]]" },
+              "arrSnetName": { "value": "[parameters('arrSnetName')]" },
+              "arrSnetPrefix": { "value": "[parameters('arrSnetPrefix')]" },
+              "arrSnetPrefixIncrementor": { "value": "[parameters('arrSnetPrefixIncrementor')]" },
+              "strDnsServer": { "value": "[variables('strDnsServer')]" },
+              "strUri": { "value": "[concat(variables('templateBaseUrl'),variables('vnetTemplateFolderPath'),variables('snetTemplateFileName'))]" }
+            }
+          }
+      } 
+    ],
+    "outputs": {
+    }
+  }
