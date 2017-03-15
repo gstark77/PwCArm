@@ -3,18 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "networkInfo": { "type": "object" },
-    "vnetNetworkInfo": { "type": "object" }
+    "vnetNetworkInfo": { "type": "object" },
+    "snetNetworkInfo":{"type": "object"}
   },
   "variables": {
-    /*"networkBase": "[parameters('vnetNetworkInfo').vnetPrefix]",
-    "networkArray": "[split(variables('networkBase'), '.')]",
-
-    "vnetNameDev": "[concat('vnet-','ins','dev')]",
-    "vnetDevPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',variables('networkArray')[2],'.',variables('networkArray')[3],'/21')]",
-
-    "snetNameDevWeb": "[concat('snet-','ins','devweb')]",
-    "snetDevWebPrefix": "[concat(variables('networkArray')[0],'.',add(int(variables('networkArray')[1]),0),'.',add(int(variables('networkArray')[2]),0),'.',variables('networkArray')[3],'/24')]",
-  */
   },
   "resources": [
     {

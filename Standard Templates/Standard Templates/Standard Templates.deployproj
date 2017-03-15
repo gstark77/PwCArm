@@ -37,6 +37,14 @@
     <None Include="AD\New Domain HA\nestedtemplates\vnet-with-dns-server.json" />
     <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
     <None Include="AD\New Domain HA\README.md" />
+    <None Include="Claritas\EDW\temporaryMainLinked.parameters.json" />
+    <None Include="Claritas\EDW\temporaryMainLinked.json" />
+    <None Include="Claritas\EDW\VirtualMachineLinked.json" />
+    <None Include="Claritas\EDW\zzz_Example_simpleLinked.json" />
+    <None Include="Claritas\EDW\zzz_Example_simpleMainLinked.json" />
+    <None Include="Claritas\EDW\zzz_Example_simpleMainLinked.parameters.json" />
+    <None Include="Claritas\EDW\zzz_Example_simpleSubnetLinked.json" />
+    <None Include="Claritas\EDW\zzz_Example_SubnetLinked.json" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
@@ -47,6 +55,10 @@
     <Content Include="nestedtemplates\vnet.parameters.json" />
     <None Include="Network\FinalMainVnet.json" />
     <None Include="Network\FinalMainVnet.parameters.json" />
+    <None Include="Network\FinalSnetLinked.parameters.No.json" />
+    <None Include="Network\FinalSnetLinked.parameters.Yes.json" />
+    <None Include="Network\FinalSnetLinked.Yes.json" />
+    <None Include="Network\FinalSnetLinked.No.json" />
     <None Include="Network\FinalSnetLinked.json" />
     <None Include="Network\FinalSnetLinked.parameters.json" />
     <None Include="Network\simpleSubnetLinked.json" />
@@ -68,7 +80,7 @@
     <None Include="VMs\VirtualMachines.parameters.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mains\" />
+    <Folder Include="Claritas\SMS\" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
