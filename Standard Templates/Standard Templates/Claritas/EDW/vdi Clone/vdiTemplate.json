@@ -55,36 +55,9 @@
           "vmSize": "Standard_DS11_v2"
         },
         "storageProfile": {
-          /*"imageReference": {
-            "publisher": "MicrosoftWindowsServer",
-            "offer": "WindowsServer",
-            "sku": "2016-Datacenter",
-            "version": "latest"
-          },*/
-          "osDisk": {
-            "name": "[parameters('virtualMachines_vdiprdapp01_name')]",
-            "osType": "Windows", //manually added
-            "createOption": "FromImage",
-            "vhd": {
-              "uri": "[concat('https', '://', parameters('storageAccounts_vdiprddisks152_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_vdiprdapp01_name'),'20170214195538.vhd'))]"
-            },
-            "caching": "ReadWrite",
-            "image": { //manually added
-              "uri": "https://vdiprddisks152.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/sysprepped11-osDisk.ca21c86c-3f54-49a3-8ff7-bce8773bedab.vhd" //manually added
-            }
-          },
-          "dataDisks": [
-            {
-              "lun": 0,
-              "name": "[concat(parameters('virtualMachines_vdiprdapp01_name'),'-20170215-154115')]",
-              "createOption": "Empty",
-              "vhd": {
-                "uri": "[concat('https', '://', parameters('storageAccounts_vdiprddiag317_name'), '.blob.core.windows.net', concat('/vdiprdapp-ctr1/', parameters('virtualMachines_vdiprdapp01_name'),'-20170215-154115.vhd'))]"
-              },
-              "caching": "ReadWrite",
-              "diskSizeGB": 200
-            }
-          ]
+          "imageReference": {
+            "id": "[resourceId('Microsoft.Compute/images', 'VDI-Image')]"
+          }
         },
         "osProfile": {
           "computerName": "[parameters('virtualMachines_vdiprdapp01_name')]",
@@ -122,7 +95,7 @@
           {
             "name": "ipconfig1",
             "properties": {
-              "privateIPAddress": "10.103.49.20",
+              "privateIPAddress": "10.103.49.21",
               "privateIPAllocationMethod": "Static",
               "subnet": {
                 "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_vdiprd_name')), '/subnets/snet-vdiprdapp')]"

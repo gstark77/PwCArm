@@ -9,7 +9,7 @@
       "value": "vdiprdapp-as01"
     },
     "virtualMachines_vdiprdapp01_name": {
-      "value": null
+      "value": "vdiprdapp02"
     },
     "networkInterfaces_vdiprdapp01233_name": {
       "value": null
