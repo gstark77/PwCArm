@@ -1,0 +1,173 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualMachines_vdiprdapp01_adminPassword": {
+      "defaultValue": null,
+      "type": "securestring"
+    },
+    "availabilitySets_vdiprdapp_as01_name": {
+      "defaultValue": "vdiprdapp-as01",
+      "type": "string"
+    },
+    "virtualMachines_vdiprdapp01_name": {
+      "defaultValue": "vdiprdapp01",
+      "type": "string"
+    },
+    "networkInterfaces_vdiprdapp01233_name": {
+      "defaultValue": "vdiprdapp01233",
+      "type": "string"
+    },
+    "networkSecurityGroups_vdiprdapp_nsg_name": {
+      "defaultValue": "vdiprdapp-nsg",
+      "type": "string"
+    },
+    "virtualNetworks_vnet_vdiprd_name": {
+      "defaultValue": "vnet-vdiprd",
+      "type": "string"
+    },
+    "vaults_vault_vdiprd01_name": {
+      "defaultValue": "vault-vdiprd01",
+      "type": "string"
+    },
+    "storageAccounts_vdiprddiag317_name": {
+      "defaultValue": "vdiprddiag317",
+      "type": "string"
+    },
+    "storageAccounts_vdiprddisks152_name": {
+      "defaultValue": "vdiprddisks152",
+      "type": "string"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/vdiprd/providers/Microsoft.Compute/virtualMachines/vdiprdapp01'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_vdiprdapp01_name')]",
+      "apiVersion": "2015-06-15",
+      "location": "centralus",
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_vdiprdapp_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_DS11_v2"
+        },
+        "storageProfile": {
+          /*"imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+          },*/
+          "osDisk": {
+            "name": "[parameters('virtualMachines_vdiprdapp01_name')]",
+            "osType": "Windows", //manually added
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_vdiprddisks152_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_vdiprdapp01_name'),'20170214195538.vhd'))]"
+            },
+            "caching": "ReadWrite",
+            "image": { //manually added
+              "uri": "https://vdiprddisks152.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/sysprepped11-osDisk.ca21c86c-3f54-49a3-8ff7-bce8773bedab.vhd" //manually added
+            }
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "[concat(parameters('virtualMachines_vdiprdapp01_name'),'-20170215-154115')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_vdiprddiag317_name'), '.blob.core.windows.net', concat('/vdiprdapp-ctr1/', parameters('virtualMachines_vdiprdapp01_name'),'-20170215-154115.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 200
+            }
+          ]
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_vdiprdapp01_name')]",
+          "adminUsername": "claradmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": [],
+          "adminPassword": "[parameters('virtualMachines_vdiprdapp01_adminPassword')]"
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vdiprdapp01233_name'))]"
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        //"[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_vdiprdapp_as01_name'))]",
+       // "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vdiprddisks152_name'))]",
+       // "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vdiprddiag317_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vdiprdapp01233_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/vdiprd/providers/Microsoft.Network/networkInterfaces/vdiprdapp01233'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_vdiprdapp01233_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.103.49.20",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_vdiprd_name')), '/subnets/snet-vdiprdapp')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        //"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_vdiprd_name'))]"
+      ]
+    }/*,
+    {
+      "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/vdiprd/providers/Microsoft.Storage/storageAccounts/vdiprddiag317'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_vdiprddiag317_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "centralus",
+      "tags": {},
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/vdiprd/providers/Microsoft.Storage/storageAccounts/vdiprddisks152'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Premium_LRS",
+        "tier": "Premium"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_vdiprddisks152_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "centralus",
+      "tags": {},
+      "properties": {},
+      "dependsOn": []
+    }*/
+  ]
+}

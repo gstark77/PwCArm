@@ -62,6 +62,8 @@
     <None Include="Claritas\EDW\Network\aVnet.parameters.json" />
     <None Include="Claritas\EDW\Network\Vnet.json" />
     <None Include="Claritas\EDW\Network\Vnet.parameters.json" />
+    <None Include="Claritas\EDW\vdi Clone\vdiTemplate.parameters.json" />
+    <None Include="Claritas\EDW\vdi Clone\vdiTemplate.json" />
     <None Include="Claritas\EDW\VM_from_image_Main.parameters.json" />
     <None Include="Claritas\EDW\VM_from_image_Main.json" />
     <None Include="Claritas\EDW\temporaryMainLinked.parameters.json" />

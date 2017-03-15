@@ -21,7 +21,7 @@
           ]
         },
         "subnets": [
-          /*{
+          {/*
             "name": "[parameters('objNetworkSettings').subnets.web.name]",
             "properties": {
               "addressPrefix": "[parameters('objNetworkSettings').subnets.web.prefix]"
