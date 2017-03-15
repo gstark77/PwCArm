@@ -5,100 +5,91 @@
     "virtualMachines_vdiprdapp01_adminPassword": {
       "defaultValue": null,
       "type": "securestring"
-    },
-    "availabilitySets_vdiprdapp_as01_name": {
-      "defaultValue": "vdiprdapp-as01",
-      "type": "string"
-    },
-    "virtualMachines_vdiprdapp01_name": {
-      "defaultValue": "vdiprdapp01",
-      "type": "string"
-    },
-    "networkInterfaces_vdiprdapp01233_name": {
-      "defaultValue": "vdiprdapp01233",
-      "type": "string"
-    },
-    "networkSecurityGroups_vdiprdapp_nsg_name": {
-      "defaultValue": "vdiprdapp-nsg",
-      "type": "string"
-    },
-    "virtualNetworks_vnet_vdiprd_name": {
-      "defaultValue": "vnet-vdiprd",
-      "type": "string"
-    },
-    "vaults_vault_vdiprd01_name": {
-      "defaultValue": "vault-vdiprd01",
-      "type": "string"
-    },
-    "storageAccounts_vdiprddiag317_name": {
-      "defaultValue": "vdiprddiag317",
-      "type": "string"
-    },
-    "storageAccounts_vdiprddisks152_name": {
-      "defaultValue": "vdiprddisks152",
-      "type": "string"
     }
   },
-  "variables": {},
+  "variables": {
+    "numberOfInstances": 1,
+    "vmNamePrefix": "vdiprdapp",
+    "availabilitySet": "vdiprdapp-as01",
+    "vnetName": "vnet-vdiprd",
+    "subnetName": "snet-vdiprdapp",
+    "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
+    "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
+    "startIP": "10.103.49.22",
+    "ipArray": "[split(variables('startIP'), '.')]",
+    "ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",
+    "ipOct4": "[variables('ipArray')[3]]",
+    "offset": 3
+  },
   "resources": [
     {
       "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/vdiprd/providers/Microsoft.Compute/virtualMachines/vdiprdapp01'.",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[parameters('virtualMachines_vdiprdapp01_name')]",
-      "apiVersion": "2015-06-15",
-      "location": "centralus",
-      "properties": {
-        "availabilitySet": {
-          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_vdiprdapp_as01_name'))]"
-        },
-        "hardwareProfile": {
-          "vmSize": "Standard_DS11_v2"
-        },
-        "storageProfile": {
-          "imageReference": {
-            "id": "[resourceId('Microsoft.Compute/images', 'VDI-Image')]"
+      "name": "[concat(variables('vmNamePrefix'), padleft(copyindex(3),2,'0'))]",
+      "copy": {
+        "name": "virtualMachineLoop",
+        "count": "[variables('numberOfInstances')]"
+      },
+        "apiVersion": "[providers('Microsoft.Compute','virtualMachines').apiVersions[0]]",
+        "location": "centralus",
+        "properties": {
+          "availabilitySet": {
+            "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySet'))]"
+          },
+          "hardwareProfile": {
+            "vmSize": "Standard_DS2_v2"
+          },
+          "storageProfile": {
+            "imageReference": {
+              "id": "[resourceId('Microsoft.Compute/images', 'VDI-Image')]"
+            }
+          },
+          "osProfile": {
+            "computerName": "[concat(variables('vmNamePrefix'), padleft(copyindex(3),2,'0'))]",
+            "adminUsername": "claradmin",
+            "windowsConfiguration": {
+              "provisionVMAgent": true,
+              "enableAutomaticUpdates": true
+            },
+            "secrets": [],
+            "adminPassword": "[parameters('virtualMachines_vdiprdapp01_adminPassword')]"
+          },
+          "networkProfile": {
+            "networkInterfaces": [
+              {
+                "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('vmNamePrefix'), padleft(copyindex(3),2,'0'),'-nic1'))]"
+              }
+            ]
           }
         },
-        "osProfile": {
-          "computerName": "[parameters('virtualMachines_vdiprdapp01_name')]",
-          "adminUsername": "claradmin",
-          "windowsConfiguration": {
-            "provisionVMAgent": true,
-            "enableAutomaticUpdates": true
-          },
-          "secrets": [],
-          "adminPassword": "[parameters('virtualMachines_vdiprdapp01_adminPassword')]"
-        },
-        "networkProfile": {
-          "networkInterfaces": [
-            {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vdiprdapp01233_name'))]"
-            }
-          ]
-        }
+        "dependsOn": [
+          //"[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_vdiprdapp_as01_name'))]",
+          // "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vdiprddisks152_name'))]",
+          // "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vdiprddiag317_name'))]",
+          //"[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vdiprdapp01233_name'))]"
+          "nicLoop"
+        ]
       },
-      "dependsOn": [
-        //"[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_vdiprdapp_as01_name'))]",
-       // "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vdiprddisks152_name'))]",
-       // "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vdiprddiag317_name'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vdiprdapp01233_name'))]"
-      ]
-    },
     {
       "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/vdiprd/providers/Microsoft.Network/networkInterfaces/vdiprdapp01233'.",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[parameters('networkInterfaces_vdiprdapp01233_name')]",
-      "apiVersion": "2016-03-30",
+      "name": "[concat(variables('vmNamePrefix'), padleft(copyindex(3),2,'0'),'-nic1')]",
+      "apiVersion": "[providers('Microsoft.Network','networkInterfaces').apiVersions[0]]",
       "location": "centralus",
+      "copy": {
+        "name": "nicLoop",
+        "count": "[variables('numberOfInstances')]"
+      },
       "properties": {
         "ipConfigurations": [
           {
             "name": "ipconfig1",
+
             "properties": {
-              "privateIPAddress": "10.103.49.21",
+              "privateIPAddress": "[concat(variables('ipFirst3'),string(add(int(variables('ipOct4')), copyIndex())))]",
               "privateIPAllocationMethod": "Static",
               "subnet": {
-                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_vdiprd_name')), '/subnets/snet-vdiprdapp')]"
+                "id": "[variables('subnetRef')]"
               }
             }
           }
@@ -111,7 +102,8 @@
       "dependsOn": [
         //"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_vdiprd_name'))]"
       ]
-    }/*,
+    }
+      /*,
     {
       "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/vdiprd/providers/Microsoft.Storage/storageAccounts/vdiprddiag317'.",
       "type": "Microsoft.Storage/storageAccounts",
@@ -142,5 +134,5 @@
       "properties": {},
       "dependsOn": []
     }*/
-  ]
-}
+      ]
+    }

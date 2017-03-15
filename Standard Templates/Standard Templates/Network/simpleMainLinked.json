@@ -8,7 +8,7 @@
         "resources": [
           {
             "apiVersion": "2015-01-01",
-            "name": "linkedTemplate",
+            "name": "linkedTemplate2",
             "type": "Microsoft.Resources/deployments",
             "properties": {
               "mode": "Incremental",
