@@ -15,13 +15,13 @@
   "variables": {
     "vmNamePrefix": "vdiprdapp",
     "numberOfInstances": 1,
-    "offset": 1, // This would be the starting 'number' of the first host name (e.g. vdiprdappXX where XX is the offset)
+    "offset": 4, // This would be the starting 'number' of the first host name (e.g. vdiprdappXX where XX is the offset)//GH-updated
     "availabilitySet": "vdiprdapp-as01",
     "vnetName": "vnet-vdiprd",
     "subnetName": "snet-vdiprdapp",
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
     "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
-    "startIP": "10.103.49.20",
+    "startIP": "10.103.49.23", //GH-updated
     "ipArray": "[split(variables('startIP'), '.')]",
     "ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",
     "ipOct4": "[variables('ipArray')[3]]",
@@ -29,7 +29,7 @@
     "domainName": "claritas.com",
     "ouPath": "OU=AADDC Computers,DC=claritas,DC=com",
     "domainJoinOptions": 3,
-    "domainUser": "admgstark"
+    "domainJoinUserName": "claritas\\admgman" //GH-updated
   },
   "resources": [
     {
@@ -115,7 +115,7 @@
       "apiVersion": "[providers('Microsoft.Compute','virtualMachines').apiVersions[0]]",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(variables('vmNamePrefix'), padleft(copyindex(variables('offset')),2,'0'),'/joindomain')]",
-      "location": "[resourceGroup().location]",
+      "location": "centralus", //GH-updated
       "dependsOn": [
         "virtualMachineLoop"
       ],
@@ -133,7 +133,7 @@
           "Options": "[variables('domainJoinOptions')]",
           "OUPath": "[variables('ouPath')]",
           "Restart": "true",
-          "User": "[concat(variables('domainName'),'\\', variables('domainUser'))]"
+          "User": "[variables('domainJoinUserName')]" //GH-updated
         },
         "protectedSettings": {
           "Password": "[parameters('domainPassword')]"
