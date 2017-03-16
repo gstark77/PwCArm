@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "virtualMachines_vdiprdapp01_adminPassword": {
+    "virtualMachines_adminPassword": {
       "defaultValue": null,
       "type": "securestring"
     },
@@ -16,7 +16,8 @@
     "offset": 8, // The starting 'number' of the first hostname (e.g. vdiprdappXX where XX is the offset)
     "startIP": "10.103.49.27", // The starting IP address (range reserved for VMs: .20 - .254)
     "numberOfInstances": 13, // The number of the VMs that must be provisioned
-    "domainJoinUserName": "claritas\\admgman", 
+    "domainJoinUserName": "claritas\\admgman",
+    "virtualMachines_adminUsername": "claradmin",
     "vmNamePrefix": "vdiprdapp",
     "availabilitySet": "vdiprdapp-as01",
     "vnetName": "vnet-vdiprd",
@@ -55,13 +56,13 @@
         },
         "osProfile": {
           "computerName": "[concat(variables('vmNamePrefix'), padleft(copyindex(variables('offset')),2,'0'))]",
-          "adminUsername": "claradmin",
+          "adminUsername": "variables('virtualMachines_adminUsername')",
           "windowsConfiguration": {
             "provisionVMAgent": true,
             "enableAutomaticUpdates": true
           },
           "secrets": [],
-          "adminPassword": "[parameters('virtualMachines_vdiprdapp01_adminPassword')]"
+          "adminPassword": "[parameters('virtualMachines_adminPassword')]"
         },
         "networkProfile": {
           "networkInterfaces": [
