@@ -13,23 +13,23 @@
 
   },
   "variables": {
+    "offset": 8, // The starting 'number' of the first hostname (e.g. vdiprdappXX where XX is the offset)
+    "startIP": "10.103.49.27", // The starting IP address (range reserved for VMs: .20 - .254)
+    "numberOfInstances": 13, // The number of the VMs that must be provisioned
+    "domainJoinUserName": "claritas\\admgman", 
     "vmNamePrefix": "vdiprdapp",
-    "numberOfInstances": 1,
-    "offset": 4, // This would be the starting 'number' of the first host name (e.g. vdiprdappXX where XX is the offset)//GH-updated
     "availabilitySet": "vdiprdapp-as01",
     "vnetName": "vnet-vdiprd",
     "subnetName": "snet-vdiprdapp",
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
     "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
-    "startIP": "10.103.49.23", //GH-updated
     "ipArray": "[split(variables('startIP'), '.')]",
     "ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",
     "ipOct4": "[variables('ipArray')[3]]",
     "imageName": "VDI-Image",
     "domainName": "claritas.com",
     "ouPath": "OU=AADDC Computers,DC=claritas,DC=com",
-    "domainJoinOptions": 3,
-    "domainJoinUserName": "claritas\\admgman" //GH-updated
+    "domainJoinOptions": 3
   },
   "resources": [
     {
@@ -72,10 +72,10 @@
         }
       },
       "dependsOn": [
-        //"[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_vdiprdapp_as01_name'))]",
+        // "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_vdiprdapp_as01_name'))]",
         // "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vdiprddisks152_name'))]",
         // "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vdiprddiag317_name'))]",
-        //"[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vdiprdapp01233_name'))]"
+        // "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vdiprdapp01233_name'))]"
         "nicLoop"
       ]
     },
@@ -108,14 +108,14 @@
         "enableIPForwarding": false
       },
       "dependsOn": [
-        //"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_vdiprd_name'))]"
+        // "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_vdiprd_name'))]"
       ]
     },
     {
       "apiVersion": "[providers('Microsoft.Compute','virtualMachines').apiVersions[0]]",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(variables('vmNamePrefix'), padleft(copyindex(variables('offset')),2,'0'),'/joindomain')]",
-      "location": "centralus", //GH-updated
+      "location": "centralus", 
       "dependsOn": [
         "virtualMachineLoop"
       ],
@@ -133,7 +133,7 @@
           "Options": "[variables('domainJoinOptions')]",
           "OUPath": "[variables('ouPath')]",
           "Restart": "true",
-          "User": "[variables('domainJoinUserName')]" //GH-updated
+          "User": "[variables('domainJoinUserName')]" 
         },
         "protectedSettings": {
           "Password": "[parameters('domainPassword')]"
