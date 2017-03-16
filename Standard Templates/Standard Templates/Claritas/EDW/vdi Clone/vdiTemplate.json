@@ -13,9 +13,9 @@
 
   },
   "variables": {
-    "offset": 8, // The starting 'number' of the first hostname (e.g. vdiprdappXX where XX is the offset)
-    "startIP": "10.103.49.27", // The starting IP address (range reserved for VMs: .20 - .254)
-    "numberOfInstances": 13, // The number of the VMs that must be provisioned
+    "offset": 4, // The starting 'number' of the first hostname (e.g. vdiprdappXX where XX is the offset)
+    "startIP": "10.103.49.23", // The starting IP address (range reserved for VMs: .20 - .254)
+    "numberOfInstances": 4, // The number of the VMs that must be provisioned
     "domainJoinUserName": "claritas\\admgman",
     "virtualMachines_adminUsername": "claradmin",
     "vmNamePrefix": "vdiprdapp",
