@@ -56,7 +56,7 @@
         },
         "osProfile": {
           "computerName": "[concat(variables('vmNamePrefix'), padleft(copyindex(variables('offset')),2,'0'))]",
-          "adminUsername": "variables('virtualMachines_adminUsername')",
+          "adminUsername": "[variables('virtualMachines_adminUsername')]", 
           "windowsConfiguration": {
             "provisionVMAgent": true,
             "enableAutomaticUpdates": true
