@@ -9,14 +9,37 @@
   },
   "variables": {
     "vmNamePrefix": "vdiprdapp",
+
+    /*  
+    +---------------------------------------------------------------------------------------------------------+
+    |  Set the 'numberOfInstance' to the total number of VM's you want to create (e.g. '5' would create 5 VMs |
+    +---------------------------------------------------------------------------------------------------------+*/
     "numberOfInstances": 1,
-    "offset": 3, // This would be the starting 'number' of the first host name (e.g. vdiprdappXX where XX is the offset)
+
+    /*  
+    +---------------------------------------------------------------------------------------------------------+
+    |  This would be the starting 'number' of the first host name (e.g. vdiprdappXX where XX is the offset    |
+    +---------------------------------------------------------------------------------------------------------+*/
+    "offset": 1,
+
+    /*  
+    +---------------------------------------------------------------------------------------------------------+
+    |  Set the IP of the fist VM that will be created.  The IP address will increment by 1 in the fourth      |
+    |  quandrant (e.g. vm1 address is x.x.x.A, vm2 address is x.x.x.(A+1), vm3 address is x.x.x.(A_2), etc.   |
+    +---------------------------------------------------------------------------------------------------------+*/
+    "startIP": "10.103.49.20",
+
+    /*  
+    +---------------------------------------------------------------------------------------------------------+
+    |  General network configurations including avaialble set, virtual network and subnet names               |
+    +---------------------------------------------------------------------------------------------------------+*/
     "availabilitySet": "vdiprdapp-as01",
     "vnetName": "vnet-vdiprd",
     "subnetName": "snet-vdiprdapp",
+
+
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
     "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
-    "startIP": "10.103.49.22",
     "ipArray": "[split(variables('startIP'), '.')]",
     "ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",
     "ipOct4": "[variables('ipArray')[3]]",
@@ -135,5 +158,5 @@
       "properties": {},
       "dependsOn": []
     }*/
-      ]
-    }
+    ]
+  }
