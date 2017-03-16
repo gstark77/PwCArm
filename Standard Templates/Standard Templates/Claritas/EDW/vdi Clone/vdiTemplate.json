@@ -8,8 +8,9 @@
     }
   },
   "variables": {
-    "numberOfInstances": 1,
     "vmNamePrefix": "vdiprdapp",
+    "numberOfInstances": 1,
+    "offset": 3, // This would be the starting 'number' of the first host name (e.g. vdiprdappXX where XX is the offset)
     "availabilitySet": "vdiprdapp-as01",
     "vnetName": "vnet-vdiprd",
     "subnetName": "snet-vdiprdapp",
@@ -19,7 +20,7 @@
     "ipArray": "[split(variables('startIP'), '.')]",
     "ipFirst3": "[concat(variables('ipArray')[0], '.',variables('ipArray')[1], '.',variables('ipArray')[2], '.')]",
     "ipOct4": "[variables('ipArray')[3]]",
-    "offset": 3
+    "imageName": "VDI-Image"
   },
   "resources": [
     {
@@ -41,11 +42,11 @@
           },
           "storageProfile": {
             "imageReference": {
-              "id": "[resourceId('Microsoft.Compute/images', 'VDI-Image')]"
+              "id": "[resourceId('Microsoft.Compute/images', variables('imageName'))]"
             }
           },
           "osProfile": {
-            "computerName": "[concat(variables('vmNamePrefix'), padleft(copyindex(3),2,'0'))]",
+            "computerName": "[concat(variables('vmNamePrefix'), padleft(copyindex(variables('offset')),2,'0'))]",
             "adminUsername": "claradmin",
             "windowsConfiguration": {
               "provisionVMAgent": true,
@@ -57,7 +58,7 @@
           "networkProfile": {
             "networkInterfaces": [
               {
-                "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('vmNamePrefix'), padleft(copyindex(3),2,'0'),'-nic1'))]"
+                "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('vmNamePrefix'), padleft(copyindex(variables('offset')),2,'0'),'-nic1'))]"
               }
             ]
           }
@@ -73,7 +74,7 @@
     {
       "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/vdiprd/providers/Microsoft.Network/networkInterfaces/vdiprdapp01233'.",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[concat(variables('vmNamePrefix'), padleft(copyindex(3),2,'0'),'-nic1')]",
+      "name": "[concat(variables('vmNamePrefix'), padleft(copyindex(variables('offset')),2,'0'),'-nic1')]",
       "apiVersion": "[providers('Microsoft.Network','networkInterfaces').apiVersions[0]]",
       "location": "centralus",
       "copy": {
