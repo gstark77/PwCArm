@@ -100,7 +100,7 @@
   <Target Name="GetReferenceAssemblyPaths" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties />
+      <UserProperties Claritas_4Dart_4DartDeploy_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
