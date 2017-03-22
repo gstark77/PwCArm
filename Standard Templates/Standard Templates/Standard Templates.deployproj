@@ -38,6 +38,7 @@
     <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
     <None Include="AD\New Domain HA\README.md" />
     <None Include="azuredeploy.json" />
+    <None Include="Claritas\Dart\DartDeploy.json" />
     <None Include="Claritas\EDW\Network.edw.json" />
     <None Include="Claritas\EDW\Network.edw.parameters.json" />
     <None Include="Claritas\EDW\vdi Clone\vdiTemplate.parameters.json" />
@@ -89,7 +90,7 @@
   <Target Name="GetReferenceAssemblyPaths" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Claritas_4Dart_4DartDeploy_1json__JSONSchema="" />
+      <UserProperties />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
