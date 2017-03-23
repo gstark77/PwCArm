@@ -1,0 +1,58 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "myASName": {
+            "type": "string",
+            "minLength": 1
+        }
+    },
+  "variables": {
+    "commonInfo": {
+      "appName": "dar",
+      "appEnv": "dev",
+      "networkBaseCIDR": "10.100.0.0/21",
+      "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+      "strDnsServer": "192.168.0.1"
+
+    },
+    "appInfo": {
+      "networkInfo": {
+        "dns": "x.x.x.x",
+        "subnets": [
+          {
+            "name": "web",
+            "startIP": "x.x.x.x"
+          },
+          {
+            "name": "app",
+            "startIP": "x.x.x.x"
+          }
+        ]
+      },
+        "tiers": [
+          {
+            "name": "web",
+            "arch": "scaleSet",
+            "numInstances": 1
+          },
+          {
+            "name": "app",
+            "arch": "loadBalancer",
+            "numInstances": 3            
+          }
+        ]
+    }
+
+  },
+  "resources": [
+      
+    //Link to VNET Template
+    //LInk to App tier Template
+      // loops through the app tier template and passes relevant objects to the architecture template (eg. scaleset template, load balancer)
+  
+  
+  ],
+    "outputs": {
+    }
+}
