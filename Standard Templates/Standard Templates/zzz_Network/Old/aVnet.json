@@ -1,0 +1,68 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "strApplication": { "type": "string" },
+    "strEnvironment": { "type": "string" },
+    "strEnvironmentPrefix": { "type": "string" },
+    "arrSnetName": { "type": "array" },
+    "arrSnetPrefix": { "type": "array" },
+    "arrSnetPrefixIncrementor": {"type": "array"},
+    "strDnsServer": { "type": "string" },
+    "strUri": { "type": "string" }
+  },
+  "variables": {
+    "deliminators": [".","/"],
+    "arrSnetPrefixOctet": "[split(parameters('strEnvironmentPrefix'),variables('deliminators'))]",
+    "strRevisedSnetPrefix": "[concat(variables('arrSnetPrefixOctet')[0],'.',variables('arrSnetPrefixOctet')[1],'.',variables('arrSnetPrefixOctet')[2],variables('arrSnetPrefixOctet')[3],'/24')]"
+ 
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[concat('vnet-',parameters('strApplication'),parameters('strEnvironment'))]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [ "[parameters('strEnvironmentPrefix')]" ]
+        },
+        /* Create first subnet in vnet  */
+        "subnets": [
+          {
+            "name": "[concat('snet-',parameters('strApplication'), parameters('strEnvironment'), parameters('arrSnetName')[0])]",
+            "properties": {
+              "addressPrefix": "[variables('strRevisedSnetPrefix')]"
+            }
+          }
+        ]
+      }
+    }/*,
+    {
+      "name": "[concat('from_vnet_send__to__snet__',copyIndex(),'___',uniqueString(resourceGroup().id))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+      "copy": {
+        "name": "snetLoop",
+        "count": "[add(length(parameters('arrSnetName')),-1)]" 
+      },
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[parameters('strUri')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "strApplication": { "value": "[parameters('strApplication')]" },
+          "strEnvironment": { "value": "[parameters('strEnvironment')]" },
+          "strEnvironmentPrefix": { "value": "[parameters('strEnvironmentPrefix')]" },
+          "strSnetName": { "value": "[parameters('arrSnetName')[add(copyIndex(),1)]]" }, 
+          "strSnetPrefix": { "value": "[parameters('arrSnetPrefix')[add(copyIndex(),1)]]" },
+          "strDnsServer": { "value": "[parameters('strDnsServer')]" }
+        }
+      }
+    }*/
+  ],
+  "outputs": {
+  }
+}
