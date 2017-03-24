@@ -1,0 +1,27 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "availabilitySets_comprdappadd_as01_name": {
+      "value": "comprdappadd-as01"
+    },
+    "disks_comprdappadd01_disk1_name": {
+      "value": "comprdappadd01_disk1"
+    },
+    "virtualMachines_comprdappadd01_name": {
+      "value": "comprdappadd01"
+    },
+    "networkInterfaces_comprdappadd01_nic1_name": {
+      "value": "comprdappadd01-nic1"
+    },
+    "networkSecurityGroups_comprdapp_nsg_name": {
+      "value": "comprdapp-nsg"
+    },
+    "virtualNetworks_vnet_comprd_name": {
+      "value": "vnet-comprd"
+    },
+    "storageAccounts_comprddiag_name": {
+      "value": "comprddiag"
+    }
+  }
+}

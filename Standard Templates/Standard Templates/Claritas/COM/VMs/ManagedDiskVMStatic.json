@@ -1,0 +1,217 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "availabilitySets_comprdappadd_as01_name": {
+      "defaultValue": "comprdappadd-as01",
+      "type": "String"
+    },
+    "disks_comprdappadd01_disk1_name": {
+      "defaultValue": "comprdappadd01_disk1",
+      "type": "String"
+    },
+    "virtualMachines_comprdappadd01_name": {
+      "defaultValue": "comprdappadd01",
+      "type": "String"
+    },
+    "networkInterfaces_comprdappadd01_nic1_name": {
+      "defaultValue": "comprdappadd01-nic1",
+      "type": "String"
+    },
+    "networkSecurityGroups_comprdapp_nsg_name": {
+      "defaultValue": "comprdapp-nsg",
+      "type": "String"
+    },
+    "virtualNetworks_vnet_comprd_name": {
+      "defaultValue": "vnet-comprd",
+      "type": "String"
+    },
+    "virtualMachine_adminPassword": {
+      "defaultValue": null,
+      "type": "securestring"
+    },
+    "storageAccounts_comprddiag_name": {
+      "defaultValue": "comprddiag",
+      "type": "String"
+    }
+  },
+    "variables": {},
+    "resources": [
+      {
+        "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Compute/availabilitySets/comprdappadd-as01'.",
+        "type": "Microsoft.Compute/availabilitySets",
+        "sku": {
+          "name": "Aligned"
+        },
+        "name": "[parameters('availabilitySets_comprdappadd_as01_name')]",
+        "apiVersion": "2016-04-30-preview",
+        "location": "centralus",
+        "properties": {
+          "platformUpdateDomainCount": 5,
+          "platformFaultDomainCount": 2,
+          "virtualMachines": []
+        },
+        "dependsOn": []
+      },
+      /*{
+        "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Compute/disks/comprdappadd01'.",
+        "type": "Microsoft.Compute/disks",
+        "name": "[parameters('disks_comprdappadd01_disk1_name')]",
+        "apiVersion": "2016-04-30-preview",
+        "location": "centralus",
+        "properties": {
+          "accountType": "Premium_LRS",
+          "osType": "Windows",
+          "creationData": {
+            "createOption": "FromImage",
+            "imageReference": {
+              "id": "/Subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/Providers/Microsoft.Compute/Locations/centralus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/latest"
+            }
+          },
+          "diskSizeGB": 128
+        },
+        "dependsOn": []
+      },*/
+      {
+        "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Compute/virtualMachines/comprdappadd01'.",
+        "type": "Microsoft.Compute/virtualMachines",
+        "name": "[parameters('virtualMachines_comprdappadd01_name')]",
+        "apiVersion": "2016-04-30-preview",
+        "location": "centralus",
+        "properties": {
+          "hardwareProfile": {
+            "vmSize": "Standard_DS1_v2"
+          },
+          "storageProfile": {
+            "imageReference": {
+              "publisher": "MicrosoftWindowsServer",
+              "offer": "WindowsServer",
+              "sku": "2016-Datacenter",
+              "version": "latest"
+            },
+            "osDisk": {
+              "osType": "Windows",
+              "name": "[parameters('disks_comprdappadd01_disk1_name')]",
+              "createOption": "FromImage",
+              "caching": "ReadWrite" //,
+              //"managedDisk": {
+              // "id": "[resourceId('Microsoft.Compute/disks', parameters('disks_comprdappadd01_disk1_name'))]"
+              //}
+            },
+            "dataDisks": []
+          },
+          "osProfile": {
+            "computerName": "[parameters('virtualMachines_comprdappadd01_name')]",
+            "adminUsername": "claradmin",
+            "windowsConfiguration": {
+              "provisionVMAgent": true,
+              "enableAutomaticUpdates": true
+            },
+            "secrets": [],
+            "adminPassword": "[parameters('virtualMachine_adminPassword')]"
+          },
+          "networkProfile": {
+            "networkInterfaces": [
+              {
+                "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_comprdappadd01_nic1_name'))]"
+              }
+            ]
+          },
+          "diagnosticsProfile": {
+            "bootDiagnostics": {
+              "enabled": true,
+              "storageUri": "[concat('https', '://', parameters('storageAccounts_comprddiag_name'), '.blob.core.windows.net', '/')]"
+            }
+          }
+        },
+        "dependsOn": [
+         // "[resourceId('Microsoft.Compute/disks', parameters('disks_comprdappadd01_disk1_name'))]",
+          "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_comprdappadd01_nic1_name'))]",
+          "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_comprddiag_name'))]"
+        ]
+      },
+      {
+        "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Network/networkInterfaces/comprdappadd01-nic1'.",
+        "type": "Microsoft.Network/networkInterfaces",
+        "name": "[parameters('networkInterfaces_comprdappadd01_nic1_name')]",
+        "apiVersion": "2016-03-30",
+        "location": "centralus",
+        "properties": {
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "properties": {
+                "privateIPAddress": "10.103.41.21",
+                "privateIPAllocationMethod": "Static",
+                "subnet": {
+                  "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_comprd_name')), '/subnets/snet-comprdapp')]"
+                }
+              }
+            }
+          ],
+          "dnsSettings": {
+            "dnsServers": []
+          },
+          "enableIPForwarding": false
+        },
+        "dependsOn": [
+        //  "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_comprd_name'))]"
+        ]
+      },
+      /*{
+      "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Network/networkSecurityGroups/comprdapp-nsg'.",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('networkSecurityGroups_comprdapp_nsg_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "securityRules": []
+      },
+      "dependsOn": []
+    },*//*
+      {
+        "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Network/virtualNetworks/vnet-comprd'.",
+        "type": "Microsoft.Network/virtualNetworks",
+        "name": "[parameters('virtualNetworks_vnet_comprd_name')]",
+        "apiVersion": "2016-03-30",
+        "location": "centralus",
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.103.40.0/21"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "snet-comprdapp",
+              "properties": {
+                "addressPrefix": "10.103.41.0/24",
+                "networkSecurityGroup": {
+                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_comprdapp_nsg_name'))]"
+                }
+              }
+            }
+          ]
+        },
+        "dependsOn": [
+         // "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_comprdweb_nsg_name'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_comprdapp_nsg_name'))]"
+        ]
+      },*/
+      {
+        "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Storage/storageAccounts/comprddiag'.",
+        "type": "Microsoft.Storage/storageAccounts",
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "kind": "Storage",
+        "name": "[parameters('storageAccounts_comprddiag_name')]",
+        "apiVersion": "2016-01-01",
+        "location": "centralus",
+        "tags": {},
+        "properties": {},
+        "dependsOn": []
+      }
+    ]
+  }
