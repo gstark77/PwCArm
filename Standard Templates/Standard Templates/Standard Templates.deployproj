@@ -38,6 +38,8 @@
     <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
     <None Include="AD\New Domain HA\README.md" />
     <None Include="azuredeploy.json" />
+    <None Include="Claritas\EDW\Demo___Network.json" />
+    <None Include="Claritas\EDW\Demo___Network.parameters.json" />
     <None Include="Claritas\EDW\Network.edw.json" />
     <None Include="Claritas\EDW\Network.edw.parameters.json" />
     <None Include="Claritas\EDW\Network\newVnetandSnet.parameters.json" />
