@@ -38,8 +38,6 @@
     <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
     <None Include="AD\New Domain HA\README.md" />
     <None Include="azuredeploy.json" />
-    <None Include="Claritas\COM\VMs\ManagedDiskVMStatic.json" />
-    <None Include="Claritas\COM\VMs\ManagedDiskVMStatic.parameters.json" />
     <None Include="Claritas\EDW\Network\newVnetandSnet.parameters.json" />
     <None Include="Claritas\EDW\Network\newVnetandSnet.json" />
     <None Include="Claritas\EDW\Network\VnetandSnet.Metadata.json" />
@@ -66,7 +64,6 @@
     <None Include="Claritas\EDW\Network\Vnet.parameters.json" />
     <None Include="Claritas\EDW\vdi Clone\vdiTemplate.parameters.json" />
     <None Include="Claritas\EDW\vdi Clone\vdiTemplate.json" />
-    <None Include="Claritas\EDW\VirtualMachineManagedLinked.json" />
     <None Include="Claritas\EDW\VM_from_image_Main.parameters.json" />
     <None Include="Claritas\EDW\VM_from_image_Main.json" />
     <None Include="Claritas\EDW\temporaryMainLinked.parameters.json" />
@@ -94,15 +91,34 @@
     <None Include="Network\vnet.parameters.json" />
     <None Include="Network\vnet.json" />
     <None Include="Network\VnetLinked.json" />
-    <None Include="VMs\ManagedDiskVM.parameters.json" />
-    <None Include="VMs\ManagedDiskVM.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.parameters.json" />
     <None Include="VMs\VirtualMachines.json" />
     <None Include="VMs\VirtualMachines.parameters.json" />
+    <None Include="zzz_Network\Objects\Vnet.json" />
+    <None Include="zzz_Network\Objects\Vnet.parameters.json" />
+    <None Include="zzz_Network\Objects\VnetandSnet.json" />
+    <None Include="zzz_Network\Objects\VnetandSnet.Metadata.json" />
+    <None Include="zzz_Network\Objects\VnetandSnetMain.json" />
+    <None Include="zzz_Network\Old\aNetwork_Main.json" />
+    <None Include="zzz_Network\Old\aNetwork_Main.parameters.json" />
+    <None Include="zzz_Network\Old\aSnet.json" />
+    <None Include="zzz_Network\Old\aSnet.parameters.json" />
+    <None Include="zzz_Network\Old\aVnet.json" />
+    <None Include="zzz_Network\Old\aVnet.parameters.json" />
+    <None Include="zzz_Network\Old\Network_Main.json" />
+    <None Include="zzz_Network\Old\Network_Main.parameters.json" />
+    <None Include="zzz_Network\Old\newVnetandSnet.json" />
+    <None Include="zzz_Network\Old\newVnetandSnet.parameters.json" />
+    <None Include="zzz_Network\Old\newVnetandSnetMain.json" />
+    <None Include="zzz_Network\Simple Linked Templates\simpleLinked.json" />
+    <None Include="zzz_Network\Simple Linked Templates\simpleMainLinked.json" />
+    <None Include="zzz_Network\Simple Linked Templates\simpleMainLinked.parameters.json" />
+    <None Include="zzz_Network\Simple Linked Templates\simpleSubnetLinked.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Claritas\SMS\" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
   <ProjectExtensions>
