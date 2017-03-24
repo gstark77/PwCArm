@@ -38,6 +38,8 @@
     <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
     <None Include="AD\New Domain HA\README.md" />
     <None Include="azuredeploy.json" />
+    <None Include="Claritas\COM\VMs\ManagedDiskVMStatic.json" />
+    <None Include="Claritas\COM\VMs\ManagedDiskVMStatic.parameters.json" />
     <None Include="Claritas\EDW\Network\newVnetandSnet.parameters.json" />
     <None Include="Claritas\EDW\Network\newVnetandSnet.json" />
     <None Include="Claritas\EDW\Network\VnetandSnet.Metadata.json" />
@@ -71,6 +73,10 @@
     <None Include="Claritas\EDW\temporaryMainLinked.json" />
     <None Include="Claritas\EDW\VM_from_image.json" />
     <None Include="Claritas\EDW\VirtualMachineLinked.json" />
+    <None Include="Claritas\OPA\VMs\ManagedDiskVMStaticPIP.json" />
+    <None Include="Claritas\OPA\VMs\ManagedDiskVMStaticPIP.parameters.json" />
+    <None Include="Claritas\OPA\VMs\ManagedDiskVMStatic.json" />
+    <None Include="Claritas\OPA\VMs\ManagedDiskVMStatic.parameters.json" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
@@ -88,6 +94,8 @@
     <None Include="Network\vnet.parameters.json" />
     <None Include="Network\vnet.json" />
     <None Include="Network\VnetLinked.json" />
+    <None Include="VMs\ManagedDiskVM.parameters.json" />
+    <None Include="VMs\ManagedDiskVM.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.parameters.json" />
     <None Include="VMs\VirtualMachines.json" />
