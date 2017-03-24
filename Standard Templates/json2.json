@@ -1,0 +1,4217 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "Redis_smsdevappred01_name": {
+      "defaultValue": "smsdevappred01",
+      "type": "String"
+    },
+    "availabilitySets_smsdevapp_as01_name": {
+      "defaultValue": "smsdevapp-as01",
+      "type": "String"
+    },
+    "availabilitySets_smsdevappfme_as01_name": {
+      "defaultValue": "smsdevappfme-as01",
+      "type": "String"
+    },
+    "availabilitySets_smsdevappgeo_as01_name": {
+      "defaultValue": "smsdevappgeo-as01",
+      "type": "String"
+    },
+    "availabilitySets_smsdevappmap_as01_name": {
+      "defaultValue": "smsdevappmap-as01",
+      "type": "String"
+    },
+    "availabilitySets_smsdevappmsg_as01_name": {
+      "defaultValue": "smsdevappmsg-as01",
+      "type": "String"
+    },
+    "availabilitySets_smsdevdba_as01_name": {
+      "defaultValue": "smsdevdba-as01",
+      "type": "String"
+    },
+    "availabilitySets_smsdevweb_as01_name": {
+      "defaultValue": "smsdevweb-as01",
+      "type": "String"
+    },
+    "virtualMachines_smsdevapp01_name": {
+      "defaultValue": "smsdevapp01",
+      "type": "String"
+    },
+    "virtualMachines_smsdevapp02_name": {
+      "defaultValue": "smsdevapp02",
+      "type": "String"
+    },
+    "virtualMachines_smsdevapp03_name": {
+      "defaultValue": "smsdevapp03",
+      "type": "String"
+    },
+    "virtualMachines_smsdevapp04_name": {
+      "defaultValue": "smsdevapp04",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappfme10_name": {
+      "defaultValue": "smsdevappfme10",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappfme11_name": {
+      "defaultValue": "smsdevappfme11",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappgeo01_name": {
+      "defaultValue": "smsdevappgeo01",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappgeo02_name": {
+      "defaultValue": "smsdevappgeo02",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappmap01_name": {
+      "defaultValue": "smsdevappmap01",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappmap02_name": {
+      "defaultValue": "smsdevappmap02",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappmsg01_name": {
+      "defaultValue": "smsdevappmsg01",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappmsg02_name": {
+      "defaultValue": "smsdevappmsg02",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappmsg03_name": {
+      "defaultValue": "smsdevappmsg03",
+      "type": "String"
+    },
+    "virtualMachines_smsdevappmsg04_name": {
+      "defaultValue": "smsdevappmsg04",
+      "type": "String"
+    },
+    "virtualMachines_smsdevdba01_name": {
+      "defaultValue": "smsdevdba01",
+      "type": "String"
+    },
+    "virtualMachines_smsdevdba02_name": {
+      "defaultValue": "smsdevdba02",
+      "type": "String"
+    },
+    "virtualMachines_smsdevweb01_name": {
+      "defaultValue": "smsdevweb01",
+      "type": "String"
+    },
+    "virtualMachines_smsdevweb02_name": {
+      "defaultValue": "smsdevweb02",
+      "type": "String"
+    },
+    "virtualMachines_smsdevweb03_name": {
+      "defaultValue": "smsdevweb03",
+      "type": "String"
+    },
+    "virtualMachines_smsdevweb04_name": {
+      "defaultValue": "smsdevweb04",
+      "type": "String"
+    },
+    "components_smsfileenhancement_name": {
+      "defaultValue": "smsfileenhancement",
+      "type": "String"
+    },
+    "loadBalancers_smsdevapp_lb01_name": {
+      "defaultValue": "smsdevapp-lb01",
+      "type": "String"
+    },
+    "loadBalancers_smsdevappgeo_lb01_name": {
+      "defaultValue": "smsdevappgeo-lb01",
+      "type": "String"
+    },
+    "loadBalancers_smsdevappmsg_lb01_name": {
+      "defaultValue": "smsdevappmsg-lb01",
+      "type": "String"
+    },
+    "loadBalancers_smsdevweb_lb01_name": {
+      "defaultValue": "smsdevweb-lb01",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevapp_nic0_name": {
+      "defaultValue": "smsdevapp-nic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevapp_nic1_name": {
+      "defaultValue": "smsdevapp-nic1",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevapp_nic2_name": {
+      "defaultValue": "smsdevapp-nic2",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevapp_nic3_name": {
+      "defaultValue": "smsdevapp-nic3",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappfme01884_name": {
+      "defaultValue": "smsdevappfme01884",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappfme10348_name": {
+      "defaultValue": "smsdevappfme10348",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappfme11366_name": {
+      "defaultValue": "smsdevappfme11366",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappgeo_nic0_name": {
+      "defaultValue": "smsdevappgeo-nic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappgeo_nic1_name": {
+      "defaultValue": "smsdevappgeo-nic1",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappmap01_nic0_name": {
+      "defaultValue": "smsdevappmap01-nic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappmap02_nic0_name": {
+      "defaultValue": "smsdevappmap02-nic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappmsg_nic0_name": {
+      "defaultValue": "smsdevappmsg-nic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappmsg_nic1_name": {
+      "defaultValue": "smsdevappmsg-nic1",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappmsg_nic2_name": {
+      "defaultValue": "smsdevappmsg-nic2",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevappmsg_nic3_name": {
+      "defaultValue": "smsdevappmsg-nic3",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevdba01_nic0_name": {
+      "defaultValue": "smsdevdba01-nic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevdba01_repnic0_name": {
+      "defaultValue": "smsdevdba01-repnic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevdba02_nic0_name": {
+      "defaultValue": "smsdevdba02-nic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevdba02_repnic0_name": {
+      "defaultValue": "smsdevdba02-repnic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevdba03270_name": {
+      "defaultValue": "smsdevdba03270",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevweb_nic0_name": {
+      "defaultValue": "smsdevweb-nic0",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevweb_nic1_name": {
+      "defaultValue": "smsdevweb-nic1",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevweb_nic2_name": {
+      "defaultValue": "smsdevweb-nic2",
+      "type": "String"
+    },
+    "networkInterfaces_smsdevweb_nic3_name": {
+      "defaultValue": "smsdevweb-nic3",
+      "type": "String"
+    },
+    "networkSecurityGroups_smsdevapp_nsg_name": {
+      "defaultValue": "smsdevapp-nsg",
+      "type": "String"
+    },
+    "networkSecurityGroups_smsdevpri_nsg_name": {
+      "defaultValue": "smsdevpri-nsg",
+      "type": "String"
+    },
+    "networkSecurityGroups_smsdevpub_nsg_name": {
+      "defaultValue": "smsdevpub-nsg",
+      "type": "String"
+    },
+    "networkSecurityGroups_smsdevrca_nsg_name": {
+      "defaultValue": "smsdevrca-nsg",
+      "type": "String"
+    },
+    "networkSecurityGroups_smsdevrep_nsg_name": {
+      "defaultValue": "smsdevrep-nsg",
+      "type": "String"
+    },
+    "networkSecurityGroups_smsdevweb_nsg_name": {
+      "defaultValue": "smsdevweb-nsg",
+      "type": "String"
+    },
+    "publicIPAddresses_51.176.54.221_name": {
+      "defaultValue": "51.176.54.221",
+      "type": "String"
+    },
+    "publicIPAddresses_smsdevappfme10_ip_name": {
+      "defaultValue": "smsdevappfme10-ip",
+      "type": "String"
+    },
+    "publicIPAddresses_smsdevdba01_pip_name": {
+      "defaultValue": "smsdevdba01-pip",
+      "type": "String"
+    },
+    "publicIPAddresses_smsdevdba02_pip_name": {
+      "defaultValue": "smsdevdba02-pip",
+      "type": "String"
+    },
+    "virtualNetworks_vnet_smsdev_name": {
+      "defaultValue": "vnet-smsdev",
+      "type": "String"
+    },
+    "vaults_smsdev_vault01_name": {
+      "defaultValue": "smsdev-vault01",
+      "type": "String"
+    },
+    "storageAccounts_smsdevapphgilsyqrr6rv2_name": {
+      "defaultValue": "smsdevapphgilsyqrr6rv2",
+      "type": "String"
+    },
+    "storageAccounts_smsdevappv3gilsyqrr6_name": {
+      "defaultValue": "smsdevappv3gilsyqrr6",
+      "type": "String"
+    },
+    "storageAccounts_smsdevdbahgilsyqrr6rv2_name": {
+      "defaultValue": "smsdevdbahgilsyqrr6rv2",
+      "type": "String"
+    },
+    "storageAccounts_smsdevdisks636_name": {
+      "defaultValue": "smsdevdisks636",
+      "type": "String"
+    },
+    "storageAccounts_smsdevwebhgilsyqrr6rv2_name": {
+      "defaultValue": "smsdevwebhgilsyqrr6rv2",
+      "type": "String"
+    },
+    "storageAccounts_smsprdwebhgilsyqrr6rv2_name": {
+      "defaultValue": "smsprdwebhgilsyqrr6rv2",
+      "type": "String"
+    },
+    "serverfarms_smsdevwebservices_name": {
+      "defaultValue": "smsdevwebservices",
+      "type": "String"
+    },
+    "sites_smsfileenhancement_name": {
+      "defaultValue": "smsfileenhancement",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name": {
+      "defaultValue": "smsdevapp01/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_1": {
+      "defaultValue": "smsdevapp02/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_2": {
+      "defaultValue": "smsdevapp03/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_3": {
+      "defaultValue": "smsdevapp04/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshot_name": {
+      "defaultValue": "smsdevappfme10/VMSnapshot",
+      "type": "String"
+    },
+    "extensions_VMSnapshot_name_1": {
+      "defaultValue": "smsdevappfme11/VMSnapshot",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_4": {
+      "defaultValue": "smsdevappgeo01/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_5": {
+      "defaultValue": "smsdevappgeo02/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshot_name_2": {
+      "defaultValue": "smsdevappmap01/VMSnapshot",
+      "type": "String"
+    },
+    "extensions_VMSnapshot_name_3": {
+      "defaultValue": "smsdevappmap02/VMSnapshot",
+      "type": "String"
+    },
+    "extensions_VMSnapshot_name_4": {
+      "defaultValue": "smsdevappmsg01/VMSnapshot",
+      "type": "String"
+    },
+    "extensions_VMSnapshot_name_5": {
+      "defaultValue": "smsdevappmsg02/VMSnapshot",
+      "type": "String"
+    },
+    "extensions_VMSnapshot_name_6": {
+      "defaultValue": "smsdevappmsg03/VMSnapshot",
+      "type": "String"
+    },
+    "extensions_VMSnapshot_name_7": {
+      "defaultValue": "smsdevappmsg04/VMSnapshot",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_6": {
+      "defaultValue": "smsdevdba01/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_7": {
+      "defaultValue": "smsdevweb01/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_8": {
+      "defaultValue": "smsdevweb02/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_9": {
+      "defaultValue": "smsdevweb03/VMSnapshotLinux",
+      "type": "String"
+    },
+    "extensions_VMSnapshotLinux_name_10": {
+      "defaultValue": "smsdevweb04/VMSnapshotLinux",
+      "type": "String"
+    },
+    "loadBalancers_smsdevapp_lb01_id": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevapp-lb01/frontendIPConfigurations/LoadBalancerFrontend",
+      "type": "String"
+    },
+    "loadBalancers_smsdevapp_lb01_id_1": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevapp-lb01/backendAddressPools/BackendPool1",
+      "type": "String"
+    },
+    "loadBalancers_smsdevapp_lb01_id_2": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevapp-lb01/probes/smsdevapp-prb01",
+      "type": "String"
+    },
+    "loadBalancers_smsdevappgeo_lb01_id": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevappgeo-lb01/frontendIPConfigurations/LoadBalancerFrontend",
+      "type": "String"
+    },
+    "loadBalancers_smsdevappgeo_lb01_id_1": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevappgeo-lb01/backendAddressPools/BackendPool1",
+      "type": "String"
+    },
+    "loadBalancers_smsdevappgeo_lb01_id_2": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevappgeo-lb01/probes/smsdevappgeo-prb01",
+      "type": "String"
+    },
+    "loadBalancers_smsdevappmsg_lb01_id": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevappmsg-lb01/frontendIPConfigurations/LoadBalancerFrontend",
+      "type": "String"
+    },
+    "loadBalancers_smsdevappmsg_lb01_id_1": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevappmsg-lb01/backendAddressPools/BackendPool1",
+      "type": "String"
+    },
+    "loadBalancers_smsdevappmsg_lb01_id_2": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevappmsg-lb01/probes/smsdevappmsg-prb01",
+      "type": "String"
+    },
+    "loadBalancers_smsdevweb_lb01_id": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevweb-lb01/frontendIPConfigurations/LoadBalancerFrontend",
+      "type": "String"
+    },
+    "loadBalancers_smsdevweb_lb01_id_1": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevweb-lb01/backendAddressPools/BackendPool1",
+      "type": "String"
+    },
+    "loadBalancers_smsdevweb_lb01_id_2": {
+      "defaultValue": "/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevweb-lb01/probes/smsdevweb-prb01",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Cache/Redis/smsdevappred01'.",
+      "type": "Microsoft.Cache/Redis",
+      "name": "[parameters('Redis_smsdevappred01_name')]",
+      "apiVersion": "2016-04-01",
+      "location": "Central US",
+      "tags": {},
+      "properties": {
+        "redisVersion": "3.2",
+        "sku": {
+          "name": "Premium",
+          "family": "P",
+          "capacity": 1
+        },
+        "enableNonSslPort": true,
+        "redisConfiguration": {
+          "maxclients": "7500",
+          "maxmemory-reserved": "200",
+          "rdb-backup-enabled": "true",
+          "rdb-backup-frequency": "360",
+          "rdb-backup-max-snapshot-count": "1",
+          "maxmemory-delta": "200",
+          "rdb-storage-connection-string": "DefaultEndpointsProtocol=https;BlobEndpoint=https://smsdevapphgilsyqrr6rv2.blob.core.windows.net/;AccountName=smsdevapphgilsyqrr6rv2;AccountKey=[key hidden]"
+        },
+        "subnetId": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevrca')]",
+        "staticIP": "10.100.6.20",
+        "shardCount": 1
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/availabilitySets/smsdevapp-as01'.",
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+        "name": "Classic"
+      },
+      "name": "[parameters('availabilitySets_smsdevapp_as01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "AvailabilitySet",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "platformUpdateDomainCount": 5,
+        "platformFaultDomainCount": 3,
+        "virtualMachines": [
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp01_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp02_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp03_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp04_name'))]"
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp01_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp02_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp03_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp04_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/availabilitySets/smsdevappfme-as01'.",
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+        "name": "Classic"
+      },
+      "name": "[parameters('availabilitySets_smsdevappfme_as01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "AvailabilitySet",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "platformUpdateDomainCount": 5,
+        "platformFaultDomainCount": 3,
+        "virtualMachines": [
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappfme10_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappfme11_name'))]"
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappfme10_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappfme11_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/availabilitySets/smsdevappgeo-as01'.",
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+        "name": "Classic"
+      },
+      "name": "[parameters('availabilitySets_smsdevappgeo_as01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "AvailabilitySet",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "platformUpdateDomainCount": 5,
+        "platformFaultDomainCount": 3,
+        "virtualMachines": [
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappgeo01_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappgeo02_name'))]"
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappgeo01_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappgeo02_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/availabilitySets/smsdevappmap-as01'.",
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+        "name": "Classic"
+      },
+      "name": "[parameters('availabilitySets_smsdevappmap_as01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "AvailabilitySet",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "platformUpdateDomainCount": 5,
+        "platformFaultDomainCount": 3,
+        "virtualMachines": [
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmap01_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmap02_name'))]"
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmap01_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmap02_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/availabilitySets/smsdevappmsg-as01'.",
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+        "name": "Classic"
+      },
+      "name": "[parameters('availabilitySets_smsdevappmsg_as01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "AvailabilitySet",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "platformUpdateDomainCount": 5,
+        "platformFaultDomainCount": 3,
+        "virtualMachines": [
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg01_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg02_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg03_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg04_name'))]"
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg01_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg02_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg03_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg04_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/availabilitySets/smsdevdba-as01'.",
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+        "name": "Classic"
+      },
+      "name": "[parameters('availabilitySets_smsdevdba_as01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "AvailabilitySet",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "dba"
+      },
+      "properties": {
+        "platformUpdateDomainCount": 5,
+        "platformFaultDomainCount": 3,
+        "virtualMachines": [
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevdba01_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevdba02_name'))]"
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevdba01_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevdba02_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/availabilitySets/smsdevweb-as01'.",
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+        "name": "Classic"
+      },
+      "name": "[parameters('availabilitySets_smsdevweb_as01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "AvailabilitySet",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "platformUpdateDomainCount": 5,
+        "platformFaultDomainCount": 3,
+        "virtualMachines": [
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb01_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb02_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb03_name'))]"
+          },
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb04_name'))]"
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb01_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb02_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb03_name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb04_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevapp01'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevapp01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevapp_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevapp0.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevapp01_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevapp_nic0_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevapp_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevapp_nic0_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevapp02'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevapp02_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevapp_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevapp1.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevapp02_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevapp_nic1_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevapp_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevapp_nic1_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevapp03'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevapp03_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevapp_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevapp2.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevapp03_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevapp_nic2_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevapp_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevapp_nic2_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevapp04'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevapp04_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevapp_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevapp3.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevapp04_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevapp_nic3_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevapp_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevapp_nic3_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappfme10'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappfme10_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappfme_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_DS11_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "[parameters('virtualMachines_smsdevappfme10_name')]",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevappv3gilsyqrr6_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_smsdevappfme10_name'),'20170227164125.vhd'))]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "[concat(parameters('virtualMachines_smsdevappfme10_name'),'-20170227-164723')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_smsdevappv3gilsyqrr6_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_smsdevappfme10_name'),'-20170227-164723.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 1023
+            },
+            {
+              "lun": 1,
+              "name": "[concat(parameters('virtualMachines_smsdevappfme10_name'),'-20170227-170645')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_smsdevappv3gilsyqrr6_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_smsdevappfme10_name'),'-20170227-170645.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 1023
+            }
+          ]
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappfme10_name')]",
+          "adminUsername": "claradmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappfme10348_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappfme_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevappv3gilsyqrr6_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappfme10348_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappfme11'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappfme11_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappfme_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_DS11_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "[parameters('virtualMachines_smsdevappfme11_name')]",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevappv3gilsyqrr6_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_smsdevappfme11_name'),'20170227165758.vhd'))]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "[concat(parameters('virtualMachines_smsdevappfme11_name'),'-20170227-170426')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_smsdevappv3gilsyqrr6_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_smsdevappfme11_name'),'-20170227-170426.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 1023
+            }
+          ]
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappfme11_name')]",
+          "adminUsername": "claradmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappfme11366_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappfme_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevappv3gilsyqrr6_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappfme11366_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappgeo01'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappgeo01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappgeo_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevappgeo0.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappgeo01_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappgeo_nic0_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappgeo_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappgeo_nic0_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappgeo02'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappgeo02_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappgeo_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevappgeo1.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappgeo02_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappgeo_nic1_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappgeo_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappgeo_nic1_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmap01'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappmap01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmap_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/osdisk0.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "[concat(parameters('virtualMachines_smsdevappmap01_name'),'-20170215-110141')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', concat('/smsdevapp-datadisks/', parameters('virtualMachines_smsdevappmap01_name'),'-20170215-110141.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 256
+            }
+          ]
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappmap01_name')]",
+          "adminUsername": "claradmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmap01_nic0_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmap_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmap01_nic0_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmap02'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappmap02_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmap_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/osdisk1.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappmap02_name')]",
+          "adminUsername": "claradmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmap02_nic0_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmap_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmap02_nic0_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmsg01'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappmsg01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmsg_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D2_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevappmsg0.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappmsg01_name')]",
+          "adminUsername": "claradmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmsg_nic0_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmsg_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmsg_nic0_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmsg02'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappmsg02_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmsg_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D2_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevappmsg1.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappmsg02_name')]",
+          "adminUsername": "claradmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmsg_nic1_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmsg_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmsg_nic1_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmsg03'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappmsg03_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmsg_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D2_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevappmsg2.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappmsg03_name')]",
+          "adminUsername": "claradmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmsg_nic2_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmsg_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmsg_nic2_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmsg04'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevappmsg04_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmsg_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D2_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevappmsg3.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevappmsg04_name')]",
+          "adminUsername": "claradmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmsg_nic3_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevappmsg_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevappmsg_nic3_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevdba01'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevdba01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "dba"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevdba_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D13_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevdba0.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "[concat(parameters('virtualMachines_smsdevdba01_name'),'-20170216-114101')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'), '.blob.core.windows.net', concat('/smsdevdba/', parameters('virtualMachines_smsdevdba01_name'),'-20170216-114101.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 1023
+            },
+            {
+              "lun": 1,
+              "name": "[concat(parameters('virtualMachines_smsdevdba01_name'),'-20170216-114319')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'), '.blob.core.windows.net', concat('/smsdevdba/', parameters('virtualMachines_smsdevdba01_name'),'-20170216-114319.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 1023
+            },
+            {
+              "lun": 2,
+              "name": "[concat(parameters('virtualMachines_smsdevdba01_name'),'-20170216-114426')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'), '.blob.core.windows.net', concat('/smsdevdba/', parameters('virtualMachines_smsdevdba01_name'),'-20170216-114426.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 1023
+            },
+            {
+              "lun": 3,
+              "name": "[concat(parameters('virtualMachines_smsdevdba01_name'),'-20170216-114754')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'), '.blob.core.windows.net', concat('/smsdevdba/', parameters('virtualMachines_smsdevdba01_name'),'-20170216-114754.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 1023
+            }
+          ]
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevdba01_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevdba01_nic0_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevdba_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevdba01_nic0_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevdba02'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevdba02_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "dba"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevdba_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D13_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevdba1.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "[concat(parameters('virtualMachines_smsdevdba02_name'),'-20170303-104623')]",
+              "createOption": "Empty",
+              "vhd": {
+                "uri": "[concat('https', '://', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'), '.blob.core.windows.net', concat('/smsdevdb-datadisks/', parameters('virtualMachines_smsdevdba02_name'),'-20170303-104623.vhd'))]"
+              },
+              "caching": "ReadWrite",
+              "diskSizeGB": 1023
+            }
+          ]
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevdba02_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevdba02_nic0_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevdba_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevdba02_nic0_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevweb01'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevweb01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevweb_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevweb0.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevweb01_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevweb_nic0_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevweb_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevweb_nic0_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevweb02'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevweb02_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevweb_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevweb1.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevweb02_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevweb_nic1_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevweb_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevweb_nic1_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevweb03'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevweb03_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevweb_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevweb2.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevweb03_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevweb_nic2_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevweb_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevweb_nic2_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevweb04'.",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_smsdevweb04_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "displayName": "VirtualMachines",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevweb_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D3_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'), '.blob.core.windows.net', '/vhds/smsdevweb3.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_smsdevweb04_name')]",
+          "adminUsername": "claradmin",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevweb_nic3_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_smsdevweb_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_smsdevweb_nic3_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/microsoft.insights/components/smsfileenhancement'.",
+      "type": "microsoft.insights/components",
+      "kind": "web",
+      "name": "[parameters('components_smsfileenhancement_name')]",
+      "apiVersion": "2014-04-01",
+      "location": "eastus",
+      "tags": {
+        "hidden-link:/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Web/sites/smsfileenhancement": "Resource"
+      },
+      "properties": {
+        "ApplicationId": "[parameters('components_smsfileenhancement_name')]"
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevapp-lb01'.",
+      "type": "Microsoft.Network/loadBalancers",
+      "name": "[parameters('loadBalancers_smsdevapp_lb01_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "LoadBalancer",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "frontendIPConfigurations": [
+          {
+            "name": "LoadBalancerFrontend",
+            "properties": {
+              "privateIPAddress": "10.100.1.5",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              }
+            }
+          }
+        ],
+        "backendAddressPools": [
+          {
+            "name": "BackendPool1"
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "name": "lbrule",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_smsdevapp_lb01_id')]"
+              },
+              "frontendPort": 80,
+              "backendPort": 80,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 15,
+              "protocol": "Tcp",
+              "loadDistribution": "Default",
+              "backendAddressPool": {
+                "id": "[parameters('loadBalancers_smsdevapp_lb01_id_1')]"
+              },
+              "probe": {
+                "id": "[parameters('loadBalancers_smsdevapp_lb01_id_2')]"
+              }
+            }
+          }
+        ],
+        "probes": [
+          {
+            "name": "smsdevapp-prb01",
+            "properties": {
+              "protocol": "Tcp",
+              "port": 80,
+              "intervalInSeconds": 15,
+              "numberOfProbes": 2
+            }
+          }
+        ],
+        "inboundNatRules": [],
+        "outboundNatRules": [],
+        "inboundNatPools": []
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevappgeo-lb01'.",
+      "type": "Microsoft.Network/loadBalancers",
+      "name": "[parameters('loadBalancers_smsdevappgeo_lb01_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "LoadBalancer",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "frontendIPConfigurations": [
+          {
+            "name": "LoadBalancerFrontend",
+            "properties": {
+              "privateIPAddress": "10.100.1.8",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              }
+            }
+          }
+        ],
+        "backendAddressPools": [
+          {
+            "name": "BackendPool1"
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "name": "lbrule",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_smsdevappgeo_lb01_id')]"
+              },
+              "frontendPort": 80,
+              "backendPort": 80,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 15,
+              "protocol": "Tcp",
+              "loadDistribution": "Default",
+              "backendAddressPool": {
+                "id": "[parameters('loadBalancers_smsdevappgeo_lb01_id_1')]"
+              },
+              "probe": {
+                "id": "[parameters('loadBalancers_smsdevappgeo_lb01_id_2')]"
+              }
+            }
+          }
+        ],
+        "probes": [
+          {
+            "name": "smsdevappgeo-prb01",
+            "properties": {
+              "protocol": "Tcp",
+              "port": 80,
+              "intervalInSeconds": 15,
+              "numberOfProbes": 2
+            }
+          }
+        ],
+        "inboundNatRules": [],
+        "outboundNatRules": [],
+        "inboundNatPools": []
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevappmsg-lb01'.",
+      "type": "Microsoft.Network/loadBalancers",
+      "name": "[parameters('loadBalancers_smsdevappmsg_lb01_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "LoadBalancer",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "frontendIPConfigurations": [
+          {
+            "name": "LoadBalancerFrontend",
+            "properties": {
+              "privateIPAddress": "10.100.1.9",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              }
+            }
+          }
+        ],
+        "backendAddressPools": [
+          {
+            "name": "BackendPool1"
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "name": "lbrule",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_smsdevappmsg_lb01_id')]"
+              },
+              "frontendPort": 80,
+              "backendPort": 80,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 15,
+              "protocol": "Tcp",
+              "loadDistribution": "Default",
+              "backendAddressPool": {
+                "id": "[parameters('loadBalancers_smsdevappmsg_lb01_id_1')]"
+              },
+              "probe": {
+                "id": "[parameters('loadBalancers_smsdevappmsg_lb01_id_2')]"
+              }
+            }
+          }
+        ],
+        "probes": [
+          {
+            "name": "smsdevappmsg-prb01",
+            "properties": {
+              "protocol": "Tcp",
+              "port": 80,
+              "intervalInSeconds": 15,
+              "numberOfProbes": 2
+            }
+          }
+        ],
+        "inboundNatRules": [],
+        "outboundNatRules": [],
+        "inboundNatPools": []
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/loadBalancers/smsdevweb-lb01'.",
+      "type": "Microsoft.Network/loadBalancers",
+      "name": "[parameters('loadBalancers_smsdevweb_lb01_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "LoadBalancer",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "frontendIPConfigurations": [
+          {
+            "name": "LoadBalancerFrontend",
+            "properties": {
+              "privateIPAddress": "10.100.0.5",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevweb')]"
+              }
+            }
+          }
+        ],
+        "backendAddressPools": [
+          {
+            "name": "BackendPool1"
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "name": "lbrule",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_smsdevweb_lb01_id')]"
+              },
+              "frontendPort": 80,
+              "backendPort": 80,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 15,
+              "protocol": "Tcp",
+              "loadDistribution": "Default",
+              "backendAddressPool": {
+                "id": "[parameters('loadBalancers_smsdevweb_lb01_id_1')]"
+              },
+              "probe": {
+                "id": "[parameters('loadBalancers_smsdevweb_lb01_id_2')]"
+              }
+            }
+          }
+        ],
+        "probes": [
+          {
+            "name": "smsdevweb-prb01",
+            "properties": {
+              "protocol": "Tcp",
+              "port": 80,
+              "intervalInSeconds": 15,
+              "numberOfProbes": 2
+            }
+          }
+        ],
+        "inboundNatRules": [],
+        "outboundNatRules": [],
+        "inboundNatPools": []
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevapp-nic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevapp_nic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.20",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevapp_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevapp_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevapp-nic1'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevapp_nic1_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.21",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevapp_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevapp_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevapp-nic2'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevapp_nic2_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.22",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevapp_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevapp_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevapp-nic3'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevapp_nic3_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.23",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevapp_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevapp_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappfme01884'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappfme01884_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.4",
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false,
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevapp_nsg_name'))]"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevapp_nsg_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappfme10348'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappfme10348_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.50",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false,
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevapp_nsg_name'))]"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevapp_nsg_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappfme11366'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappfme11366_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.51",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false,
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevapp_nsg_name'))]"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevapp_nsg_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappgeo-nic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappgeo_nic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.60",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappgeo_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappgeo_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappgeo-nic1'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappgeo_nic1_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.61",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappgeo_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappgeo_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappmap01-nic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappmap01_nic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.30",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappmap02-nic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappmap02_nic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.31",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappmsg-nic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappmsg_nic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.70",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappmsg_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappmsg_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappmsg-nic1'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappmsg_nic1_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.71",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappmsg_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappmsg_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappmsg-nic2'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappmsg_nic2_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.72",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappmsg_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappmsg_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevappmsg-nic3'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevappmsg_nic3_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "app"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.1.73",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevapp')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappmsg_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevappmsg_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevdba01-nic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevdba01_nic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "dba"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.2.20",
+              "privateIPAllocationMethod": "Static",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_smsdevdba01_pip_name'))]"
+              },
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevdba')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_smsdevdba01_pip_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevdba01-repnic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevdba01_repnic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "dba"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.4.20",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevrep')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevdba02-nic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevdba02_nic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "dba"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.2.21",
+              "privateIPAllocationMethod": "Static",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_smsdevdba02_pip_name'))]"
+              },
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevdba')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_smsdevdba02_pip_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevdba02-repnic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevdba02_repnic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "dba"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.4.21",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevrep')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevdba03270'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevdba03270_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.2.22",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevdba')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevweb-nic0'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevweb_nic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.0.20",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevweb')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevweb_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevweb_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevweb-nic1'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevweb_nic1_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.0.21",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevweb')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevweb_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevweb_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevweb-nic2'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevweb_nic2_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.0.22",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevweb')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevweb_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevweb_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkInterfaces/smsdevweb-nic3'.",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_smsdevweb_nic3_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkInterface",
+        "environment": "dev",
+        "application": "sms",
+        "tier": "web"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.100.0.23",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name')), '/subnets/snet-smsdevweb')]"
+              },
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevweb_lb01_name')), '/backendAddressPools/BackendPool1')]"
+                }
+              ]
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_smsdev_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_smsdevweb_lb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkSecurityGroups/smsdevapp-nsg'.",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('networkSecurityGroups_smsdevapp_nsg_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "securityRules": []
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkSecurityGroups/smsdevpri-nsg'.",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('networkSecurityGroups_smsdevpri_nsg_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "securityRules": []
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkSecurityGroups/smsdevpub-nsg'.",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('networkSecurityGroups_smsdevpub_nsg_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "securityRules": []
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkSecurityGroups/smsdevrca-nsg'.",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('networkSecurityGroups_smsdevrca_nsg_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "securityRules": []
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkSecurityGroups/smsdevrep-nsg'.",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('networkSecurityGroups_smsdevrep_nsg_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "securityRules": []
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/networkSecurityGroups/smsdevweb-nsg'.",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('networkSecurityGroups_smsdevweb_nsg_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "AllowSSHtoBastion",
+            "properties": {
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "10.100.0.6",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/publicIPAddresses/51.176.54.221'.",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[parameters('publicIPAddresses_51.176.54.221_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic",
+        "idleTimeoutInMinutes": 4
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/publicIPAddresses/smsdevappfme10-ip'.",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[parameters('publicIPAddresses_smsdevappfme10_ip_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic",
+        "idleTimeoutInMinutes": 4
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/publicIPAddresses/smsdevdba01-pip'.",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[parameters('publicIPAddresses_smsdevdba01_pip_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "publicIPAllocationMethod": "Static",
+        "idleTimeoutInMinutes": 4
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/publicIPAddresses/smsdevdba02-pip'.",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[parameters('publicIPAddresses_smsdevdba02_pip_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic",
+        "idleTimeoutInMinutes": 4
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Network/virtualNetworks/vnet-smsdev'.",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters('virtualNetworks_vnet_smsdev_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.100.0.0/21"
+          ]
+        },
+        "dhcpOptions": {
+          "dnsServers": [
+            "10.99.0.4",
+            "10.99.0.5"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "snet-smsdevweb",
+            "properties": {
+              "addressPrefix": "10.100.0.0/24",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevweb_nsg_name'))]"
+              }
+            }
+          },
+          {
+            "name": "snet-smsdevapp",
+            "properties": {
+              "addressPrefix": "10.100.1.0/24",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevapp_nsg_name'))]"
+              }
+            }
+          },
+          {
+            "name": "snet-smsdevdba",
+            "properties": {
+              "addressPrefix": "10.100.2.0/24"
+            }
+          },
+          {
+            "name": "snet-smsdevrep",
+            "properties": {
+              "addressPrefix": "10.100.4.0/24",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevrep_nsg_name'))]"
+              }
+            }
+          },
+          {
+            "name": "snet-smsdevpub",
+            "properties": {
+              "addressPrefix": "10.100.5.0/27",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevpub_nsg_name'))]"
+              }
+            }
+          },
+          {
+            "name": "snet-smsdevpri",
+            "properties": {
+              "addressPrefix": "10.100.5.32/27",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevpri_nsg_name'))]"
+              }
+            }
+          },
+          {
+            "name": "snet-smsdevrca",
+            "properties": {
+              "addressPrefix": "10.100.6.0/24",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevrca_nsg_name'))]"
+              }
+            }
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevweb_nsg_name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevapp_nsg_name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevrep_nsg_name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevpub_nsg_name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevpri_nsg_name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_smsdevrca_nsg_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.RecoveryServices/vaults/smsdev-vault01'.",
+      "type": "Microsoft.RecoveryServices/vaults",
+      "sku": {
+        "name": "RS0",
+        "tier": "Standard"
+      },
+      "name": "[parameters('vaults_smsdev_vault01_name')]",
+      "apiVersion": "2016-06-01",
+      "location": "centralus",
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Storage/storageAccounts/smsdevapphgilsyqrr6rv2'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_smsdevapphgilsyqrr6rv2_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "centralus",
+      "tags": {
+        "application": "sms",
+        "displayName": "StorageAccount",
+        "environment": "dev",
+        "tier": "app"
+      },
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Storage/storageAccounts/smsdevappv3gilsyqrr6'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Premium_LRS",
+        "tier": "Premium"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_smsdevappv3gilsyqrr6_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "centralus",
+      "tags": {},
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Storage/storageAccounts/smsdevdbahgilsyqrr6rv2'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_smsdevdbahgilsyqrr6rv2_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "centralus",
+      "tags": {
+        "application": "sms",
+        "displayName": "StorageAccount",
+        "environment": "dev",
+        "tier": "dba"
+      },
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Storage/storageAccounts/smsdevdisks636'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Premium_LRS",
+        "tier": "Premium"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_smsdevdisks636_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "centralus",
+      "tags": {},
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Storage/storageAccounts/smsdevwebhgilsyqrr6rv2'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_smsdevwebhgilsyqrr6rv2_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "centralus",
+      "tags": {
+        "application": "sms",
+        "displayName": "StorageAccount",
+        "environment": "dev",
+        "tier": "web"
+      },
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Storage/storageAccounts/smsprdwebhgilsyqrr6rv2'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_smsprdwebhgilsyqrr6rv2_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "centralus",
+      "tags": {
+        "application": "sms",
+        "displayName": "StorageAccount",
+        "environment": "prd",
+        "tier": "web"
+      },
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Web/serverfarms/smsdevwebservices'.",
+      "type": "Microsoft.Web/serverfarms",
+      "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
+      },
+      "kind": "app",
+      "name": "[parameters('serverfarms_smsdevwebservices_name')]",
+      "apiVersion": "2015-08-01",
+      "location": "Central US",
+      "properties": {
+        "name": "[parameters('serverfarms_smsdevwebservices_name')]",
+        "numberOfWorkers": 1
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Web/sites/smsfileenhancement'.",
+      "type": "Microsoft.Web/sites",
+      "kind": "api",
+      "name": "[parameters('sites_smsfileenhancement_name')]",
+      "apiVersion": "2015-08-01",
+      "location": "Central US",
+      "tags": {
+        "hidden-related:/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourcegroups/smsdev/providers/Microsoft.Web/serverfarms/smsdevwebservices": "empty"
+      },
+      "properties": {
+        "name": "[parameters('sites_smsfileenhancement_name')]",
+        "hostNames": [
+          "smsfileenhancement.azurewebsites.net"
+        ],
+        "enabledHostNames": [
+          "smsfileenhancement.azurewebsites.net",
+          "smsfileenhancement.scm.azurewebsites.net"
+        ],
+        "hostNameSslStates": [
+          {
+            "name": "[concat(parameters('sites_smsfileenhancement_name'),'.azurewebsites.net')]",
+            "sslState": 0,
+            "thumbprint": null,
+            "ipBasedSslState": 0
+          },
+          {
+            "name": "[concat(parameters('sites_smsfileenhancement_name'),'.scm.azurewebsites.net')]",
+            "sslState": 0,
+            "thumbprint": null,
+            "ipBasedSslState": 0
+          }
+        ],
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_smsdevwebservices_name'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_smsdevwebservices_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevapp01/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "3af6e444-984c-46de-8fc2-fe8264c5fdaa_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzYxMzM2OTUwMzUifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiI3YjkwYmM1MC02OWEyLTRlZTYtYWMzZC1lZThhY2Y5YjMzMjcifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiM2FmNmU0NDQtOTg0Yy00NmRlLThmYzItZmU4MjY0YzVmZGFhIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevapp01.v2.Logs.txt?sv=2014-02-14&sr=b&sig=78esDslcR%2Fh%2Bt%2FsHg3P0qUBD4kHlOmoVo6qofJW3wuo%3D&st=2017-03-23T06%3A28%3A33Z&se=2017-03-23T09%3A33%3A33Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevapp01.v2.Status.txt?sv=2014-02-14&sr=b&sig=AaJAsRAqVQNK2REeCIDxx7T3JQ8YDTBh52LNgAK%2FXAM%3D&st=2017-03-23T06%3A28%3A33Z&se=2017-03-23T09%3A33%3A33Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258476135726259",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevapp02/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_1')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "e823cbf0-3966-49ae-9b6b-ca6025b181b0_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0Nzk3NTAzMDY2OTIifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiIzNzU5YTdjMi03NGVhLTQ0NzgtYjM2Zi1lNmM0OTRhYWI2YWUifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiZTgyM2NiZjAtMzk2Ni00OWFlLTliNmItY2E2MDI1YjE4MWIwIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevapp02.v2.Logs.txt?sv=2014-02-14&sr=b&sig=e7vy%2BPhsaQSmvbZQE23a%2BJYUZ15V33PXgSoR3D0nDI4%3D&st=2017-03-23T06%3A34%3A35Z&se=2017-03-23T09%3A39%3A35Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevapp02.v2.Status.txt?sv=2014-02-14&sr=b&sig=GEoqocRSmqbZHUVoyXns4d%2BxvzlOCn6D4WGmQOpJKWM%3D&st=2017-03-23T06%3A34%3A35Z&se=2017-03-23T09%3A39%3A35Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258479752393396",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp02_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevapp03/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_2')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "84fd41e0-a6d3-4153-bb1f-09409c3aa79d_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzgxMDE0NzAzNTMifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiI3YjY1Mjk4NS1kMGEwLTRkOGUtODkyNy05Y2E4Y2ZkODcwYTkifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiODRmZDQxZTAtYTZkMy00MTUzLWJiMWYtMDk0MDljM2FhNzlkIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevapp03.v2.Logs.txt?sv=2014-02-14&sr=b&sig=NKGDq6hhRTIQ%2FA8P55tV1dfHdPj2MrDcD7PuLYGHi3s%3D&st=2017-03-23T06%3A31%3A50Z&se=2017-03-23T09%3A36%3A50Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevapp03.v2.Status.txt?sv=2014-02-14&sr=b&sig=EOg8tzVVr8LOVTqqQrAnDuInb0GvZBlIQYLUapQaJAs%3D&st=2017-03-23T06%3A31%3A50Z&se=2017-03-23T09%3A36%3A50Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258478103503755",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp03_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevapp04/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_3')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "ceabe672-643a-44c2-b93a-97c942a031d3_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzU5NDY5NDM4NDUifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiJkOGQ4MzFjYS1kN2YwLTRjNjEtODc0Yy01NmVlZWE3OWJhYzYifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiY2VhYmU2NzItNjQzYS00NGMyLWI5M2EtOTdjOTQyYTAzMWQzIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevapp04.v2.Logs.txt?sv=2014-02-14&sr=b&sig=fAYut25BQ7RVYYd54SbaQ%2Bsej%2B9OnjIt2M%2FQVWSd3Q0%3D&st=2017-03-23T06%3A28%3A14Z&se=2017-03-23T09%3A33%3A14Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevapp04.v2.Status.txt?sv=2014-02-14&sr=b&sig=jWLJXnDQp%2BYHLgbU4AK%2B6ARGGatqA%2BTXR6wjv1sDN3Y%3D&st=2017-03-23T06%3A28%3A14Z&se=2017-03-23T09%3A33%3A14Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258475948818475",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevapp04_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappfme10/extensions/VMSnapshot'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshot_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshot",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "59e87859-86fb-40e8-a742-98b756300fb4_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzUxNjI1Mzc0MTAifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiJlNmYzYjcwNC01MTJkLTQ2ZjUtYjAxYi1iYjI0MTZmMWY0MWYifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiNTllODc4NTktODZmYi00MGU4LWE3NDItOThiNzU2MzAwZmI0In0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappfme10.v2.Logs.txt?sv=2014-02-14&sr=b&sig=alvQpEewCWrDrXDeUkCnw9AG19cHSQG9xY0KvWZ6WEI%3D&st=2017-03-23T06%3A26%3A56Z&se=2017-03-23T09%3A31%3A56Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappfme10.v2.Status.txt?sv=2014-02-14&sr=b&sig=llq6cw34lCl0848dmAMKUY%2BZFCx%2BuYpcLnPac07vRFc%3D&st=2017-03-23T06%3A26%3A56Z&se=2017-03-23T09%3A31%3A56Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258475165506119",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappfme10_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappfme11/extensions/VMSnapshot'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshot_name_1')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshot",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "93a41561-b219-43d2-9e47-103c530d26f6_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0Nzc2NzgwNDM4OTQifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiIyNzg0MDRjZi1kM2Q0LTQ1MTktOTlkYi1iZjA2ZmFkNjQ3YmEifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiOTNhNDE1NjEtYjIxOS00M2QyLTllNDctMTAzYzUzMGQyNmY2In0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappfme11.v2.Logs.txt?sv=2014-02-14&sr=b&sig=PLFlhed5jxJazsNhshTtIzziT185NyaJ%2BT4oVVzDugk%3D&st=2017-03-23T06%3A31%3A07Z&se=2017-03-23T09%3A36%3A07Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappfme11.v2.Status.txt?sv=2014-02-14&sr=b&sig=%2BCj3oyboF2FZbIcYYqk6N5KjpJAkeUO0wHsaazWwTmI%3D&st=2017-03-23T06%3A31%3A08Z&se=2017-03-23T09%3A36%3A08Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258477680074835",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappfme11_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappgeo01/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_4')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "2f533e06-7e25-4984-bd52-3ae2f8db3b88_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzQ4MzU5MDA4OTgifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiI4MmUzY2E1OC0wMmYyLTQ3OTktOTRmMy01MWY1OTNhZmYxOGUifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiMmY1MzNlMDYtN2UyNS00OTg0LWJkNTItM2FlMmY4ZGIzYjg4In0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappgeo01.v2.Logs.txt?sv=2014-02-14&sr=b&sig=8UJulZvuP%2BYCKVsIScoNC%2Fe%2B1BGak8wmGeFuoymC%2Bw0%3D&st=2017-03-23T06%3A26%3A24Z&se=2017-03-23T09%3A31%3A24Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappgeo01.v2.Status.txt?sv=2014-02-14&sr=b&sig=Ay%2BG%2BD8cCYbLIzta1u%2Fsr7xFikOJJa04ra9%2FTnOnmdM%3D&st=2017-03-23T06%3A26%3A24Z&se=2017-03-23T09%3A31%3A24Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258474840275187",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappgeo01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappgeo02/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_5')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "c1ee8f51-bc43-45a8-9fc6-d59037a96ea2_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0Nzc1NDY2NTQ2NTIifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiJlMDcyMWM3Yi1lYjU5LTQ2MzYtOTg0Zi0zNmQwNzFkNjE2ZmUifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiYzFlZThmNTEtYmM0My00NWE4LTlmYzYtZDU5MDM3YTk2ZWEyIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappgeo02.v2.Logs.txt?sv=2014-02-14&sr=b&sig=%2FXWJJZphVavkDlKwu0Ko8zjdYBfS7zws2n%2FeU%2BumDVc%3D&st=2017-03-23T06%3A30%3A54Z&se=2017-03-23T09%3A35%3A54Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappgeo02.v2.Status.txt?sv=2014-02-14&sr=b&sig=S52K6G6Q44CDSnB1OFJ3m65sp9maF9TTTfjz3PQXm2Q%3D&st=2017-03-23T06%3A30%3A54Z&se=2017-03-23T09%3A35%3A54Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258477549154432",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappgeo02_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmap01/extensions/VMSnapshot'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshot_name_2')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshot",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "779e67aa-a3d1-4855-8020-30bdbdb729d5_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0Nzg3NzIwODY4MTQifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiIwMWFjNzFlYS03ZTFiLTQ3Y2YtOWY5Yy1jNzExM2MyZDVjNTYifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiNzc5ZTY3YWEtYTNkMS00ODU1LTgwMjAtMzBiZGJkYjcyOWQ1In0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmap01.v2.Logs.txt?sv=2014-02-14&sr=b&sig=NQW2SUAsao7hDiN8opuKZgkwdykiUh3ZHpf4kE3VLa8%3D&st=2017-03-23T06%3A32%3A57Z&se=2017-03-23T09%3A37%3A57Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmap01.v2.Status.txt?sv=2014-02-14&sr=b&sig=lJ4spFgDHttG8PwR%2BMAbfyG31s5oTiHAvxNafnKH%2Bw4%3D&st=2017-03-23T06%3A32%3A57Z&se=2017-03-23T09%3A37%3A57Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258478775225988",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmap01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmap02/extensions/VMSnapshot'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshot_name_3')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshot",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "6c66f3ea-c66d-4ead-a394-02566077188f_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0Nzk1MTgwOTk3ODkifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiJjMjZmYjJlYS0zNjk1LTQxZGUtOThiOC0yMGI5MmNmMDY5ODIifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiNmM2NmYzZWEtYzY2ZC00ZWFkLWEzOTQtMDI1NjYwNzcxODhmIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmap02.v2.Logs.txt?sv=2014-02-14&sr=b&sig=90hKb5B0N0oWyVFckp5y3Qe11gI%2FIF2rpaKgrKxRcA0%3D&st=2017-03-23T06%3A34%3A11Z&se=2017-03-23T09%3A39%3A11Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmap02.v2.Status.txt?sv=2014-02-14&sr=b&sig=v9vG8NUul%2FkoWe3RKF91jjBgjXwNq9YLRfPJNNQqsMs%3D&st=2017-03-23T06%3A34%3A12Z&se=2017-03-23T09%3A39%3A12Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258479520130327",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmap02_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmsg01/extensions/VMSnapshot'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshot_name_4')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshot",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "cd890122-82f2-4da0-b323-cfebff69442c_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0ODAyOTMwNjI4OTUifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiI0YTlkY2MwZS1hMGJhLTRlM2MtYmNiOC02YjAyZTQ5Yjk3ODIifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiY2Q4OTAxMjItODJmMi00ZGEwLWIzMjMtY2ZlYmZmNjk0NDJjIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmsg01.v2.Logs.txt?sv=2014-02-14&sr=b&sig=BlZ6bqPz%2FXzzzY74xAOmcDd8YJCIIZDmuGk25Xj7d%2Bk%3D&st=2017-03-23T06%3A35%3A29Z&se=2017-03-23T09%3A40%3A29Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmsg01.v2.Status.txt?sv=2014-02-14&sr=b&sig=577Sbr6c0Qi%2BWc3BDPS5lvnaFvRXEL5Wjkhwlsvx424%3D&st=2017-03-23T06%3A35%3A29Z&se=2017-03-23T09%3A40%3A29Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258480294937894",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmsg02/extensions/VMSnapshot'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshot_name_5')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshot",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "ced7603e-3a56-4319-b00e-9d35f520e5cf_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0Nzg0NzkxODYzMDIifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiI3MmY2YmY1OC01NjE0LTRmM2MtYmE1Yi00YjE3MmE5Y2U2YTUifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiY2VkNzYwM2UtM2E1Ni00MzE5LWIwMGUtOWQzNWY1MjBlNWNmIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmsg02.v2.Logs.txt?sv=2014-02-14&sr=b&sig=3dezxdxOGoMjubxOOuFfKJOYc7m3ycQYdA4cyGywaxg%3D&st=2017-03-23T06%3A32%3A28Z&se=2017-03-23T09%3A37%3A28Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmsg02.v2.Status.txt?sv=2014-02-14&sr=b&sig=ftPQO%2BPIs%2FDkPaUUn8QyKgqdqqRo6ClA3IahgU%2BrIEs%3D&st=2017-03-23T06%3A32%3A28Z&se=2017-03-23T09%3A37%3A28Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258478481372714",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg02_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmsg03/extensions/VMSnapshot'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshot_name_6')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshot",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "8d8ab820-5ac5-4f67-8c92-ed5b4baba1d6_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzcwNDcwMDQ4NjUifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiIxNmE3YzkzMS1mNWU4LTRmMjMtOTRjOC01ODYxNTE0ZmNiZWYifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiOGQ4YWI4MjAtNWFjNS00ZjY3LThjOTItZWQ1YjRiYWJhMWQ2In0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmsg03.v2.Logs.txt?sv=2014-02-14&sr=b&sig=qaJe1IzU7WTM4C2wybuvhBLIF130rdRMI7HAQxcmfDk%3D&st=2017-03-23T06%3A30%3A04Z&se=2017-03-23T09%3A35%3A04Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmsg03.v2.Status.txt?sv=2014-02-14&sr=b&sig=MfYrDHyCjFvIL%2BAlZD5CkuqOf7KAx3gZYznt1lwzxvE%3D&st=2017-03-23T06%3A30%3A04Z&se=2017-03-23T09%3A35%3A04Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258477049036008",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg03_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevappmsg04/extensions/VMSnapshot'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshot_name_7')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshot",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "61b42904-342f-435c-b2c1-4bfd5384fe76_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0Nzg0MTQ4OTc2MjcifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiIzZjBkZGM1NS04ZjgyLTQ5ZTAtYWE4NC0yNDlkMmQ5OTRiODQifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiNjFiNDI5MDQtMzQyZi00MzVjLWIyYzEtNGJmZDUzODRmZTc2In0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmsg04.v2.Logs.txt?sv=2014-02-14&sr=b&sig=9erj1j38e9lTo7O9WFXZNRxfndETuh3FrHSl%2FYgaY6o%3D&st=2017-03-23T06%3A32%3A21Z&se=2017-03-23T09%3A37%3A21Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevappmsg04.v2.Status.txt?sv=2014-02-14&sr=b&sig=DuzkyaOK0fdpNsiay2jnD2rbobcZlfKB0vy0MirxEWs%3D&st=2017-03-23T06%3A32%3A21Z&se=2017-03-23T09%3A37%3A21Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258478417087473",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevappmsg04_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevdba01/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_6')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "bdc59f4e-9392-4cf0-bb75-01d1639909fb_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzQ3ODM5OTYzOTAifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiJiMDFlNTNlNC0wOWM1LTRjYmItYWUzNS0wNDc3YzY2ZWQ3NDgifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiYmRjNTlmNGUtOTM5Mi00Y2YwLWJiNzUtMDFkMTYzOTkwOWZiIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevdba01.v2.Logs.txt?sv=2014-02-14&sr=b&sig=uoQ2px3rEAwJRlE5FfxRb%2BUvNE9GcYTQnVBllpsqWjc%3D&st=2017-03-23T06%3A26%3A18Z&se=2017-03-23T09%3A31%3A18Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevdba01.v2.Status.txt?sv=2014-02-14&sr=b&sig=8cTjP1JtinnLXhy1md9QvAxg%2FEHUOMLsULX%2BgXW6bpY%3D&st=2017-03-23T06%3A26%3A18Z&se=2017-03-23T09%3A31%3A18Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258474788526859",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevdba01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevweb01/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_7')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "d8f48697-5d97-4f27-904a-e1ef849d823b_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzYxOTk1Njc3OTkifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiI1YjM4YzE3Zi03OTU5LTRmMjYtYmI5OC0yZWEzMmM5YjhlYzMifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiZDhmNDg2OTctNWQ5Ny00ZjI3LTkwNGEtZTFlZjg0OWQ4MjNiIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevweb01.v2.Logs.txt?sv=2014-02-14&sr=b&sig=1K9LrK%2BTyAofYFFWh6kSlg8khx9VpD0HRB8nEhD2SQQ%3D&st=2017-03-23T06%3A28%3A40Z&se=2017-03-23T09%3A33%3A40Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevweb01.v2.Status.txt?sv=2014-02-14&sr=b&sig=pBqeYUU87JdxLICPijSlhODMkDm7a7HFkzpbzxWg0tY%3D&st=2017-03-23T06%3A28%3A40Z&se=2017-03-23T09%3A33%3A40Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258476201598777",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb01_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevweb02/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_8')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "9e1648b4-d208-4958-9348-8ef0c34a07a6_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzgyNDAwNDM5OTYifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiJjOTc0NzkwNi04ZWRlLTQ4OTktYjVkNy0xNzE5ZDA2NjY2Y2IifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiOWUxNjQ4YjQtZDIwOC00OTU4LTkzNDgtOGVmMGMzNGEwN2E2In0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevweb02.v2.Logs.txt?sv=2014-02-14&sr=b&sig=qQ46QTsXp%2FZ8WYuPPde5gd4uqRTxhB3DkTLA7z%2FbvP4%3D&st=2017-03-23T06%3A32%3A04Z&se=2017-03-23T09%3A37%3A04Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevweb02.v2.Status.txt?sv=2014-02-14&sr=b&sig=8zgxu6uYhlzlFFwPx%2BoGD3Fthnek7j8CBg3SbuL1Nt4%3D&st=2017-03-23T06%3A32%3A04Z&se=2017-03-23T09%3A37%3A04Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258478242387345",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb02_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevweb03/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_9')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "2406f973-a2a2-462f-a487-5733f6192ce7_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzY2OTg3NjA4NDYifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiIxNjZlOWZkMy05ZDcxLTRlZmUtODMxNy1lMWU3NjJkMTE2YWYifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiMjQwNmY5NzMtYTJhMi00NjJmLWE0ODctNTczM2Y2MTkyY2U3In0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevweb03.v2.Logs.txt?sv=2014-02-14&sr=b&sig=cMyuLwyqouOxWlYSuEo2sGIiK0UmMGRPqIG%2BTOKL5P8%3D&st=2017-03-23T06%3A29%3A30Z&se=2017-03-23T09%3A34%3A30Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevweb03.v2.Status.txt?sv=2014-02-14&sr=b&sig=AiRJ3zBGtIgXAr7hfkio4UtHchBQrPdLoxruZ%2BeCp0Q%3D&st=2017-03-23T06%3A29%3A30Z&se=2017-03-23T09%3A34%3A30Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258476700479363",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb03_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/5161ae26-3265-475f-8f18-6d067909d41b/resourceGroups/smsdev/providers/Microsoft.Compute/virtualMachines/smsdevweb04/extensions/VMSnapshotLinux'.",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[parameters('extensions_VMSnapshotLinux_name_10')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {},
+      "properties": {
+        "publisher": "Microsoft.Azure.RecoveryServices",
+        "type": "VMSnapshotLinux",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": false,
+        "settings": {
+          "locale": "en-us",
+          "taskId": "7836f29a-c434-4250-815a-0d18e6042bf0_1",
+          "commandToExecute": "Snapshot",
+          "objectStr": "eyJiYWNrdXBNZXRhZGF0YSI6W3siS2V5IjoiQ3VycmVudFRpY2tzIiwiVmFsdWUiOiI2MzYyNTg0NzY5NzY2MzQ1MzIifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkpvYklkIiwiVmFsdWUiOiIxMzg2OTgzNi0wYWFlLTQzNmYtOWM0Yy0yMjQzNGJhZmQyN2IifSx7IktleSI6IkJhY2tVcE9wZXJhdGlvbkN1cnJlbnRJZCIsIlZhbHVlIjoiNzgzNmYyOWEtYzQzNC00MjUwLTgxNWEtMGQxOGU2MDQyYmYwIn0seyJLZXkiOiJCYWNrVXBSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJTbmFwU2hvdEZhaWx1cmVSZXRyeUNvdW50IiwiVmFsdWUiOiIwIn0seyJLZXkiOiJCYWNrVXBPd25lciIsIlZhbHVlIjoiSUFBU1ZtQmFja1VwIn1dfQ==",
+          "logsBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevweb04.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DL0hvp1U1V3MxTGhItk0Feqe%2BIuNZ%2F28LmB2CV5UHDc%3D&st=2017-03-23T06%3A29%3A57Z&se=2017-03-23T09%3A34%3A57Z&sp=rw",
+          "statusBlobUri": "https://cuspod01coord1exsar4zyr.blob.core.windows.net/bcdrextensionlogs-5161ae26-3265-475f-8f18-6d067909d41b/smsdev-smsdevweb04.v2.Status.txt?sv=2014-02-14&sr=b&sig=i%2BidOlrltbDDM%2FOF10iHH3xnkgRKu1kYqd8h0k5sS3M%3D&st=2017-03-23T06%3A29%3A57Z&se=2017-03-23T09%3A34%3A57Z&sp=rw",
+          "commandStartTimeUTCTicks": "636258476978508886",
+          "vmType": "microsoft.compute/virtualmachines"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_smsdevweb04_name'))]"
+      ]
+    }
+  ]
+}

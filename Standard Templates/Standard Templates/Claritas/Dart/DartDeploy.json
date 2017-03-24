@@ -13,7 +13,8 @@
       "appEnv": "dev",
       "networkBaseCIDR": "10.100.0.0/21",
       "templateBaseUrl": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
-      "strDnsServer": "192.168.0.1"
+      "strDnsServer1": "10.99.0.4",
+      "strDnsServer2": "10.99.0.5"
 
     },
     "appInfo": {
@@ -32,7 +33,7 @@
       },
         "tiers": [
           {
-            "name": "web",
+            "baseVmName": "dardevweb",
             "arch": "scaleSet",
             "numInstances": 1
           },
