@@ -23,8 +23,12 @@
           "properties": {
             "mode": "Incremental",
             "templateLink": {
-               "uri": "[concat(parameters('objUriPath').strTemplateBaseUri,parameters('objUriPath').strAppComponentFolderPath,parameters('objUriPath').strAppComponentNetworkFileName),parameters('objBuildingBlocks').strAddVnetandOneSnetFileName]",
-               "contentVersion": "1.0.0.0"
+              "uri": "[concat(parameters('objUriPath').strTemplateBaseUri,parameters('objUriPath').strAppComponentFolderPath,parameters('objUriPath').strAppComponentNetworkFileName),parameters('objBuildingBlocks').strAddVnetandOneSnetFileName]",
+              "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+              "objBaseData": { "value": "[variables('objBaseData')]" },
+              "objNetworkData": { "value": "[variables('objNetworkData')]" }
             }
           }
       }
