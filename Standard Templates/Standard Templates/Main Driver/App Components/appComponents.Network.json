@@ -1,0 +1,43 @@
+﻿{
+  {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+
+      "ojbBaseData": { "type": "object" },
+      "objNetworkData": { "type": "object" }
+
+    },
+    "variables": {
+
+      /* Calculate vnet and snets here 
+
+
+      */
+
+
+    },
+
+
+      "resources": [
+        {
+          "apiVersion": "2015-01-01", /* update with dynamic param */
+      "name": "linkedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          /*
+          "uri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/simpleSubnetLinked.json",
+          */
+
+          "uri": "(concat(parameters('obj"
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    }
+      ],
+      "outputs": {
+      }
+    }
+}

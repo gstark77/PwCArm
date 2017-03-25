@@ -1,0 +1,66 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+  },
+  "variables": {
+
+    /* Variables needed
+    
+    */
+
+    "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+    "strAppComponentFolderPath": "Main Driver/App Components/",
+    "strAppComponentNetworkFileName": "appComponents.Network.json",
+
+    /*  Base data complex objext */
+
+    "objBaseData": {
+      "strAppName": "dar",
+      "strAppEnv": "dev"
+    },
+
+    "objBaseUriData": {
+      "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/",
+      "strAppComponentFolderPath": "Main Driver/App Components/"
+    },
+
+    /*  Network complex object 
+
+        "strVnetName" "strVnetPrefix",
+        "strSnetName" "strSnetPrefix",
+        "strNsgName" "TBD_URD",
+        "objNsgRule" "strVnetName",
+        "strRemoteVnetName" "strResourceId"
+
+    */
+    "objNetworkData": {
+      "strBaseNetwork": "10.100.8.0/21",
+      "str": "10.100.24.0/21",
+      /* 0 = false, 1 = true (use in copy downstream to see if 0 is a valid arguement) */
+      "testTrueFalseCreateVnet": "0"
+    }
+
+  },
+        "resources": [
+          {
+            "apiVersion": "2015-01-01", /* update with dynamic param */
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+              "mode": "Incremental",
+              "templateLink": {
+                /* change uri to use object and then delete variables */
+                "uri": "[concat(variables('strTemplateBaseUri'),variables('strAppComponentFolderPath'), variables('strAppComponentNetworkFileName'))]",
+                "contentVersion": "1.0.0.0"
+              },
+              "parameters": {
+                "ojbNetworkData": { "value": "[variables('objNetworkData')]" },
+                "ojbBaseData": { "value": "[variables('objBaseData')]" }
+              }
+            }
+          }
+        ],
+        "outputs": {
+        }
+      }

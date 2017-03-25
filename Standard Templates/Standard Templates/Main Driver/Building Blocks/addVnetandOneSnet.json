@@ -1,0 +1,94 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "objNetworkData": { "type": "object" }
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+      "name": "string",
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      /*
+         Update with dynamic apiVersion para
+         "apiVersion": "[providers('Microsoft.Compute','virtualNetworks/subnets').apiVersions[0]]"
+      */
+      "apiVersion": "2016-09-01",
+      "properties": {
+        "addressPrefix": "string",
+        "networkSecurityGroup": {
+          "id": "string",
+          "location": "string",
+          "tags": {},
+          "properties": {
+            "securityRules": [
+              {
+                "id": "string",
+                "properties": {
+                  "description": "string",
+                  "protocol": "string",
+                  "sourcePortRange": "string",
+                  "destinationPortRange": "string",
+                  "sourceAddressPrefix": "string",
+                  "destinationAddressPrefix": "string",
+                  "access": "string",
+                  "priority": "integer",
+                  "direction": "string"
+                },
+                "name": "string"
+              }
+            ],
+            "defaultSecurityRules": [
+              {
+                "id": "string",
+                "properties": {
+                  "description": "string",
+                  "protocol": "string",
+                  "sourcePortRange": "string",
+                  "destinationPortRange": "string",
+                  "sourceAddressPrefix": "string",
+                  "destinationAddressPrefix": "string",
+                  "access": "string",
+                  "priority": "integer",
+                  "direction": "string"
+                },
+                "name": "string"
+              }
+            ]
+          }
+        },
+        "routeTable": {
+          "id": "string",
+          "location": "string",
+          "tags": {},
+          "properties": {
+            "routes": [
+              {
+                "id": "string",
+                "properties": {
+                  "addressPrefix": "string",
+                  "nextHopType": "string",
+                  "nextHopIpAddress": "string"
+                },
+                "name": "string"
+              }
+            ]
+          }
+        },
+        "resourceNavigationLinks": [
+          {
+            "id": "string",
+            "properties": {
+              "linkedResourceType": "string",
+              "link": "string"
+            },
+            "name": "string"
+          }
+        ]
+      }
+    }
+
+
+  ]
+    }
