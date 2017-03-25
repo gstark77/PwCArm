@@ -4,40 +4,32 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
 
-      "ojbBaseData": { "type": "object" },
+      "objUriPath": { "type": "object" },
+      "objBaseData": { "type": "object" },
       "objNetworkData": { "type": "object" }
 
     },
     "variables": {
 
-      /* Calculate vnet and snets here 
-
-
-      */
-
+      /* Calculate vnet and snets here */
 
     },
-
 
       "resources": [
         {
           "apiVersion": "2015-01-01", /* update with dynamic param */
-      "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          /*
-          "uri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Network/simpleSubnetLinked.json",
-          */
-
-          "uri": "(concat(parameters('obj"
-          "contentVersion": "1.0.0.0"
-        }
+          "name": "linkedTemplate",
+          "type": "Microsoft.Resources/deployments",
+          "properties": {
+            "mode": "Incremental",
+            "templateLink": {
+               "uri": "[concat(parameters('objUriPath').strTemplateBaseUri,parameters('objUriPath').strAppComponentFolderPath,parameters('objUriPath').strAppComponentNetworkFileName),parameters('objBuildingBlocks').strAddVnetandOneSnetFileName]",
+               "contentVersion": "1.0.0.0"
+            }
+          }
       }
-    }
-      ],
-      "outputs": {
-      }
+     ],
+     "outputs": {
+     }
     }
 }
