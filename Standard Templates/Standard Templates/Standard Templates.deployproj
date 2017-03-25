@@ -60,17 +60,12 @@
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <Content Include="WindowsVirtualMachineScaleSet.json" />
     <Content Include="WindowsVirtualMachineScaleSet.parameters.json" />
-    <Content Include="nestedtemplates\vnet.json" />
-    <Content Include="nestedtemplates\vnet.parameters.json" />
-    <None Include="Network\simpleSubnetLinked.json" />
-    <None Include="Network\simpleMainLinked.json" />
-    <None Include="Network\SubnetLinked.json" />
-    <None Include="Network\simpleLinked.json" />
-    <None Include="Network\simpleMainLinked.parameters.json" />
-    <None Include="Network\VnetLinked.parameters.json" />
-    <None Include="Network\vnet.parameters.json" />
-    <None Include="Network\vnet.json" />
-    <None Include="Network\VnetLinked.json" />
+    <None Include="Main Driver\App Components\appComponents.Network.json" />
+    <None Include="Main Driver\App Components\appComponents.Network.parameters.json" />
+    <None Include="Main Driver\App Components\Building Blocks\addVnetandOneSnet.json" />
+    <None Include="Main Driver\App Components\Building Blocks\addVnetandOneSnet.parameters.json" />
+    <None Include="Main Driver\mainDriver.parameters.json" />
+    <None Include="Main Driver\mainDriver.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.json" />
     <None Include="VMs\LoadBalancedVirtualMachine.parameters.json" />
     <None Include="VMs\VirtualMachines.json" />
@@ -98,7 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Claritas\SMS\" />
-    <Folder Include="NewFolder\" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
   <ProjectExtensions>

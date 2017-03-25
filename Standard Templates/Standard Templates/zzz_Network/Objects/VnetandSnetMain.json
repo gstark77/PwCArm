@@ -75,14 +75,6 @@
 
 
 
-
-    vnet- snet-
-    lb web
-    app dba
-       -as
-
-
-
     "objDevNetwork": {
       "vnetName": "vnet-edwdev",
       "addressPrefix": "10.100.32.0/21",
