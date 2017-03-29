@@ -38,8 +38,8 @@
     <None Include="AD\New Domain HA\nestedtemplates\vnet.json" />
     <None Include="AD\New Domain HA\README.md" />
     <None Include="azuredeploy.json" />
-    <None Include="Bastion\parameters.json" />
-    <None Include="Bastion\template.json" />
+    <None Include="Bastion\bastion.parameters.json" />
+    <None Include="Bastion\bastion.json" />
     <None Include="Claritas\EDW\Demo___Network.json" />
     <None Include="Claritas\EDW\Demo___Network.parameters.json" />
     <None Include="Claritas\EDW\Network.edw.json" />
