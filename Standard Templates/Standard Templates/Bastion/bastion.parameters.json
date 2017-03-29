@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "availabilitySets_comprdappadd_as01_name": {
+            "value": null
+        },
+        "availabilitySets_comprdwebbas_as01_name": {
+            "value": null
+        },
+        "disks_comprdappadd01_disk1_name": {
+            "value": null
+        },
+        "virtualMachines_comprdappadd01_name": {
+            "value": null
+        },
+        "virtualMachines_comprdwebbas01_name": {
+            "value": null
+        },
+        "networkInterfaces_comprdappadd01_nic1_name": {
+            "value": null
+        },
+        "networkInterfaces_comprdwebbas01_nic0_name": {
+            "value": null
+        },
+        "networkSecurityGroups_comprdapp_nsg_name": {
+            "value": null
+        },
+        "networkSecurityGroups_comprdweb_nsg_name": {
+            "value": null
+        },
+        "publicIPAddresses_comprdwebbas01_pip_name": {
+            "value": null
+        },
+        "virtualNetworks_vnet_comprd_name": {
+            "value": null
+        },
+        "storageAccounts_comprddiag_name": {
+            "value": null
+        },
+        "storageAccounts_comprdwebxg3ktkp3g77r6_name": {
+            "value": null
+        }
+    }
+}
