@@ -1,196 +1,90 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "availabilitySets_comprdappadd_as01_name": {
-            "defaultValue": "comprdappadd-as01",
-            "type": "String"
-        },
-        "availabilitySets_comprdwebbas_as01_name": {
-            "defaultValue": "comprdwebbas-as01",
-            "type": "String"
-        },
-        "disks_comprdappadd01_disk1_name": {
-            "defaultValue": "comprdappadd01_disk1",
-            "type": "String"
-        },
-        "virtualMachines_comprdappadd01_name": {
-            "defaultValue": "comprdappadd01",
-            "type": "String"
-        },
-        "virtualMachines_comprdwebbas01_name": {
-            "defaultValue": "comprdwebbas01",
-            "type": "String"
-        },
-        "networkInterfaces_comprdappadd01_nic1_name": {
-            "defaultValue": "comprdappadd01-nic1",
-            "type": "String"
-        },
-        "networkInterfaces_comprdwebbas01_nic0_name": {
-            "defaultValue": "comprdwebbas01-nic0",
-            "type": "String"
-        },
-        "networkSecurityGroups_comprdapp_nsg_name": {
-            "defaultValue": "comprdapp-nsg",
-            "type": "String"
-        },
-        "networkSecurityGroups_comprdweb_nsg_name": {
-            "defaultValue": "comprdweb-nsg",
-            "type": "String"
-        },
-        "publicIPAddresses_comprdwebbas01_pip_name": {
-            "defaultValue": "comprdwebbas01-pip",
-            "type": "String"
-        },
-        "virtualNetworks_vnet_comprd_name": {
-            "defaultValue": "vnet-comprd",
-            "type": "String"
-        },
-        "storageAccounts_comprddiag_name": {
-            "defaultValue": "comprddiag",
-            "type": "String"
-        },
-        "storageAccounts_comprdwebxg3ktkp3g77r6_name": {
-            "defaultValue": "comprdwebxg3ktkp3g77r6",
-            "type": "String"
-        }
+  "parameters": {
+    "availabilitySets_as01_name": {
+      "type": "String"
     },
+    "virtualMachines_vm_name": {
+      "type": "String"
+    },
+    "vmAdminUsername": {
+      "type": "String"
+    },
+    "vmAdminPassword": {
+      "type": "String"
+    },
+    "vmPrivateIPAddress": {
+      "type": "String"
+    },
+    "networkInterfaces_nic0_name": {
+      "type": "String"
+    },
+    "networkSecurityGroups_comprdapp_nsg_name": {
+      "type": "String"
+    },
+    "networkSecurityGroups_nsg_name": {
+      "type": "String"
+    },
+    "publicIPAddresses_pip_name": {
+      "type": "String"
+    },
+    "virtualNetworks_vnet_of_vm_name": {
+      "type": "String"
+    },
+    "storageAccounts_diagnosticsAccount_name": {
+      "type": "String"
+    },
+    "storageAccounts_osAccount_name_": {
+      "type": "String"
+    }
+  },
     "variables": {},
     "resources": [
         {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Compute/availabilitySets/comprdappadd-as01'.",
-            "type": "Microsoft.Compute/availabilitySets",
-            "sku": {
-                "name": "Aligned"
-            },
-            "name": "[parameters('availabilitySets_comprdappadd_as01_name')]",
-            "apiVersion": "2016-04-30-preview",
-            "location": "centralus",
-            "properties": {
-                "platformUpdateDomainCount": 5,
-                "platformFaultDomainCount": 2,
-                "virtualMachines": []
-            },
-            "dependsOn": []
-        },
-        {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Compute/availabilitySets/comprdwebbas-as01'.",
             "type": "Microsoft.Compute/availabilitySets",
             "sku": {
                 "name": "Classic"
             },
-            "name": "[parameters('availabilitySets_comprdwebbas_as01_name')]",
+            "name": "[parameters('availabilitySets_as01_name')]",
             "apiVersion": "2016-04-30-preview",
             "location": "centralus",
-            "tags": {
-                "displayName": "AvailabilitySet",
-                "environment": "prd",
-                "application": "com",
-                "tier": "web"
-            },
+          "tags": {
+            "function": "mgt",
+            "environment": "sho",
+            "zone": "mgt",
+            "type": "bas",
+            "displayName": "AvailabilitySet"
+          },
             "properties": {
                 "platformUpdateDomainCount": 5,
                 "platformFaultDomainCount": 3,
                 "virtualMachines": [
                     {
-                        "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_comprdwebbas01_name'))]"
+                        "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_vm_name'))]"
                     }
                 ]
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_comprdwebbas01_name'))]"
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_vm_name'))]"
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Compute/disks/comprdappadd01_disk1'.",
-            "type": "Microsoft.Compute/disks",
-            "name": "[parameters('disks_comprdappadd01_disk1_name')]",
-            "apiVersion": "2016-04-30-preview",
-            "location": "centralus",
-            "properties": {
-                "accountType": "Premium_LRS",
-                "osType": "Windows",
-                "creationData": {
-                    "createOption": "FromImage",
-                    "imageReference": {
-                        "id": "/Subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/Providers/Microsoft.Compute/Locations/centralus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/latest"
-                    }
-                },
-                "diskSizeGB": 128
-            },
-            "dependsOn": []
-        },
-        {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Compute/virtualMachines/comprdappadd01'.",
             "type": "Microsoft.Compute/virtualMachines",
-            "name": "[parameters('virtualMachines_comprdappadd01_name')]",
+            "name": "[parameters('virtualMachines_vm_name')]",
             "apiVersion": "2016-04-30-preview",
             "location": "centralus",
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "Standard_DS1_v2"
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsServer",
-                        "offer": "WindowsServer",
-                        "sku": "2016-Datacenter",
-                        "version": "latest"
-                    },
-                    "osDisk": {
-                        "osType": "Windows",
-                        "name": "[concat(parameters('virtualMachines_comprdappadd01_name'),'_disk1')]",
-                        "createOption": "FromImage",
-                        "caching": "ReadWrite",
-                        "managedDisk": {
-                            "storageAccountType": "Premium_LRS",
-                            "id": "[resourceId('Microsoft.Compute/disks', parameters('disks_comprdappadd01_disk1_name'))]"
-                        },
-                        "diskSizeGB": 128
-                    },
-                    "dataDisks": []
-                },
-                "osProfile": {
-                    "computerName": "[parameters('virtualMachines_comprdappadd01_name')]",
-                    "adminUsername": "claradmin",
-                    "windowsConfiguration": {
-                        "provisionVMAgent": true,
-                        "enableAutomaticUpdates": true
-                    },
-                    "secrets": []
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_comprdappadd01_nic1_name'))]"
-                        }
-                    ]
-                },
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[concat('https', '://', parameters('storageAccounts_comprddiag_name'), '.blob.core.windows.net', '/')]"
-                    }
-                }
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Compute/disks', parameters('disks_comprdappadd01_disk1_name'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_comprdappadd01_nic1_name'))]",
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_comprddiag_name'))]"
-            ]
-        },
-        {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Compute/virtualMachines/comprdwebbas01'.",
-            "type": "Microsoft.Compute/virtualMachines",
-            "name": "[parameters('virtualMachines_comprdwebbas01_name')]",
-            "apiVersion": "2016-04-30-preview",
-            "location": "centralus",
-            "tags": {
-                "displayName": "VirtualMachines"
-            },
+
+          "tags": {
+            "function": "mgt",
+            "environment": "sho",
+            "zone": "mgt",
+            "type": "bas",
+            "displayName": "VirtualMachine"
+          },
             "properties": {
                 "availabilitySet": {
-                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_comprdwebbas_as01_name'))]"
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_as01_name'))]"
                 },
                 "hardwareProfile": {
                     "vmSize": "Standard_D2_v2"
@@ -207,57 +101,67 @@
                         "name": "osdisk",
                         "createOption": "FromImage",
                         "vhd": {
-                            "uri": "[concat('https', '://', parameters('storageAccounts_comprdwebxg3ktkp3g77r6_name'), '.blob.core.windows.net', '/vhds/osdisk0.vhd')]"
+                            "uri": "[concat('https', '://', parameters('storageAccounts_osAccount_name_'), '.blob.core.windows.net', '/vhds/osdisk0.vhd')]"
                         },
                         "caching": "ReadWrite"
                     },
                     "dataDisks": []
                 },
-                "osProfile": {
-                    "computerName": "[parameters('virtualMachines_comprdwebbas01_name')]",
-                    "adminUsername": "claradmin",
-                    "linuxConfiguration": {
-                        "disablePasswordAuthentication": false
-                    },
-                    "secrets": []
+              "osProfile": {
+                "computerName": "[parameters('virtualMachines_vm_name')]",
+                "adminUsername": "[parameters('vmAdminUsername')]",
+                "adminPassword": "[parameters('vmAdminPassword')]",
+                "linuxConfiguration": {
+                  "disablePasswordAuthentication": false
                 },
+                "secrets": []
+              },
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_comprdwebbas01_nic0_name'))]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic0_name'))]"
                         }
                     ]
                 },
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": true,
-                        "storageUri": "[concat('https', '://', parameters('storageAccounts_comprdwebxg3ktkp3g77r6_name'), '.blob.core.windows.net', '/')]"
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_osAccount_name_'), '.blob.core.windows.net', '/')]"
                     }
                 }
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_comprdwebbas_as01_name'))]",
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_comprdwebxg3ktkp3g77r6_name'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_comprdwebbas01_nic0_name'))]"
+                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_as01_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_osAccount_name_'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic0_name'))]"
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Network/networkInterfaces/comprdappadd01-nic1'.",
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[parameters('networkInterfaces_comprdappadd01_nic1_name')]",
+            "name": "[parameters('networkInterfaces_nic0_name')]",
             "apiVersion": "2016-03-30",
             "location": "centralus",
+          "tags": {
+            "function": "mgt",
+            "environment": "sho",
+            "zone": "mgt",
+            "type": "bas",
+            "displayName": "NetworkInterface"
+          },
             "properties": {
                 "ipConfigurations": [
                     {
                         "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAddress": "10.103.41.21",
-                            "privateIPAllocationMethod": "Static",
-                            "subnet": {
-                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_comprd_name')), '/subnets/snet-comprdapp')]"
-                            }
+                      "properties": {
+                        "privateIPAddress": "[parameters('vmPrivateIPAddress')]",
+                        "privateIPAllocationMethod": "Static",
+                        "publicIPAddress": {
+                          "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_pip_name'))]"
+                        },
+                        "subnet": {
+                          "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_of_vm_name')), '/subnets/snet-comprdweb')]"
                         }
+                      }
                     }
                 ],
                 "dnsSettings": {
@@ -266,189 +170,88 @@
                 "enableIPForwarding": false
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_comprd_name'))]"
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_pip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_of_vm_name'))]"
             ]
         },
-        {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Network/networkInterfaces/comprdwebbas01-nic0'.",
-            "type": "Microsoft.Network/networkInterfaces",
-            "name": "[parameters('networkInterfaces_comprdwebbas01_nic0_name')]",
-            "apiVersion": "2016-03-30",
-            "location": "centralus",
-            "tags": {
-                "environment": "prd",
-                "application": "com",
-                "displayName": "NetworkInterface",
-                "tier": "web"
-            },
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAddress": "10.103.40.20",
-                            "privateIPAllocationMethod": "Static",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_comprdwebbas01_pip_name'))]"
-                            },
-                            "subnet": {
-                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_comprd_name')), '/subnets/snet-comprdweb')]"
-                            }
-                        }
-                    }
-                ],
-                "dnsSettings": {
-                    "dnsServers": []
-                },
-                "enableIPForwarding": false
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_comprdwebbas01_pip_name'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_comprd_name'))]"
-            ]
+      {
+        "type": "Microsoft.Network/networkSecurityGroups",
+        "name": "[parameters('networkSecurityGroups_nsg_name')]",
+        "apiVersion": "2016-03-30",
+        "location": "centralus",
+        "tags": {
+          "displayName": "NetworkSecurityGroup"
+        },
+        "properties": {
+          "securityRules": [
+            {
+              "name": "AllowInboundSSHInternet",
+              "properties": {
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "22",
+                "sourceAddressPrefix": "Internet",
+                "destinationAddressPrefix": "[parameters('vmPrivateIPAddress')]",
+                "access": "Allow",
+                "priority": 100,
+                "direction": "Inbound"
+              }
+            }
+          ]
+        },
+        "dependsOn": []
+      },
+      {
+        "type": "Microsoft.Network/publicIPAddresses",
+        "name": "[parameters('publicIPAddresses_pip_name')]",
+        "apiVersion": "2016-03-30",
+        "location": "centralus",
+        "tags": {
+          "displayName": "PublicIP",
+          "properties": {
+            "publicIPAllocationMethod": "Static",
+            "idleTimeoutInMinutes": 4,
+            "dnsSettings": {
+              "domainNameLabel": "clamgmt01"
+            }
+          },
+          "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Network/networkSecurityGroups/comprdapp-nsg'.",
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "name": "[parameters('networkSecurityGroups_comprdapp_nsg_name')]",
-            "apiVersion": "2016-03-30",
-            "location": "centralus",
-            "properties": {
-                "securityRules": []
-            },
-            "dependsOn": []
+          "type": "Microsoft.Storage/storageAccounts",
+          "sku": {
+            "name": "Standard_LRS",
+            "tier": "Standard"
+          },
+          "kind": "Storage",
+          "name": "[parameters('storageAccounts_diagnosticsAccount_name')]",
+          "apiVersion": "2016-01-01",
+          "location": "centralus",
+          "tags": {
+            "function": "mgt",
+            "environment": "sho",
+            "displayName": "StorageAccount (diagnostics)"
+          },
+          "properties": {},
+          "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Network/networkSecurityGroups/comprdweb-nsg'.",
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "name": "[parameters('networkSecurityGroups_comprdweb_nsg_name')]",
-            "apiVersion": "2016-03-30",
-            "location": "centralus",
-            "properties": {
-                "securityRules": [
-                    {
-                        "name": "DenySMSDEVInBoundssh",
-                        "properties": {
-                            "protocol": "TCP",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "22",
-                            "sourceAddressPrefix": "10.100.0.0/21",
-                            "destinationAddressPrefix": "*",
-                            "access": "Deny",
-                            "priority": 1000,
-                            "direction": "Inbound"
-                        }
-                    },
-                    {
-                        "name": "AllowInboundSSHInternet",
-                        "properties": {
-                            "protocol": "TCP",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "22",
-                            "sourceAddressPrefix": "Internet",
-                            "destinationAddressPrefix": "10.103.40.20",
-                            "access": "Allow",
-                            "priority": 100,
-                            "direction": "Inbound"
-                        }
-                    }
-                ]
-            },
-            "dependsOn": []
-        },
-        {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Network/publicIPAddresses/comprdwebbas01-pip'.",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[parameters('publicIPAddresses_comprdwebbas01_pip_name')]",
-            "apiVersion": "2016-03-30",
-            "location": "centralus",
-            "properties": {
-                "publicIPAllocationMethod": "Static",
-                "idleTimeoutInMinutes": 4,
-                "dnsSettings": {
-                    "domainNameLabel": "clamgmt01"
-                }
-            },
-            "dependsOn": []
-        },
-        {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Network/virtualNetworks/vnet-comprd'.",
-            "type": "Microsoft.Network/virtualNetworks",
-            "name": "[parameters('virtualNetworks_vnet_comprd_name')]",
-            "apiVersion": "2016-03-30",
-            "location": "centralus",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "10.103.40.0/21"
-                    ]
-                },
-                "dhcpOptions": {
-                    "dnsServers": [
-                        "10.99.0.4",
-                        "10.99.0.5"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "snet-comprdweb",
-                        "properties": {
-                            "addressPrefix": "10.103.40.0/24",
-                            "networkSecurityGroup": {
-                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_comprdweb_nsg_name'))]"
-                            }
-                        }
-                    },
-                    {
-                        "name": "snet-comprdapp",
-                        "properties": {
-                            "addressPrefix": "10.103.41.0/24",
-                            "networkSecurityGroup": {
-                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_comprdapp_nsg_name'))]"
-                            }
-                        }
-                    }
-                ]
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_comprdweb_nsg_name'))]",
-                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_comprdapp_nsg_name'))]"
-            ]
-        },
-        {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Storage/storageAccounts/comprddiag'.",
-            "type": "Microsoft.Storage/storageAccounts",
-            "sku": {
-                "name": "Standard_LRS",
-                "tier": "Standard"
-            },
-            "kind": "Storage",
-            "name": "[parameters('storageAccounts_comprddiag_name')]",
-            "apiVersion": "2016-01-01",
-            "location": "centralus",
-            "tags": {},
-            "properties": {},
-            "dependsOn": []
-        },
-        {
-            "comments": "Generalized from resource: '/subscriptions/3c423771-3d30-4ba1-b4b0-74a2343689d4/resourceGroups/comprd/providers/Microsoft.Storage/storageAccounts/comprdwebxg3ktkp3g77r6'.",
-            "type": "Microsoft.Storage/storageAccounts",
-            "sku": {
-                "name": "Standard_LRS",
-                "tier": "Standard"
-            },
-            "kind": "Storage",
-            "name": "[parameters('storageAccounts_comprdwebxg3ktkp3g77r6_name')]",
-            "apiVersion": "2016-01-01",
-            "location": "centralus",
-            "tags": {
-                "application": "com",
-                "displayName": "StorageAccount",
-                "environment": "prd",
-                "tier": "web"
-            },
-            "properties": {},
-            "dependsOn": []
+          "type": "Microsoft.Storage/storageAccounts",
+          "sku": {
+            "name": "Standard_LRS",
+            "tier": "Standard"
+          },
+          "kind": "Storage",
+          "name": "[parameters('storageAccounts_osAccount_name_')]",
+          "apiVersion": "2016-01-01",
+          "location": "centralus",
+          "tags": {
+            "displayName": "StorageAccount (main)",
+            "function": "mgt",
+            "environment": "sho"
+          },
+          "properties": {},
+          "dependsOn": []
         }
-    ]
-}
+        ]
+      }
