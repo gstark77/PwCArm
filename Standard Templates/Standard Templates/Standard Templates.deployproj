@@ -64,8 +64,6 @@
     <Content Include="WindowsVirtualMachineScaleSet.parameters.json" />
     <None Include="Main Driver\App Components\appComponents.Network.json" />
     <None Include="Main Driver\App Components\appComponents.Network.parameters.json" />
-    <None Include="Main Driver\Building Blocks\addVnetandOneSnet.False.Copy.json" />
-    <None Include="Main Driver\Building Blocks\addVnetandOneSnet.False.parameters.json" />
     <None Include="Main Driver\Building Blocks\addVnetandOneSnet.json" />
     <None Include="Main Driver\Building Blocks\addVnetandOneSnet.parameters.json" />
     <None Include="Main Driver\mainDriver.parameters.json" />

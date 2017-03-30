@@ -8,46 +8,28 @@
 
   },
   "variables": {
-  }/*,
+  },
   "resources": [
     {
-      "apiVersion": "2015-01-01",
-      "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('objUriPath').strTemplateBaseUri,parameters('objUriPath').strAppComponentFolderPath,parameters('objUriPath').strAppComponentNetworkFileName),parameters('objBuildingBlocks').strAddVnetandOneSnetFileName]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "objBaseData": { "value": "[variables('objBaseData')]" },
-          "objNetworkData": { "value": "[variables('objNetworkData')]" }
-        }
-      } 
-      /*
+      "apiVersion": "[providers('Microsoft.Network','virtualNetworks').apiVersions[0]]",
+      "location": "[resourceGroup().location]",
       "name": "string",
-      "type": "Microsoft.Network/virtualNetworks",
-      "apiVersion": "2016-09-01",
-      "location": "string",
-      "tags": {},
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "string"
+            "10.100.8.0/21"
           ]
         },
         "dhcpOptions": {
           "dnsServers": [
-            "string"
+            "10.99.0.4"
           ]
         },
         "subnets": [
           {
-            "id": "string",
             "properties": {
-              "addressPrefix": "string",
-              "networkSecurityGroup": {
+              "addressPrefix": "10.100.8.0/24"
+              /*"networkSecurityGroup": {
                 "id": "string",
                 "location": "string",
                 "tags": {},
@@ -87,7 +69,8 @@
                     }
                   ]
                 }
-              },
+              },*/
+              /*
               "routeTable": {
                 "id": "string",
                 "location": "string",
@@ -105,7 +88,8 @@
                     }
                   ]
                 }
-              },
+              },*/
+              /*
               "resourceNavigationLinks": [
                 {
                   "id": "string",
@@ -116,10 +100,12 @@
                   "name": "string"
                 }
               ]
+            },*/
             },
-            "name": "string"
+            "name": "snet-dardevweb"
           }
-        ],
+        ]
+        /*,
         "virtualNetworkPeerings": [
           {
             "id": "string",
@@ -136,8 +122,10 @@
             "name": "string"
           }
         ]
+        */
       },
-      "resources": [
-      ]
-    */
- }
+      "tags": {},
+      "type": "Microsoft.Network/virtualNetworks"
+    }
+  ]
+}
