@@ -36,8 +36,6 @@
             "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",
             "properties": {
               "addressPrefix": "[parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix]" 
-              /*"10.100.8.0/24" */
-              /*"[parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix]" */
             }
           }
         ]
