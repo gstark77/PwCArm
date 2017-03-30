@@ -9,11 +9,15 @@
   },
   "variables": {
   },
+
   "resources": [
     {
+      "name": "vnet-dardev",
+      "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "[providers('Microsoft.Network','virtualNetworks').apiVersions[0]]",
       "location": "[resourceGroup().location]",
-      "name": "string",
+      "dependsOn": [
+      ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -22,110 +26,23 @@
         },
         "dhcpOptions": {
           "dnsServers": [
-            "10.99.0.4"
+            "10.99.0.4",
+            "10.99.0.5"
           ]
         },
         "subnets": [
           {
+            "name": "snet-dardev",
             "properties": {
-              "addressPrefix": "10.100.8.0/24"
-              /*"networkSecurityGroup": {
-                "id": "string",
-                "location": "string",
-                "tags": {},
-                "properties": {
-                  "securityRules": [
-                    {
-                      "id": "string",
-                      "properties": {
-                        "description": "string",
-                        "protocol": "string",
-                        "sourcePortRange": "string",
-                        "destinationPortRange": "string",
-                        "sourceAddressPrefix": "string",
-                        "destinationAddressPrefix": "string",
-                        "access": "string",
-                        "priority": "integer",
-                        "direction": "string"
-                      },
-                      "name": "string"
-                    }
-                  ],
-                  "defaultSecurityRules": [
-                    {
-                      "id": "string",
-                      "properties": {
-                        "description": "string",
-                        "protocol": "string",
-                        "sourcePortRange": "string",
-                        "destinationPortRange": "string",
-                        "sourceAddressPrefix": "string",
-                        "destinationAddressPrefix": "string",
-                        "access": "string",
-                        "priority": "integer",
-                        "direction": "string"
-                      },
-                      "name": "string"
-                    }
-                  ]
-                }
-              },*/
-              /*
-              "routeTable": {
-                "id": "string",
-                "location": "string",
-                "tags": {},
-                "properties": {
-                  "routes": [
-                    {
-                      "id": "string",
-                      "properties": {
-                        "addressPrefix": "string",
-                        "nextHopType": "string",
-                        "nextHopIpAddress": "string"
-                      },
-                      "name": "string"
-                    }
-                  ]
-                }
-              },*/
-              /*
-              "resourceNavigationLinks": [
-                {
-                  "id": "string",
-                  "properties": {
-                    "linkedResourceType": "string",
-                    "link": "string"
-                  },
-                  "name": "string"
-                }
-              ]
-            },*/
-            },
-            "name": "snet-dardevweb"
+              "addressPrefix": "10.100.8.0/21"
+            }
           }
         ]
-        /*,
-        "virtualNetworkPeerings": [
-          {
-            "id": "string",
-            "properties": {
-              "allowVirtualNetworkAccess": "boolean",
-              "allowForwardedTraffic": "boolean",
-              "allowGatewayTransit": "boolean",
-              "useRemoteGateways": "boolean",
-              "remoteVirtualNetwork": {
-                "id": "string"
-              },
-              "peeringState": "string"
-            },
-            "name": "string"
-          }
-        ]
-        */
-      },
-      "tags": {},
-      "type": "Microsoft.Network/virtualNetworks"
+      }
     }
   ]
+
+
+
+
 }
