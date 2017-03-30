@@ -62,6 +62,8 @@
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <Content Include="WindowsVirtualMachineScaleSet.json" />
     <Content Include="WindowsVirtualMachineScaleSet.parameters.json" />
+    <None Include="Drawbridge\VMs\filestore.parameters.json" />
+    <None Include="Drawbridge\VMs\filestore.json" />
     <None Include="Main Driver\App Components\appComponents.Network.json" />
     <None Include="Main Driver\App Components\appComponents.Network.parameters.json" />
     <None Include="Main Driver\Building Blocks\addVnetandOneSnet.json" />
