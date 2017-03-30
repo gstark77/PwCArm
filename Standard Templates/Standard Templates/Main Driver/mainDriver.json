@@ -3,14 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
-  "variables": 
-  {
-    /*  
-    +---------------------------------------------------------------------------------------------------------+
-    |  Complex object for all uri path strings needed to link templates.                                      |
-    +---------------------------------------------------------------------------------------------------------+*/
+  "variables": {
+
     "objUriPath": {
-      "strTemplateBaseUri": "https://github.com/gstark77/PwCArm/tree/master/Standard%20Templates/Standard%20Templates/Main%20Driver/",
+      "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Main%20Driver/",
       "strAppComponentFolderPath": "App%20Components/",
       "strAppComponentNetworkFileName": "appComponents.Network.json",
       "objBuildingBlocks": {
@@ -18,7 +14,7 @@
         "strAddVnetandOneSnetFileName": "addVnetandOneSnet.json"
       }
     },
-
+    
     /*  
     +---------------------------------------------------------------------------------------------------------+
     |  Complex object for the base data needed to name resources.                                             |
@@ -46,23 +42,23 @@
     }
 
   },
-    "resources": [
-     {
-       "apiVersion": "2015-01-01",
-       "name": "linkedTemplate",
-       "type": "Microsoft.Resources/deployments",
-       "properties": {
-       "mode": "Incremental",
-         "templateLink": {
-           "uri": "[concat(variables('objUriPath').strTemplateBaseUri,variables('objUriPath').strAppComponentFolderPath,variables('objUriPath').strAppComponentNetworkFileName)]",
-           "contentVersion": "1.0.0.0"
-          },
-          "parameters": {
-           "objUriPath": { "value": "[variables('objUriPath')]" },
-           "objBaseData": { "value": "[variables('objBaseData')]" },
-           "objNetworkData": { "value": "[variables('objNetworkData')]" }
-          }
+  "resources": [
+    {
+      "apiVersion": "2015-01-01",
+      "name": "MainDriver",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('objUriPath').strTemplateBaseUri,variables('objUriPath').strAppComponentFolderPath,variables('objUriPath').strAppComponentNetworkFileName)]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "objUriPath": { "value": "[variables('objUriPath')]" },
+          "objBaseData": { "value": "[variables('objBaseData')]" },
+          "objNetworkData": { "value": "[variables('objNetworkData')]" }
         }
       }
-    ]
+    }
+  ]
 }
