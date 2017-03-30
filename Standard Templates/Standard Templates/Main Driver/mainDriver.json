@@ -10,8 +10,8 @@
     |  Complex object for all uri path strings needed to link templates.                                      |
     +---------------------------------------------------------------------------------------------------------+*/
     "objUriPath": {
-      "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Main%Driver/",
-      "strAppComponentFolderPath": "App Components/",
+      "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%Templates/Standard%Templates/Main%Driver/",
+      "strAppComponentFolderPath": "App%Components/",
       "strAppComponentNetworkFileName": "appComponents.Network.json/",
       "objBuildingBlocks": {
         "strAddVnetandOneSnetFileName": "addVentandOneSnet.json"
@@ -22,13 +22,13 @@
     +---------------------------------------------------------------------------------------------------------+
     |  Complex object for the base data needed to name resources.                                             |
     +---------------------------------------------------------------------------------------------------------+*/
-    "objBaseData": {
-      "strAppName": "dar",
-      "strAppEnv": "dev"
-    },
+      "objBaseData": {
+        "strAppName": "dar",
+        "strAppEnv": "dev"
+      },
 
 
-    /*  
+      /*  
     +---------------------------------------------------------------------------------------------------------+
     |  Complex object for the base data needed to name resources.                                             |
     +---------------------------------------------------------------------------------------------------------+
@@ -38,13 +38,13 @@
         "objNsgRule" "strVnetName",
         "strRemoteVnetName" "strResourceId"
     +---------------------------------------------------------------------------------------------------------+*/
-    "objNetworkData": {
-      "strBaseNetwork": "10.100.8.0/21",
-      /* 0 = false, 1 = true (use in copy downstream to see if 0 is a valid arguement) */
-      "testTrueFalseCreateVnet": "0"
-    }
+      "objNetworkData": {
+        "strBaseNetwork": "10.100.8.0/21",
+        /* 0 = false, 1 = true (use in copy downstream to see if 0 is a valid arguement) */
+        "testTrueFalseCreateVnet": "0"
+      }
 
-  },
+    },
         "resources": [
           {
             "apiVersion": "2015-01-01", /* update with dynamic apiVersion */
