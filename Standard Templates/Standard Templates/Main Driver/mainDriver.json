@@ -39,7 +39,9 @@
       "strBaseNetwork": "10.100.8.0/21",
       /* 0 = false, 1 = true (use in copy downstream to see if 0 is a valid arguement) */
       "strSubnet": {
-        "strSubnet1Prefix": "10.100.8.0/24"
+        "strSubnet1": {
+          "strSubnetPrefix": "10.100.8.0/24",
+          "strSubnetTier": "web"
       },
       "testTrueFalseCreateVnet": "0",
       "strDnsServer": {

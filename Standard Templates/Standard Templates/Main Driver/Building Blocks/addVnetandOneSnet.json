@@ -13,7 +13,7 @@
 
   "resources": [
     {
-      "name": "[concat('vnet-',parameters('objBaseData').strAppName)]",
+      "name": "[concat('vnet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv)]",
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "[providers('Microsoft.Network','virtualNetworks').apiVersions[0]]",
       "location": "[resourceGroup().location]",
@@ -33,9 +33,9 @@
         },
         "subnets": [
           {
-            "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv)]",
+            "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').strSubnet1.strSubnetTier)]",
             "properties": {
-              "addressPrefix": "parameters('objNetworkData').strSubnet.strSubnet1Prefix)"
+              "addressPrefix": "parameters('objNetworkData').strSubnet.strSubnet1.strSubnetPrefix)"
             }
           }
         ]
