@@ -59,8 +59,8 @@
           },
           "parameters": {
            "objUriPath": { "value": "[variables('objUriPath')]" },
-            "objBaseData": { "value": "[variables('objBaseData')]" },
-            "objNetworkData": { "value": "[variables('objNetworkData')]" }
+           "objBaseData": { "value": "[variables('objBaseData')]" },
+           "objNetworkData": { "value": "[variables('objNetworkData')]" }
           }
         }
       }
