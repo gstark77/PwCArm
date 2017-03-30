@@ -10,12 +10,13 @@
     |  Complex object for all uri path strings needed to link templates.                                      |
     +---------------------------------------------------------------------------------------------------------+*/
     "objUriPath": {
-      "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%Templates/Standard%Templates/Main%Driver/",
-      "strAppComponentFolderPath": "App%Components/",
-      "strAppComponentNetworkFileName": "appComponents.Network.json/",
+      "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Main%20Driver/",
+      "strAppComponentFolderPath": "App%20Components/",
+      "strAppComponentNetworkFileName": "appComponents.Network.json",
       "objBuildingBlocks": {
-        "strAddVnetandOneSnetFileName": "addVentandOneSnet.json"
-      }
+        "strAddVnetandOneSnetFileName": "/addVentandOneSnet.json"
+      },
+      /* https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard_Templates/Main_Driver/App_Components/appComponents.Network.json */
     },
 
     /*  

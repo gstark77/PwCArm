@@ -8,9 +8,23 @@
 
   },
   "variables": {
-  },
+  }/*,
   "resources": [
     {
+      "apiVersion": "2015-01-01",
+      "name": "linkedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('objUriPath').strTemplateBaseUri,parameters('objUriPath').strAppComponentFolderPath,parameters('objUriPath').strAppComponentNetworkFileName),parameters('objBuildingBlocks').strAddVnetandOneSnetFileName]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "objBaseData": { "value": "[variables('objBaseData')]" },
+          "objNetworkData": { "value": "[variables('objNetworkData')]" }
+        }
+      } 
       /*
       "name": "string",
       "type": "Microsoft.Network/virtualNetworks",
@@ -125,9 +139,5 @@
       },
       "resources": [
       ]
-    */}
-
-
-
-  ]
-    }
+    */
+ }
