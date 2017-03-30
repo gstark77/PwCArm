@@ -26,11 +26,17 @@
     "virtualNetworks_vnet_of_vm_name": {
       "value": "vnet-mgtshomgt"
     },
+    "snet_of_vm_name": {
+      "value": "snet-mgtshomgt"
+    },
     "storageAccounts_diagnosticsAccount_name": {
       "value": "mgtshodiag"
     },
     "storageAccounts_osAccount_name_": {
       "value": "mgtshomain"
+    },
+    "vmAdminPassword": {
+      "value": "Dr4wBR1dg3!Rocks"
     }
   }
 }
