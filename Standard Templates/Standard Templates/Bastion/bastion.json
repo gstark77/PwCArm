@@ -32,6 +32,9 @@
     "virtualNetworks_vnet_of_vm_name": {
       "type": "String"
     },
+    "osDisk_name": {
+      "type": "String"
+    },
     "snet_of_vm_name": {
       "type": "String"
     },
@@ -56,7 +59,7 @@
   },
   "variables": {},
   "resources": [
-    {
+    /*{
       "type": "Microsoft.Compute/availabilitySets",
       "sku": {
         "name": "Classic"
@@ -81,9 +84,9 @@
         ]
       },
       "dependsOn": [
-       // "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_vm_name'))]"
+        // "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_vm_name'))]"
       ]
-    },
+    },*/
     {
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('virtualMachines_vm_name')]",
@@ -116,7 +119,7 @@
             "name": "osdisk",
             "createOption": "FromImage",
             "vhd": {
-              "uri": "[concat('https', '://', parameters('storageAccounts_osAccount_name'), '.blob.core.windows.net', '/vhds/osdisk0.vhd')]"
+              "uri": "[concat('https', '://', parameters('storageAccounts_osAccount_name'), '.blob.core.windows.net', '/vhds/', parameters('osDisk_name'))]"
             },
             "caching": "ReadWrite"
           },
@@ -146,11 +149,11 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_as01_name'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_osAccount_name'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic0_name'))]"
+     //  "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_as01_name'))]",
+     //   "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_osAccount_name'))]",
+     //   "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic0_name'))]"
       ]
-    },
+    }/*,
     {
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[parameters('networkInterfaces_nic0_name')]",
@@ -268,6 +271,6 @@
         },
         "properties": {},
         "dependsOn": []
-      }
-      ]
+      }*/
+  ]
     }
