@@ -8,126 +8,42 @@
 
   },
   "variables": {
+
   },
+
   "resources": [
     {
-      /*
-      "name": "string",
+      "name": "vnet-dardev",
       "type": "Microsoft.Network/virtualNetworks",
-      "apiVersion": "2016-09-01",
-      "location": "string",
-      "tags": {},
+      "apiVersion": "[providers('Microsoft.Network','virtualNetworks').apiVersions[0]]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+      ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "string"
+            "10.100.8.0/21"
           ]
         },
         "dhcpOptions": {
           "dnsServers": [
-            "string"
+            "10.99.0.4",
+            "10.99.0.5"
           ]
         },
         "subnets": [
           {
-            "id": "string",
+            "name": "snet-dardev",
             "properties": {
-              "addressPrefix": "string",
-              "networkSecurityGroup": {
-                "id": "string",
-                "location": "string",
-                "tags": {},
-                "properties": {
-                  "securityRules": [
-                    {
-                      "id": "string",
-                      "properties": {
-                        "description": "string",
-                        "protocol": "string",
-                        "sourcePortRange": "string",
-                        "destinationPortRange": "string",
-                        "sourceAddressPrefix": "string",
-                        "destinationAddressPrefix": "string",
-                        "access": "string",
-                        "priority": "integer",
-                        "direction": "string"
-                      },
-                      "name": "string"
-                    }
-                  ],
-                  "defaultSecurityRules": [
-                    {
-                      "id": "string",
-                      "properties": {
-                        "description": "string",
-                        "protocol": "string",
-                        "sourcePortRange": "string",
-                        "destinationPortRange": "string",
-                        "sourceAddressPrefix": "string",
-                        "destinationAddressPrefix": "string",
-                        "access": "string",
-                        "priority": "integer",
-                        "direction": "string"
-                      },
-                      "name": "string"
-                    }
-                  ]
-                }
-              },
-              "routeTable": {
-                "id": "string",
-                "location": "string",
-                "tags": {},
-                "properties": {
-                  "routes": [
-                    {
-                      "id": "string",
-                      "properties": {
-                        "addressPrefix": "string",
-                        "nextHopType": "string",
-                        "nextHopIpAddress": "string"
-                      },
-                      "name": "string"
-                    }
-                  ]
-                }
-              },
-              "resourceNavigationLinks": [
-                {
-                  "id": "string",
-                  "properties": {
-                    "linkedResourceType": "string",
-                    "link": "string"
-                  },
-                  "name": "string"
-                }
-              ]
-            },
-            "name": "string"
-          }
-        ],
-        "virtualNetworkPeerings": [
-          {
-            "id": "string",
-            "properties": {
-              "allowVirtualNetworkAccess": "boolean",
-              "allowForwardedTraffic": "boolean",
-              "allowGatewayTransit": "boolean",
-              "useRemoteGateways": "boolean",
-              "remoteVirtualNetwork": {
-                "id": "string"
-              },
-              "peeringState": "string"
-            },
-            "name": "string"
+              "addressPrefix": "10.100.8.0/21"
+            }
           }
         ]
-      },
-      "resources": [
-      ]
-    */}
-
-
-
-  ]
+      }
     }
+  ]
+
+
+
+
+}

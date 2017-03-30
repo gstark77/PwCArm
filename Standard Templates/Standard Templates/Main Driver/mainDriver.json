@@ -3,18 +3,19 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
-  "variables": {
-
+  "variables": 
+  {
     /*  
     +---------------------------------------------------------------------------------------------------------+
     |  Complex object for all uri path strings needed to link templates.                                      |
     +---------------------------------------------------------------------------------------------------------+*/
     "objUriPath": {
-      "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Main Driver/",
-      "strAppComponentFolderPath": "App Components/",
-      "strAppComponentNetworkFileName": "appComponents.Network.json/",
+      "strTemplateBaseUri": "https://github.com/gstark77/PwCArm/tree/master/Standard%20Templates/Standard%20Templates/Main%20Driver/",
+      "strAppComponentFolderPath": "App%20Components/",
+      "strAppComponentNetworkFileName": "appComponents.Network.json",
       "objBuildingBlocks": {
-        "strAddVnetandOneSnetFileName": "addVentandOneSnet.json"
+        "strBuildingBlockFolderPath": "Building%20Blocks/",
+        "strAddVnetandOneSnetFileName": "addVnetandOneSnet.json"
       }
     },
 
@@ -45,25 +46,23 @@
     }
 
   },
-        "resources": [
-          {
-            "apiVersion": "2015-01-01", /* update with dynamic apiVersion */
-            "name": "linkedTemplate",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-              "mode": "Incremental",
-              "templateLink": {
-                "uri": "[concat(variables('objUriPath').strTemplateBaseUri,variables('objUriPath').strAppComponentFolderPath,variables('objUriPath').strAppComponentNetworkFileName)]",
-                "contentVersion": "1.0.0.0"
-              },
-              "parameters": {
-                "objUriPath": { "value": "[variables('objUriPath')]" },
-                "objBaseData": { "value": "[variables('objBaseData')]" },
-                "objNetworkData": { "value": "[variables('objNetworkData')]" }
-              }
-            }
+    "resources": [
+     {
+       "apiVersion": "2015-01-01",
+       "name": "linkedTemplate",
+       "type": "Microsoft.Resources/deployments",
+       "properties": {
+       "mode": "Incremental",
+         "templateLink": {
+           "uri": "[concat(variables('objUriPath').strTemplateBaseUri,variables('objUriPath').strAppComponentFolderPath,variables('objUriPath').strAppComponentNetworkFileName)]",
+           "contentVersion": "1.0.0.0"
+          },
+          "parameters": {
+           "objUriPath": { "value": "[variables('objUriPath')]" },
+           "objBaseData": { "value": "[variables('objBaseData')]" },
+           "objNetworkData": { "value": "[variables('objNetworkData')]" }
           }
-        ],
-        "outputs": {
         }
       }
+    ]
+}
