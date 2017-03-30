@@ -3,25 +3,37 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newStorageAccountName": {
-      "value": "GEN-UNIQUE"
+      "value": "idnshomain"
     },
     "adminUsername": {
-      "value": "azureuser"
-    },
+      "value": "pwcadmin"
+    }, /*,
     "adminPassword": {
-      "value": "GEN-PASSWORD"
-    },
+      "value": "xxxxxxxxx"
+    },*/
     "adVMSize": {
       "value": "Standard_DS2_v2"
     },
-    "dnsPrefix": {
-      "value": "GEN-UNIQUE"
-    },
-    "publicIPAddressName": {
-      "value": "myPubIp"
-    },
+    //"dnsPrefix": {
+    //  "value": "dns"
+    //},
+    //"publicIPAddressName": {
+    //  "value": "myPubIp"
+    //},
     "domainName": {
-      "value": "mydomain.local"
+      "value": "pwc-gov.com"
+    },
+    "tag_function": {
+      "value": "idn"
+    },
+    "tag_environment": {
+      "value": "sho"
+    },
+    "tag_zone": {
+      "value": "tru"
+    },
+    "tag_type": {
+      "value": "add"
     }
   }
 }
