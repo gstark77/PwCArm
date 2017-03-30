@@ -38,14 +38,21 @@
     "objNetworkData": {
       "strBaseNetwork": "10.100.8.0/21",
       /* 0 = false, 1 = true (use in copy downstream to see if 0 is a valid arguement) */
-      "testTrueFalseCreateVnet": "0"
+      "strSubnet": {
+        "strSubnet1Prefix": "10.100.8.0/24"
+      },
+      "testTrueFalseCreateVnet": "0",
+      "strDnsServer": {
+        "strDnsServer1": "10.99.0.4",
+        "strDnsServer2": "10.99.0.5"
+      }
     }
 
   },
   "resources": [
     {
       "apiVersion": "2015-01-01",
-      "name": "MainDriver",
+      "name": "[concat(deployment().name,'-linkedTemplate')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",

@@ -13,7 +13,7 @@
 
   "resources": [
     {
-      "name": "vnet-dardev",
+      "name": "[concat('vnet-',parameters('objBaseData').strAppName)]",
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "[providers('Microsoft.Network','virtualNetworks').apiVersions[0]]",
       "location": "[resourceGroup().location]",
@@ -22,20 +22,20 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "10.100.8.0/21"
+            "[concat(parameters('objNetworkData').strBasenetwork)]"
           ]
         },
         "dhcpOptions": {
           "dnsServers": [
-            "10.99.0.4",
-            "10.99.0.5"
+            "[concat(parameters('objNetworkData').strDnsServer.strDnsServer1)]",
+            "[concat(parameters('objNetworkData').strDnsServer.strDnsServer2)]"
           ]
         },
         "subnets": [
           {
-            "name": "snet-dardev",
+            "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv)]",
             "properties": {
-              "addressPrefix": "10.100.8.0/21"
+              "addressPrefix": "parameters('objNetworkData').strSubnet.strSubnet1Prefix)"
             }
           }
         ]
