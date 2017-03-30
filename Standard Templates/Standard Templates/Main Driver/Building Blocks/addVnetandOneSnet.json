@@ -22,8 +22,8 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[concat(parameters('objNetworkData').strBasenetwork)]"
-          ]
+            "[parameters('objNetworkData').strBaseNetwork]"
+          ] 
         },
         "dhcpOptions": {
           "dnsServers": [
@@ -35,7 +35,7 @@
           {
             "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",
             "properties": {
-              "addressPrefix": "parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix)"
+              "addressPrefix": "10.100.8.0/24" /*"[parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix]" */
             }
           }
         ]
