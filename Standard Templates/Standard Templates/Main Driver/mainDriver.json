@@ -3,8 +3,8 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
-  "variables": {
-
+  "variables": 
+  {
     /*  
     +---------------------------------------------------------------------------------------------------------+
     |  Complex object for all uri path strings needed to link templates.                                      |
@@ -19,11 +19,6 @@
         "strAddVnetandOneSnetFileName": "addVnetandOneSnet.json"
       }
     },
-
-
-    /* https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard Templates/Standard Templates/Main Driver/Building Blocks/addVentandOneSnet.json  */
-    /* https://github.com/gstark77/PwCArm/blob/master/Standard%20Templates/Standard%20Templates/Main%20Driver/App%20Components/appComponents.Network.json */
-    /* https://github.com/gstark77/PwCArm/blob/master/Standard%20Templates/Standard%20Templates/Main%20Driver/Building%20Blocks/addVnetandOneSnet.json */
 
     /*  
     +---------------------------------------------------------------------------------------------------------+
