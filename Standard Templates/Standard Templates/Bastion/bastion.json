@@ -26,6 +26,9 @@
     "publicIPAddresses_pip_name": {
       "type": "String"
     },
+    "publicIPAddresses_pip_domainNameLabel": {
+      "type": "String"
+    },
     "virtualNetworks_vnet_of_vm_name": {
       "type": "String"
     },
@@ -35,7 +38,19 @@
     "storageAccounts_diagnosticsAccount_name": {
       "type": "String"
     },
-    "storageAccounts_osAccount_name_": {
+    "storageAccounts_osAccount_name": {
+      "type": "String"
+    },
+    "tag_function": {
+      "type": "String"
+    },
+    "tag_environment": {
+      "type": "String"
+    },
+    "tag_zone": {
+      "type": "String"
+    },
+    "tag_type": {
       "type": "String"
     }
   },
@@ -50,10 +65,10 @@
       "apiVersion": "2016-04-30-preview",
       "location": "centralus",
       "tags": {
-        "function": "mgt",
-        "environment": "sho",
-        "zone": "mgt",
-        "type": "bas",
+        "function": "[parameters('tag_function')]",
+        "environment": "[parameters('tag_environment')]",
+        "zone": "[parameters('tag_zone')]",
+        "type": "[parameters('tag_type')]",
         "displayName": "AvailabilitySet"
       },
       "properties": {
@@ -76,10 +91,10 @@
       "location": "centralus",
 
       "tags": {
-        "function": "mgt",
-        "environment": "sho",
-        "zone": "mgt",
-        "type": "bas",
+        "function": "[parameters('tag_function')]",
+        "environment": "[parameters('tag_environment')]",
+        "zone": "[parameters('tag_zone')]",
+        "type": "[parameters('tag_type')]",
         "displayName": "VirtualMachine"
       },
       "properties": {
@@ -101,7 +116,7 @@
             "name": "osdisk",
             "createOption": "FromImage",
             "vhd": {
-              "uri": "[concat('https', '://', parameters('storageAccounts_osAccount_name_'), '.blob.core.windows.net', '/vhds/osdisk0.vhd')]"
+              "uri": "[concat('https', '://', parameters('storageAccounts_osAccount_name'), '.blob.core.windows.net', '/vhds/osdisk0.vhd')]"
             },
             "caching": "ReadWrite"
           },
@@ -126,13 +141,13 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": true,
-            "storageUri": "[concat('https', '://', parameters('storageAccounts_osAccount_name_'), '.blob.core.windows.net', '/')]"
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_osAccount_name'), '.blob.core.windows.net', '/')]"
           }
         }
       },
       "dependsOn": [
         "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_as01_name'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_osAccount_name_'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_osAccount_name'))]",
         "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic0_name'))]"
       ]
     },
@@ -142,10 +157,10 @@
       "apiVersion": "2016-03-30",
       "location": "centralus",
       "tags": {
-        "function": "mgt",
-        "environment": "sho",
-        "zone": "mgt",
-        "type": "bas",
+        "function": "[parameters('tag_function')]",
+        "environment": "[parameters('tag_environment')]",
+        "zone": "[parameters('tag_zone')]",
+        "type": "[parameters('tag_type')]",
         "displayName": "NetworkInterface"
       },
       "properties": {
@@ -213,7 +228,7 @@
           "publicIPAllocationMethod": "Static",
           "idleTimeoutInMinutes": 4,
           "dnsSettings": {
-            "domainNameLabel": "drawmgmt01"
+            "domainNameLabel": "[parameters('publicIPAddresses_pip_domainNameLabel')]"
           }
         },
         "dependsOn": []
@@ -229,8 +244,8 @@
         "apiVersion": "2016-01-01",
         "location": "centralus",
         "tags": {
-          "function": "mgt",
-          "environment": "sho",
+          "function": "[parameters('tag_function')]",
+          "environment": "[parameters('tag_environment')]",
           "displayName": "StorageAccount (diagnostics)"
         },
         "properties": {},
@@ -243,13 +258,13 @@
           "tier": "Standard"
         },
         "kind": "Storage",
-        "name": "[parameters('storageAccounts_osAccount_name_')]",
+        "name": "[parameters('storageAccounts_osAccount_name')]",
         "apiVersion": "2016-01-01",
         "location": "centralus",
         "tags": {
           "displayName": "StorageAccount (main)",
-          "function": "mgt",
-          "environment": "sho"
+          "function": "[parameters('tag_function')]",
+          "environment": "[parameters('tag_environment')]",
         },
         "properties": {},
         "dependsOn": []
