@@ -1,0 +1,273 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "availabilitySets_as01_name": {
+      "type": "String"
+    },
+    "virtualMachines_vm_name": {
+      "type": "String"
+    },
+    "vmAdminUsername": {
+      "type": "String"
+    },
+    "vmAdminPassword": {
+      "type": "String"
+    },
+    "vmPrivateIPAddress": {
+      "type": "String"
+    },
+    "networkInterfaces_nic0_name": {
+      "type": "String"
+    },
+    "networkSecurityGroups_nsg_name": {
+      "type": "String"
+    },
+    "publicIPAddresses_pip_name": {
+      "type": "String"
+    },
+    "publicIPAddresses_pip_domainNameLabel": {
+      "type": "String"
+    },
+    "virtualNetworks_vnet_of_vm_name": {
+      "type": "String"
+    },
+    "snet_of_vm_name": {
+      "type": "String"
+    },
+    "storageAccounts_diagnosticsAccount_name": {
+      "type": "String"
+    },
+    "storageAccounts_osAccount_name": {
+      "type": "String"
+    },
+    "tag_function": {
+      "type": "String"
+    },
+    "tag_environment": {
+      "type": "String"
+    },
+    "tag_zone": {
+      "type": "String"
+    },
+    "tag_type": {
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+        "name": "Classic"
+      },
+      "name": "[parameters('availabilitySets_as01_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+      "tags": {
+        "function": "[parameters('tag_function')]",
+        "environment": "[parameters('tag_environment')]",
+        "zone": "[parameters('tag_zone')]",
+        "type": "[parameters('tag_type')]",
+        "displayName": "AvailabilitySet"
+      },
+      "properties": {
+        "platformUpdateDomainCount": 5,
+        "platformFaultDomainCount": 3,
+        "virtualMachines": [
+          {
+            "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_vm_name'))]"
+          }
+        ]
+      },
+      "dependsOn": [
+       // "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_vm_name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('virtualMachines_vm_name')]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "centralus",
+
+      "tags": {
+        "function": "[parameters('tag_function')]",
+        "environment": "[parameters('tag_environment')]",
+        "zone": "[parameters('tag_zone')]",
+        "type": "[parameters('tag_type')]",
+        "displayName": "VirtualMachine"
+      },
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_as01_name'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_D2_v2"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "osdisk",
+            "createOption": "FromImage",
+            "vhd": {
+              "uri": "[concat('https', '://', parameters('storageAccounts_osAccount_name'), '.blob.core.windows.net', '/vhds/osdisk0.vhd')]"
+            },
+            "caching": "ReadWrite"
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_vm_name')]",
+          "adminUsername": "[parameters('vmAdminUsername')]",
+          "adminPassword": "[parameters('vmAdminPassword')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic0_name'))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_osAccount_name'), '.blob.core.windows.net', '/')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_as01_name'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_osAccount_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic0_name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('networkInterfaces_nic0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "function": "[parameters('tag_function')]",
+        "environment": "[parameters('tag_environment')]",
+        "zone": "[parameters('tag_zone')]",
+        "type": "[parameters('tag_type')]",
+        "displayName": "NetworkInterface"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "[parameters('vmPrivateIPAddress')]",
+              "privateIPAllocationMethod": "Static",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_pip_name'))]"
+              },
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_of_vm_name')), '/subnets/', parameters('snet_of_vm_name'))]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_pip_name'))]",
+        //    "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_of_vm_name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('networkSecurityGroups_nsg_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "NetworkSecurityGroup"
+      },
+      "properties": {
+        "securityRules": [
+          {
+            "name": "AllowInboundSSHInternet",
+            "properties": {
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "[parameters('vmPrivateIPAddress')]",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[parameters('publicIPAddresses_pip_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "centralus",
+      "tags": {
+        "displayName": "PublicIP",
+      },
+        "properties": {
+          "publicIPAllocationMethod": "Static",
+          "idleTimeoutInMinutes": 4,
+          "dnsSettings": {
+            "domainNameLabel": "[parameters('publicIPAddresses_pip_domainNameLabel')]"
+          }
+        },
+        "dependsOn": []
+      },
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "kind": "Storage",
+        "name": "[parameters('storageAccounts_diagnosticsAccount_name')]",
+        "apiVersion": "2016-01-01",
+        "location": "centralus",
+        "tags": {
+          "function": "[parameters('tag_function')]",
+          "environment": "[parameters('tag_environment')]",
+          "displayName": "StorageAccount (diagnostics)"
+        },
+        "properties": {},
+        "dependsOn": []
+      },
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "kind": "Storage",
+        "name": "[parameters('storageAccounts_osAccount_name')]",
+        "apiVersion": "2016-01-01",
+        "location": "centralus",
+        "tags": {
+          "displayName": "StorageAccount (main)",
+          "function": "[parameters('tag_function')]",
+          "environment": "[parameters('tag_environment')]",
+        },
+        "properties": {},
+        "dependsOn": []
+      }
+      ]
+    }
