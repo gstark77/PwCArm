@@ -10,7 +10,7 @@
     |  Complex object for all uri path strings needed to link templates.                                      |
     +---------------------------------------------------------------------------------------------------------+*/
     "objUriPath": {
-      "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Main Driver/",
+      "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Main%Driver/",
       "strAppComponentFolderPath": "App Components/",
       "strAppComponentNetworkFileName": "appComponents.Network.json/",
       "objBuildingBlocks": {
