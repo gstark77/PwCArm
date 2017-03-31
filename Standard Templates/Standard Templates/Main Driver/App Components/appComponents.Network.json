@@ -30,11 +30,11 @@
           "objNetworkData": { "value": "[parameters('objNetworkData')]" }
         }
       }
-    },
+    }/*,
     {
 
       "apiVersion": "2015-01-01",
-      "name": "[concat(deployment().name,'-networkLinkedTemplate1')]", /*  needs to be unique */
+      "name": "[concat(deployment().name,'-networkLinkedTemplate1')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -47,6 +47,6 @@
           "objNetworkData": { "value": "[parameters('objNetworkData')]" }
         }
       }
-    }
+    }*/
   ]
 }
