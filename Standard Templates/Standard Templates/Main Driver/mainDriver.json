@@ -11,7 +11,8 @@
       "strAppComponentNetworkFileName": "appComponents.Network.json",
       "objBuildingBlocks": {
         "strBuildingBlockFolderPath": "Building%20Blocks/",
-        "strAddVnetandOneSnetFileName": "addVnetandOneSnet.json"
+        "strAddVnetandOneSnetFileName": "addVnetandOneSnet.json",
+        "strAddSnettoVnetFileName": "addSnettoVnet.json"
       }
     },
     
@@ -42,6 +43,14 @@
       "objSubnet": {
         "objSubnet1": {
           "strSubnetPrefix": "10.100.8.0/24",
+          "strSubnetTier": "web"
+        },
+        "objSubnet2": {
+          "strSubnetPrefix": "10.100.9.0/24",
+          "strSubnetTier": "app"
+        },
+        "objSubnet3": {
+          "strSubnetPrefix": "10.100.10.0/24",
           "strSubnetTier": "web"
         }
       },

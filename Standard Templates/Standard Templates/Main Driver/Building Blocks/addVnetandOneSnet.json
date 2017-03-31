@@ -23,7 +23,7 @@
         "addressSpace": {
           "addressPrefixes": [
             "[parameters('objNetworkData').strBaseNetwork]"
-          ] 
+          ]
         },
         "dhcpOptions": {
           "dnsServers": [
@@ -35,7 +35,7 @@
           {
             "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",
             "properties": {
-              "addressPrefix": "[parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix]" 
+              "addressPrefix": "[parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix]"
             }
           }
         ]
