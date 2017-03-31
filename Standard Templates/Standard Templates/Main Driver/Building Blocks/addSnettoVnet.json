@@ -22,9 +22,9 @@
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/virtualNetworks/subnets",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
+      /*"dependsOn": [
         "Microsoft.Network/virtualNetworks/vnet-dardev"
-      ],
+      ],*/
       "properties": {
         "addressPrefix": [ "parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix" ]
       }
