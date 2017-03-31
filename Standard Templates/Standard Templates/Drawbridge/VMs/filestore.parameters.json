@@ -1,0 +1,57 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "availabilitySets_as01_name": {
+      "value": "citshosecfst-as01"
+    },
+    "virtualMachines_vm_name": {
+      "value": "citshosecfst001"
+    },
+    "vmAdminUsername": {
+      "value": "pwcadmin"
+    },
+    "networkInterfaces_nic0_name": {
+      "value": "citshosecfst001-nic1"
+    },
+    "networkSecurityGroups_nsg_name": {
+      "value": "citshosec-nsg"
+    },
+    "vmPrivateIPAddress": {
+      "value": "10.10.2.20"
+    },
+   /* "publicIPAddresses_pip_name": {
+      "value": "mgtshomgtbas001-pip"
+    },
+    "publicIPAddresses_pip_domainNameLabel": {
+      "value": "drawmgt01"
+    },*/
+    "virtualNetworks_vnet_of_vm_name": {
+      "value": "vnet-citshosec"
+    },
+    "snet_of_vm_name": {
+      "value": "snet-citshosec"
+    },
+    "storageAccounts_diagnosticsAccount_name": {
+      "value": "citshodiag"
+    },
+    "storageAccounts_osAccount_name": {
+      "value": "citshomainstandard"
+    },
+    "osDisk_name": {
+      "value": "citshosecfst001-osdisk.vhd"
+    },
+    "tag_function": {
+      "value": "cit"
+    },
+    "tag_environment": {
+      "value": "sho"
+    },
+    "tag_zone": {
+      "value": "sec"
+    },
+    "tag_type": {
+      "value": "fst"
+    }
+  }
+}
