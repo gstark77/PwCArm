@@ -8,12 +8,16 @@
 
   },
   "variables": {
-
+ 
   },
 
   "resources": [
     {
-      "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",
+
+     /* "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]"*/
+
+
+      "name": "[concat('vnet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'/','snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/virtualNetworks/subnets",
       "location": "[resourceGroup().location]",
