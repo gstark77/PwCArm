@@ -14,10 +14,11 @@
   "resources": [
     {
 
-     /* "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]"*/
+      /* "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]"*/
 
 
-      "name": "[concat('vnet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'/','snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",
+      /*"name": "[concat('vnet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'/','snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",*/
+      "name": "vnet-dardev/snet-dardevapp",
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/virtualNetworks/subnets",
       "location": "[resourceGroup().location]",
