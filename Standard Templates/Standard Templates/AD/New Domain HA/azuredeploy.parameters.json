@@ -5,6 +5,9 @@
     "newStorageAccountName": {
       "value": "idnshomain"
     },
+    "storageAccounts_diagnosticsAccount_name": {
+      "value": "idnshodiag"
+    },
     "adminUsername": {
       "value": "pwcadmin"
     }, /*,

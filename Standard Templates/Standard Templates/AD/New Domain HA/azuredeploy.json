@@ -8,6 +8,9 @@
         "description": "The name of the new storage account created to store the VMs disks"
       }
     },
+    "storageAccounts_diagnosticsAccount_name": {
+      "type": "String"
+    },
     "storageAccountType": {
       "type": "string",
       "allowedValues": [
@@ -255,10 +258,10 @@
     //"adBDCRDPNATRuleID": "[concat(variables('adlbID'),'/inboundNatRules/',variables('adBDCRDPNAT'))]",
     //"adBEAddressPoolID": "[concat(variables('adlbID'),'/backendAddressPools/',variables('adLBBE'))]",
     "adPDCOSDisk": "idnshotruadd001-osdisk.vhd",
-    "adBDCOSDisk": "idnshotruadd001-osdisk.vhd",
+    "adBDCOSDisk": "idnshotruadd002-osdisk.vhd",
     "adPDCDataDisk": "idnshotruadd001-datadisk1.vhd",
     "adBDCDataDisk": "idnshotruadd002-datadisk1.vhd",
-    "adDataDiskSize": 1000,
+    "adDataDiskSize": 100,
     "vnetTemplateUri": "[concat(parameters('assetLocation'),'/nestedtemplates/vnet.json')]",
     "nicTemplateUri": "[concat(parameters('assetLocation'),'/nestedtemplates/nic.json')]",
     "vnetwithDNSTemplateUri": "[concat(parameters('assetLocation'),'/nestedtemplates/vnet-with-dns-server.json')]",
@@ -285,6 +288,25 @@
       "sku": { "name": "[parameters('storageAccountType')]" },
       "kind": "Storage"
     },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_diagnosticsAccount_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "function": "[parameters('tag_function')]",
+        "environment": "[parameters('tag_environment')]",
+        "displayName": "StorageAccount (diagnostics)"
+      },
+      "properties": {},
+      "dependsOn": []
+    },
+
     /*{
       "name": "[parameters('publicIPAddressName')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -475,8 +497,8 @@
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts',parameters('newStorageAccountName'))]",
         "[resourceId('Microsoft.Network/networkInterfaces',parameters('adPDCNicName'))]",
-        "[resourceId('Microsoft.Compute/availabilitySets', parameters('adAvailabilitySetName'))]",
-       // "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('adAvailabilitySetName'))]"
+        // "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
       ],
       "properties": {
         "hardwareProfile": {
@@ -505,7 +527,7 @@
             "caching": "ReadWrite",
             "createOption": "FromImage"
           },
-          "dataDisks": [
+          "dataDisks": [ 
             {
               "vhd": {
                 "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/vhds/', variables('adPDCDataDisk'))]"
@@ -524,6 +546,12 @@
               "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('adPDCNicName'))]"
             }
           ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_diagnosticsAccount_name'), '.blob.core.windows.net', '/')]"
+          }
         }
       },
       "resources": [
@@ -621,8 +649,8 @@
                   "privateIPAddress": "[parameters('adBDCNicIPAddress')]",
                   "subnet": {
                     "id": "[variables('adSubnetRef')]"
-                  },
-/*                  "loadBalancerBackendAddressPools": [
+                  }
+                  /*                  "loadBalancerBackendAddressPools": [
                     {
                       "id": "[variables('adBEAddressPoolID')]"
                     }
@@ -652,8 +680,8 @@
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts',parameters('newStorageAccountName'))]",
         "[resourceId('Microsoft.Network/networkInterfaces',parameters('adBDCNicName'))]",
-        "[resourceId('Microsoft.Compute/availabilitySets', parameters('adAvailabilitySetName'))]",
-      //  "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
+        "[resourceId('Microsoft.Compute/availabilitySets', parameters('adAvailabilitySetName'))]"
+        //  "[resourceId('Microsoft.Network/loadBalancers',variables('adLBName'))]"
       ],
       "properties": {
         "hardwareProfile": {
@@ -701,6 +729,12 @@
               "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('adBDCNicName'))]"
             }
           ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_diagnosticsAccount_name'), '.blob.core.windows.net', '/')]"
+          }
         }
       }
     },

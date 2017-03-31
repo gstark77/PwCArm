@@ -144,7 +144,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": true,
-            "storageUri": "[concat('https', '://', parameters('storageAccounts_osAccount_name'), '.blob.core.windows.net', '/')]"
+            "storageUri": "[concat('https', '://', parameters('storageAccounts_diagnosticsAccount_name'), '.blob.core.windows.net', '/')]"
           }
         }
       },
