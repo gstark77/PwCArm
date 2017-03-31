@@ -30,23 +30,6 @@
           "objNetworkData": { "value": "[parameters('objNetworkData')]" }
         }
       }
-    }/*,
-    {
-
-      "apiVersion": "2015-01-01",
-      "name": "[concat(deployment().name,'-networkLinkedTemplate1')]",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('objUriPath').strTemplateBaseUri,parameters('objUriPath').objBuildingBlocks.strBuildingBlockFolderPath,parameters('objUriPath').objBuildingBlocks.strAddSnettoVnetFileName)]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "objBaseData": { "value": "[parameters('objBaseData')]" },
-          "objNetworkData": { "value": "[parameters('objNetworkData')]" }
-        }
-      }
-    }*/
+    }
   ]
 }
