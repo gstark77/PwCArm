@@ -1,0 +1,26 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+
+    "objBaseData": { "type": "object" },
+    "objNetworkData": { "type": "object" }
+
+  },
+  "variables": {
+
+  },
+
+  "resources": [
+    {
+      "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "addressPrefix": [ "parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix" ]
+      }
+    }
+  ],
+  "outputs": {}
+}
