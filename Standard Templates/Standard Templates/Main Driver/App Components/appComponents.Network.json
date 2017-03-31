@@ -32,6 +32,7 @@
       }
     },
     {
+
       "apiVersion": "2015-01-01",
       "name": "[concat(deployment().name,'-networkLinkedTemplate1')]", /*  needs to be unique */
       "type": "Microsoft.Resources/deployments",
