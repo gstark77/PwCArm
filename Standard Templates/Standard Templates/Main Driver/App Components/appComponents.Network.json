@@ -1,13 +1,15 @@
 ﻿{
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
+  "parameters": {
 
-      "objUriPath": { "type": "object" },
-      "objBaseData": { "type": "object" },
-      "objNetworkData": { "type": "object" }
+    "objUriPath": { "type": "object" },
+    "objBaseData": { "type": "object" },
+    "objNetworkData": { "type": "object" },
+    "arrSubnet": { "type": "array" },
+    "intTotalSubnets": { "type": "int" }
 
-    },
+  },
     "variables": {
 
       /* Calculate vnet and snets here */
@@ -27,7 +29,9 @@
         },
         "parameters": {
           "objBaseData": { "value": "[parameters('objBaseData')]" },
-          "objNetworkData": { "value": "[parameters('objNetworkData')]" }
+          "objNetworkData": { "value": "[parameters('objNetworkData')]" },
+          "arrSubnet": { "value": "[parameters('arrSubnet')]" },
+          "intTotalSubnets": { "value": "[parameters('intTotalSubnets')]" }
         }
       }
     },

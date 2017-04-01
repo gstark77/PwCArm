@@ -2,6 +2,21 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "arrSubnet": {
+      "type": "array",
+      "defaultValue": [
+        "snet-dardevweb",
+        "10.100.8.0/24",
+        "snet-dardevapp",
+        "10.100.9.0/24",
+        "snet-dardevdba",
+        "10.100.10.0/24"
+      ]
+    }
+    "intTotalSubnets": {
+      "type": "int",
+      "defaultValue": "3"
+    }
   },
   "variables": {
 
@@ -40,6 +55,8 @@
       "strBaseNetwork": "10.100.8.0/21",
       /* 0 = false, 1 = true (use in copy downstream to see if 0 is a valid arguement) */
 
+      "intTotalSubnets": "3",
+
       "objSubnet": {
         "objSubnet1": {
           "strSubnetPrefix": "10.100.8.0/24",
@@ -76,7 +93,9 @@
         "parameters": {
           "objUriPath": { "value": "[variables('objUriPath')]" },
           "objBaseData": { "value": "[variables('objBaseData')]" },
-          "objNetworkData": { "value": "[variables('objNetworkData')]" }
+          "objNetworkData": { "value": "[variables('objNetworkData')]" },
+          "arrSubnet": { "value": "[parameters('arrSubnet')]" },
+          "intTotalSubnets": { "value": "[parameters('intTotalSubnets')]"}
         }
       }
     }

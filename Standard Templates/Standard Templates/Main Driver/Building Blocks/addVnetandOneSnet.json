@@ -4,7 +4,9 @@
   "parameters": {
 
     "objBaseData": { "type": "object" },
-    "objNetworkData": { "type": "object" }
+    "objNetworkData": { "type": "object" },
+    "arrSubnet": { "type": "array" },
+    "intTotalSubnets": { "type": "int" }
 
   },
   "variables": {
@@ -40,18 +42,6 @@
           }
         ]
       }
-    },
-    {
-        "apiVersion": "2015-06-15",
-        "type": "Microsoft.Network/virtualNetworks/subnets",
-        "name": "[concat('vnet-dardev','/','snet-dardevapp')]",
-        "location": "[resourceGroup().location]",
-        "properties": {
-        "addressPrefix": "10.100.9.0/24"
-        },
-        "dependsOn": [
-          "vnet-dardev"
-         ]
     }
   ]
 }
