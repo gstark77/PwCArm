@@ -35,6 +35,9 @@
       "apiVersion": "2015-01-01",
       "name": "[concat(deployment().name,'-addsubnet')]",
       "type": "Microsoft.Resources/deployments",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/',parameters('existingVNETName'))]"
+    ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
