@@ -20,6 +20,27 @@
   },
   "variables": {
 
+    "arrSubnet": [
+      {
+        "name": "snet-dardevweb",
+        "properties": {
+          "addressPrefix": "10.100.8.0/24"
+        }
+      },
+      {
+        "name": "snet-dardevapp",
+        "properties": {
+          "addressPrefix": "10.100.9.0/24"
+        }
+      },
+      {
+        "name": "snet-dardevdba",
+        "properties": {
+          "addressPrefix": "10.100.10.0/24"
+        }
+      }
+    ],
+
     "objUriPath": {
       "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Main%20Driver/",
       "strAppComponentFolderPath": "App%20Components/",
@@ -94,7 +115,7 @@
           "objUriPath": { "value": "[variables('objUriPath')]" },
           "objBaseData": { "value": "[variables('objBaseData')]" },
           "objNetworkData": { "value": "[variables('objNetworkData')]" },
-          "arrSubnet": { "value": "[parameters('arrSubnet')]" },
+          "arrSubnet": { "value": "[variables('arrSubnet')]" },
           "intTotalSubnets": { "value": "[parameters('intTotalSubnets')]"}
         }
       }
