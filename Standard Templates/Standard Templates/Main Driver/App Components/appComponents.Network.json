@@ -36,7 +36,7 @@
       "name": "[concat(deployment().name,'-addsubnet')]",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworks/',parameters('existingVNETName'))]"
+        "[concat('Microsoft.Network/virtualNetworks/','vnet-dardev')]"
     ],
       "properties": {
         "mode": "Incremental",
