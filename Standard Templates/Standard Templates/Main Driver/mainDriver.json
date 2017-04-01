@@ -63,12 +63,13 @@
     "objNetworkData": {
       "strBaseNetwork": "10.100.8.0/21",
       "objSubnet": {
-      "strDnsServer": {
-        "strDnsServer1": "10.99.0.4",
-        "strDnsServer2": "10.99.0.5"
+        "strDnsServer": {
+          "strDnsServer1": "10.99.0.4",
+          "strDnsServer2": "10.99.0.5"
+        }
       }
-    }
 
+    }
   },
   "resources": [
     {
