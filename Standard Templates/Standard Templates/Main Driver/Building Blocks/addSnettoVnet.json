@@ -2,9 +2,6 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-
-    "objBaseData": { "type": "object" },
-    "objNetworkData": { "type": "object" },
       "existingVNETName": {
         "type": "string",
         "defaultValue": "vnet-dardev",
@@ -36,9 +33,6 @@
       "type": "Microsoft.Network/virtualNetworks/subnets",
       "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]",
       "location": "[resourceGroup().location]",
-      //"dependsOn": [
-      //  "[concat('Microsoft.Network/virtualNetworks/',parameters('existingVNETName'))]"
-      //],
       "properties": {
         "addressPrefix": "[parameters('newSubnetAddressPrefix')]"
       }
