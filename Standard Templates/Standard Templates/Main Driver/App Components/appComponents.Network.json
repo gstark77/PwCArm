@@ -14,13 +14,12 @@
 
     "arrBaseNetwork": "[split(parameters('objNetworkData').strBaseNetwork, '.')]",
     "strBaseFirstTwoOctets": "[concat(variables('arrBaseNetwork')[0], '.',variables('arrBaseNetwork')[1], '.')]",
-    "strtest": "[concat(variables('strBaseFirstTwoOctets')[0],variables('strBaseFirstTwoOctets')[1],variables('strBaseFirstTwoOctets')[2],variables('strBaseFirstTwoOctets')[3])]",
 
     "arrSubnet": [
       {
         "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'web')]",
         "properties": {
-          "addressPrefix": "strtest"//"[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]"
+          "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]"
         }
       },
       {
