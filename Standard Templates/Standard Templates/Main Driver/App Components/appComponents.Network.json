@@ -19,19 +19,19 @@
       {
         "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'web')]",
         "properties": {
-          "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'.','/24')]"
+          "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]"
         }
       },
       {
         "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'app')]",
         "properties": {
-          "addressPrefix": "10.100.9.0/24"
+          "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),1)),'.',variables('arrBaseNetwork')[3],'/24')]"
         }
       },
       {
         "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'dba')]",
         "properties": {
-          "addressPrefix": "10.100.10.0/24"
+          "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),2)),'.',variables('arrBaseNetwork')[3],'/24')]"
         }
       }
     ]
