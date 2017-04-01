@@ -1,0 +1,36 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParopaprdappdduameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "availabilitySets_hostnameprefix_as01_name": {
+      "value": "opaprdappddu-as01"
+    },
+    "disks_hostname_disk1_name": {
+      "value": "opaprdappddu02_disk1"
+    },
+    "disks_hostname_disk2_name": {
+      "value": "opaprdappddu02_disk2"
+    },
+    "virtualMachines_hostname_name": {
+      "value": "opaprdappddu02"
+    },
+    "networkInterfaces_hostname_nic1_name": {
+      "value": "opaprdappddu02-nic1"
+    },
+    "networkSecurityGroups_nsg_name": {
+      "value": "opaprdapp-nsg"
+    },
+    "initializeDiskScript_name": {
+      "value": "initializeDisk.txt"
+    },
+    // "publicIPAddresses_hostname_pip_name": {
+    //   "value": "opaprdappddu01-pip"
+    // },
+    "virtualNetworks_vnet_opaprd_name": {
+      "value": "vnet-opaprd"
+    },
+    "storageAccounts_opaprddiag_name": {
+      "value": "opaprddiag"
+    }
+  }
+}
