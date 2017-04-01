@@ -36,6 +36,9 @@
       "type": "Microsoft.Network/virtualNetworks/subnets",
       "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]",
       "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/',parameters('existingVNETName'))]"
+      ],
       "properties": {
         "addressPrefix": "[parameters('newSubnetAddressPrefix')]"
       }
