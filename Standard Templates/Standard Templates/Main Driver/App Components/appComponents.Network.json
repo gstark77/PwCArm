@@ -6,7 +6,7 @@
     "objUriPath": { "type": "object" },
     "objBaseData": { "type": "object" },
     "objNetworkData": { "type": "object" },
-    "arrSubnet": { "type": "array" },
+    //"arrSubnet": { "type": "array" },
     "intTotalSubnets": { "type": "int" }
 
   },
