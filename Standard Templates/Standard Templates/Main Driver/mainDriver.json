@@ -12,7 +12,7 @@
         "snet-dardevdba",
         "10.100.10.0/24"
       ]
-    }
+    },
     "intTotalSubnets": {
       "type": "int",
       "defaultValue": "3"
@@ -30,7 +30,9 @@
         "strAddSnettoVnetFileName": "addSnettoVnet.json"
       }
     },
-    
+
+    "intTotalSubnets": "3",
+
     /*  
     +---------------------------------------------------------------------------------------------------------+
     |  Complex object for the base data needed to name resources.                                             |
@@ -54,8 +56,6 @@
     "objNetworkData": {
       "strBaseNetwork": "10.100.8.0/21",
       /* 0 = false, 1 = true (use in copy downstream to see if 0 is a valid arguement) */
-
-      "intTotalSubnets": "3",
 
       "objSubnet": {
         "objSubnet1": {
