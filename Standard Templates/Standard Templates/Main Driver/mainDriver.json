@@ -61,7 +61,8 @@
         "strRemoteVnetName" "strResourceId"
     +---------------------------------------------------------------------------------------------------------+*/
     "objNetworkData": {
-      "strBaseNetwork": "10.100.8.0/21",
+      "strBaseNetwork": "10.100.8.0",
+      "strBaseMask": "/21",
        "strDnsServer": {
          "strDnsServer1": "10.99.0.4",
          "strDnsServer2": "10.99.0.5"
@@ -83,7 +84,7 @@
           "objUriPath": { "value": "[variables('objUriPath')]" },
           "objBaseData": { "value": "[variables('objBaseData')]" },
           "objNetworkData": { "value": "[variables('objNetworkData')]" },
-          "arrSubnet": { "value": "[variables('arrSubnet')]" },
+          //"arrSubnet": { "value": "[variables('arrSubnet')]" },
           "intTotalSubnets": { "value": "[variables('intTotalSubnets')]"}
         }
       }

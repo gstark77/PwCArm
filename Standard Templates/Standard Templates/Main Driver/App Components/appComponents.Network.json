@@ -12,6 +12,31 @@
   },
   "variables": {
 
+    "arrBaseNetwork": "[split(parameters('objNetworkData').strBaseNetwork, '.')]",
+    "strBaseFirstTwoOctets": "[concat(variables('arrBaseNetwork')[0], '.',variables('arrBaseNetwork')[1], '.')]",
+
+    "arrSubnet": [
+      {
+        "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'web')]",
+        "properties": {
+          "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),variables('arrBaseNetwork')[3],'/24')]"
+          // "privateIPAddress": "[concat(variables('ipFirst3'),string(add(int(variables('ipOct4')), copyIndex())))]"
+        }
+      },
+      {
+        "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'app')]",
+        "properties": {
+          "addressPrefix": "10.100.9.0/24"
+        }
+      },
+      {
+        "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'dba')]",
+        "properties": {
+          "addressPrefix": "10.100.10.0/24"
+        }
+      }
+    ]
+
   },
 
   "resources": [
@@ -28,7 +53,7 @@
         "parameters": {
           "objBaseData": { "value": "[parameters('objBaseData')]" },
           "objNetworkData": { "value": "[parameters('objNetworkData')]" },
-          "arrSubnet": { "value": "[parameters('arrSubnet')]" },
+          "arrSubnet": { "value": "[variables('arrSubnet')]" },
           "intTotalSubnets": { "value": "[parameters('intTotalSubnets')]" }
         }
       }

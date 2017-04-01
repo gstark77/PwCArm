@@ -24,7 +24,7 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[parameters('objNetworkData').strBaseNetwork]"
+            "[concat(parameters('objNetworkData').strBaseNetwork,parameters('objNetworkData').strBaseMask)]"
           ]
         },
         "dhcpOptions": {
