@@ -84,7 +84,7 @@
           "objUriPath": { "value": "[variables('objUriPath')]" },
           "objBaseData": { "value": "[variables('objBaseData')]" },
           "objNetworkData": { "value": "[variables('objNetworkData')]" },
-          //"arrSubnet": { "value": "[variables('arrSubnet')]" },
+          "arrSubnet": { "value": "[variables('arrSubnet')]" },
           "intTotalSubnets": { "value": "[variables('intTotalSubnets')]"}
         }
       }

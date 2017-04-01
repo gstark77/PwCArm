@@ -5,7 +5,7 @@
 
     "objBaseData": { "type": "object" },
     "objNetworkData": { "type": "object" },
-    "arrSubnet1": { "type": "array" },
+    "arrSubnet": { "type": "array" },
     "intTotalSubnets": { "type": "int" }
 
   },
@@ -33,7 +33,7 @@
             "[concat(parameters('objNetworkData').strDnsServer.strDnsServer2)]"
           ]
         },
-        "subnets": "[take(parameters('arrSubnet1'),parameters('intTotalSubnets'))]"
+        "subnets": "[take(parameters('arrSubnet'),parameters('intTotalSubnets'))]"
       }
     }
   ],
