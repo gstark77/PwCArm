@@ -7,12 +7,19 @@
   "variables": {
 
     "intTotalSubnets": 3,
+    "NetworkData": "10.100.8.0",
+    "arrBaseNetwork": "[split(variables('NetworkData'), '.')]",
+    "strBaseFirstTwoOctets": "[concat(variables('arrBaseNetwork')[0], '.',variables('arrBaseNetwork')[1], '.')]",
+
+    "addressPrefix1": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]",
+
+
 
     "arrSubnet": [
       {
         "name": "snet-dardevweb",
         "properties": {
-          "addressPrefix": "10.100.8.0/24"
+          "addressPrefix": "[variables('addressPrefix1')]"
         }
       },
       {
@@ -63,11 +70,11 @@
     "objNetworkData": {
       "strBaseNetwork": "10.100.8.0",
       "strBaseMask": "/21",
-       "strDnsServer": {
-         "strDnsServer1": "10.99.0.4",
-         "strDnsServer2": "10.99.0.5"
-        }
+      "strDnsServer": {
+        "strDnsServer1": "10.99.0.4",
+        "strDnsServer2": "10.99.0.5"
       }
+    }
   },
   "resources": [
     {
