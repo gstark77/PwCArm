@@ -6,7 +6,7 @@
   },
   "variables": {
 
-    "intTotalSubnets": "3",
+    "intTotalSubnets": 3,
 
     "arrSubnet": [
       {
