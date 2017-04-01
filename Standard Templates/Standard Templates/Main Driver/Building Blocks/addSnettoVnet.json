@@ -8,27 +8,60 @@
 
   },
   "variables": {
- 
+
   },
-
-  "resources": [
+  "resources": [    //"apiVersion": "2016-09-01",
     {
-
-      /* "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]"*/
-
-
-      /*"name": "[concat('vnet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'/','snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",*/
-      "name": "vnet-dardev/snet-dardevapp",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[providers('Microsoft.Network','virtualNetworks/subnets').apiVersions[0]]",
       "type": "Microsoft.Network/virtualNetworks/subnets",
+      "name": "vnet-dardev/snet-dardevapp",
       "location": "[resourceGroup().location]",
-      /*"dependsOn": [
-        "Microsoft.Network/virtualNetworks/vnet-dardev"
-      ],*/
       "properties": {
-        "addressPrefix": [ "parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix" ]
+        "addressPrefix": "10.100.9.0/24"
+        //  "networkSecurityGroup": {
+        //    "id": "dardevapp-nsg",
+        //    "location": "string",
+        //    "tags": {},
+        //    "properties": {}
+        //}
       }
+
+      //    /* "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]"*/
+
+
+      //    /*"name": "[concat('vnet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'/','snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",*/
+      //    "name": "vnet-dardev/snet-dardevapp",
+      //    "apiVersion": "2015-06-15",
+      //    "type": "Microsoft.Network/virtualNetworks/subnets",
+      //    "location": "[resourceGroup().location]",
+      //    /*"dependsOn": [
+      //      "Microsoft.Network/virtualNetworks/vnet-dardev"
+      //    ],*/
+      //    "properties": {
+      //      "addressPrefix": [ "parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix" ]
+      //    }
+      //  }
+      //],
+
+      //"resources": [
+      //  {
+
+      //    /* "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]"*/
+
+
+      //    /*"name": "[concat('vnet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'/','snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",*/
+      //    "name": "vnet-dardev/snet-dardevapp",
+      //    "apiVersion": "2015-06-15",
+      //    "type": "Microsoft.Network/virtualNetworks/subnets",
+      //    "location": "[resourceGroup().location]",
+      //    /*"dependsOn": [
+      //      "Microsoft.Network/virtualNetworks/vnet-dardev"
+      //    ],*/
+      //    "properties": {
+      //      "addressPrefix": [ "parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix" ]
+      //    }
+      //  }
     }
   ],
-  "outputs": {}
-}
+    "outputs": {}
+  }
