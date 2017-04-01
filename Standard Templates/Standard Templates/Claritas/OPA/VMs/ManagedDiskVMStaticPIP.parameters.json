@@ -1,0 +1,33 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "availabilitySets_hostnameprefix_as01_name": {
+      "value": "opaprdwebmft-as01"
+    },
+    "disks_hostname_disk1_name": {
+      "value": "opaprdwebmft01_disk1"
+    },
+    "disks_hostname_disk2_name": {
+      "value": "opaprdwebmft01_disk2"
+    },
+    "virtualMachines_hostname_name": {
+      "value": "opaprdwebmft01"
+    },
+    "networkInterfaces_hostname_nic1_name": {
+      "value": "opaprdwebmft01-nic1"
+    },
+    "networkSecurityGroups_opaprdweb_nsg_name": {
+      "value": "opaprdweb-nsg"
+    },
+    "publicIPAddresses_hostname_pip_name": {
+      "value": "opaprdwebmft01-pip"
+    },
+    "virtualNetworks_vnet_opaprd_name": {
+      "value": "vnet-opaprd"
+    },
+    "storageAccounts_opaprddiag_name": {
+      "value": "opaprddiag"
+    }
+  }
+}
