@@ -33,14 +33,6 @@
             "[concat(parameters('objNetworkData').strDnsServer.strDnsServer2)]"
           ]
         },
-        //"subnets": [
-        //  {
-        //    "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",
-        //    "properties": {
-        //      "addressPrefix": "[parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix]"
-        //    }
-        //  }
-        //]
         "subnets": "[take(parameters('arrSubnet'),parameters('intTotalSubnets'))]"
       }
     }

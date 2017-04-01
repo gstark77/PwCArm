@@ -10,16 +10,14 @@
     "intTotalSubnets": { "type": "int" }
 
   },
-    "variables": {
+  "variables": {
 
-      /* Calculate vnet and snets here */
-
-    },
+  },
 
   "resources": [
     {
       "apiVersion": "2015-01-01",
-      "name": "[concat(deployment().name,'-vnet')]", /*  needs to be unique */
+      "name": "[concat(deployment().name,'-vnet')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -34,22 +32,6 @@
           "intTotalSubnets": { "value": "[parameters('intTotalSubnets')]" }
         }
       }
-    },
-    //{
-    //  "apiVersion": "2015-01-01",
-    //  "name": "[concat(deployment().name,'-addsubnet')]",
-    //  "type": "Microsoft.Resources/deployments",
-    //  "properties": {
-    //    "mode": "Incremental",
-    //    "templateLink": {
-    //      "uri": "[concat(parameters('objUriPath').strTemplateBaseUri,parameters('objUriPath').objBuildingBlocks.strBuildingBlockFolderPath,parameters('objUriPath').objBuildingBlocks.strAddSnettoVnetFileName)]",
-    //      "contentVersion": "1.0.0.0"
-    //    },
-    //    "parameters": {
-    //      "objBaseData": { "value": "[parameters('objBaseData')]" },
-    //      "objNetworkData": { "value": "[parameters('objNetworkData')]" }
-    //    }
-    //  }
-    //}
+    }
   ]
 }

@@ -2,23 +2,11 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "arrSubnet": {
-      "type": "array",
-      "defaultValue": [
-        "snet-dardevweb",
-        "10.100.8.0/24",
-        "snet-dardevapp",
-        "10.100.9.0/24",
-        "snet-dardevdba",
-        "10.100.10.0/24"
-      ]
-    },
-    "intTotalSubnets": {
-      "type": "int",
-      "defaultValue": "3"
-    }
+
   },
   "variables": {
+
+    "intTotalSubnets": "3",
 
     "arrSubnet": [
       {
@@ -52,8 +40,6 @@
       }
     },
 
-    "intTotalSubnets": "3",
-
     /*  
     +---------------------------------------------------------------------------------------------------------+
     |  Complex object for the base data needed to name resources.                                             |
@@ -76,23 +62,7 @@
     +---------------------------------------------------------------------------------------------------------+*/
     "objNetworkData": {
       "strBaseNetwork": "10.100.8.0/21",
-      /* 0 = false, 1 = true (use in copy downstream to see if 0 is a valid arguement) */
-
       "objSubnet": {
-        "objSubnet1": {
-          "strSubnetPrefix": "10.100.8.0/24",
-          "strSubnetTier": "web"
-        },
-        "objSubnet2": {
-          "strSubnetPrefix": "10.100.9.0/24",
-          "strSubnetTier": "app"
-        },
-        "objSubnet3": {
-          "strSubnetPrefix": "10.100.10.0/24",
-          "strSubnetTier": "web"
-        }
-      },
-      "testTrueFalseCreateVnet": "0",
       "strDnsServer": {
         "strDnsServer1": "10.99.0.4",
         "strDnsServer2": "10.99.0.5"
@@ -116,7 +86,7 @@
           "objBaseData": { "value": "[variables('objBaseData')]" },
           "objNetworkData": { "value": "[variables('objNetworkData')]" },
           "arrSubnet": { "value": "[variables('arrSubnet')]" },
-          "intTotalSubnets": { "value": "[parameters('intTotalSubnets')]"}
+          "intTotalSubnets": { "value": "[variables('intTotalSubnets')]"}
         }
       }
     }
