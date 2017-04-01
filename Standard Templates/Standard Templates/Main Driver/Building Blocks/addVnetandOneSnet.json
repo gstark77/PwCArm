@@ -36,17 +36,27 @@
             "name": "[concat('snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",
             "properties": {
               "addressPrefix": "[parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix]"
-            },
-            "dependsOn": [
-               "concat('vnet-'", "parameters('objBaseData').strAppName", "parameters('objBaseData').strAppEnv)"
-            ]
+            }
           }
         ]
       }
+    },
+    {
+      "subnets": [
+        {
+          "type": "Microsoft.Network/virtualNetworks/subnets",
+          "name": "snet-dardevapp",
+          "properties": {
+            "addressPrefix": "10.100.9.0/24"
+          },
+          "dependsOn": [
+            "vnet-dardeb"
+          ]
+
+        }
+      ]
+
+
+
+
     }
-  ]
-
-
-
-
-}
