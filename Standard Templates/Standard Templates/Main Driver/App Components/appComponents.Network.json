@@ -12,29 +12,29 @@
   },
   "variables": {
 
-    "arrBaseNetwork": "[split(parameters('objNetworkData').strBaseNetwork, '.')]",
-    "strBaseFirstTwoOctets": "[concat(variables('arrBaseNetwork')[0], '.',variables('arrBaseNetwork')[1], '.')]",
+    //"arrBaseNetwork": "[split(parameters('objNetworkData').strBaseNetwork, '.')]",
+    //"strBaseFirstTwoOctets": "[concat(variables('arrBaseNetwork')[0], '.',variables('arrBaseNetwork')[1], '.')]",
 
-    "arrSubnet": [
-      {
-        "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'web')]",
-        "properties": {
-          "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]"
-        }
-      },
-      {
-        "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'app')]",
-        "properties": {
-          "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),1)),'.',variables('arrBaseNetwork')[3],'/24')]"
-        }
-      },
-      {
-        "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'dba')]",
-        "properties": {
-          "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),2)),'.',variables('arrBaseNetwork')[3],'/24')]"
-        }
-      }
-    ]
+    //"arrSubnet": [
+    //  {
+    //    "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'web')]",
+    //    "properties": {
+    //      "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]"
+    //    }
+    //  },
+    //  {
+    //    "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'app')]",
+    //    "properties": {
+    //      "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),1)),'.',variables('arrBaseNetwork')[3],'/24')]"
+    //    }
+    //  },
+    //  {
+    //    "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'dba')]",
+    //    "properties": {
+    //      "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),2)),'.',variables('arrBaseNetwork')[3],'/24')]"
+    //    }
+    //  }
+    //]
 
   },
 
