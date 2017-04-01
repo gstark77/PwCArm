@@ -20,7 +20,6 @@
         "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'web')]",
         "properties": {
           "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),variables('arrBaseNetwork')[3],'/24')]"
-          // "privateIPAddress": "[concat(variables('ipFirst3'),string(add(int(variables('ipOct4')), copyIndex())))]"
         }
       },
       {
@@ -53,7 +52,7 @@
         "parameters": {
           "objBaseData": { "value": "[parameters('objBaseData')]" },
           "objNetworkData": { "value": "[parameters('objNetworkData')]" },
-          "arrSubnet": { "value": "[variables('arrSubnet')]" },
+          "arrSubnet1": { "value": "[variables('arrSubnet')]" },
           "intTotalSubnets": { "value": "[parameters('intTotalSubnets')]" }
         }
       }
