@@ -7,12 +7,13 @@
   "variables": {
 
     "intTotalSubnets": 3,
+
+    //Test Start:   Testing calculating subnets off base..this would move to components network
     "NetworkData": "10.100.8.0",
     "arrBaseNetwork": "[split(variables('NetworkData'), '.')]",
     "strBaseFirstTwoOctets": "[concat(variables('arrBaseNetwork')[0], '.',variables('arrBaseNetwork')[1], '.')]",
-
     "addressPrefix1": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]",
-
+    //Test end
 
 
     "arrSubnet": [
