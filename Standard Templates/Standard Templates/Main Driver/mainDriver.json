@@ -6,10 +6,10 @@
   },
   "variables": {
 
-    "intTotalSubnets": 3,
+    "intTotalSubnets": 5,
 
     //Test Start:   Testing calculating subnets off base..this would move to components network
-    "NetworkData": "10.100.8.0",
+    "NetworkData": "10.101.0.0",
     "arrBaseNetwork": "[split(variables('NetworkData'), '.')]",
     "strBaseFirstTwoOctets": "[concat(variables('arrBaseNetwork')[0], '.',variables('arrBaseNetwork')[1], '.')]",
     "addressPrefix1": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]",
@@ -18,21 +18,33 @@
 
     "arrSubnet": [
       {
-        "name": "snet-dardevweb",
+        "name": "snet-smststweb",
         "properties": {
           "addressPrefix": "[variables('addressPrefix1')]"
         }
       },
       {
-        "name": "snet-dardevapp",
+        "name": "snet-smststapp",
         "properties": {
-          "addressPrefix": "10.100.9.0/24"
+          "addressPrefix": "10.101.1.0/24"
         }
       },
       {
-        "name": "snet-dardevdba",
+        "name": "snet-smststdba",
         "properties": {
-          "addressPrefix": "10.100.10.0/24"
+          "addressPrefix": "10.101.2.0/24"
+        }
+      },
+      {
+        "name": "snet-smststrep",
+        "properties": {
+          "addressPrefix": "10.101.4.0/24"
+        }
+      },
+      {
+        "name": "snet-smststrca",
+        "properties": {
+          "addressPrefix": "10.101.6.0/24"
         }
       }
     ],
@@ -53,8 +65,8 @@
     |  Complex object for the base data needed to name resources.                                             |
     +---------------------------------------------------------------------------------------------------------+*/
     "objBaseData": {
-      "strAppName": "dar",
-      "strAppEnv": "dev"
+      "strAppName": "sms",
+      "strAppEnv": "tst"
     },
 
 
@@ -69,7 +81,7 @@
         "strRemoteVnetName" "strResourceId"
     +---------------------------------------------------------------------------------------------------------+*/
     "objNetworkData": {
-      "strBaseNetwork": "10.100.8.0",
+      "strBaseNetwork": "10.100.1.0",
       "strBaseMask": "/21",
       "strDnsServer": {
         "strDnsServer1": "10.99.0.4",
