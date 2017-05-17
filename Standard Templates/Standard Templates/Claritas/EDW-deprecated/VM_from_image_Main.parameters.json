@@ -1,0 +1,42 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "claradmin"
+    },
+    "vmSize": {
+      "value": "Basic_A0"
+    },
+    "environment": {
+      "value": "prd"
+    },
+    "tier": {
+      "value": "dba"
+    },
+    "appContainer": {
+      "value": "ins"
+    },
+    "startIP": {
+      "value": "10.103.26.20"
+    },
+    "adminPassword": {
+      "value": "C1aRi7A5!Rocks"
+    },
+    "numberOfInstances": {
+      "value": 1
+    },
+    "imageSKU": {
+      "value": "7.2"
+    },
+    "appFunction": {
+      "value": "notapplicable" // using 'notapplicable' when not using appFunction
+    },
+    "imagePublisher": {
+      "value": "RedHat"
+    },
+    "imageOffer": {
+      "value": "RHEL"
+    }
+  }
+}
