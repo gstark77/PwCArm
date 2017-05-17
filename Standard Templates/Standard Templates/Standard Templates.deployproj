@@ -111,9 +111,6 @@
     <None Include="zzz_Network\Simple Linked Templates\simpleMainLinked.parameters.json" />
     <None Include="zzz_Network\Simple Linked Templates\simpleSubnetLinked.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Claritas\SMS\" />
-  </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
   <ProjectExtensions>
     <VisualStudio>
