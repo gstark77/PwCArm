@@ -159,13 +159,13 @@
           {
             "name": "ipconfig1",
             "properties": {
-              "privateIPAddress": "10.103.33.101",
+              "privateIPAddress": "10.103.32.40",
               "privateIPAllocationMethod": "Static",
               /*"publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_hostname_pip_name'))]"
               },*/
               "subnet": {
-                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_opaprd_name')), '/subnets/snet-opaprdapp')]"
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_opaprd_name')), '/subnets/snet-opaprdweb')]"
               }
             }
           }

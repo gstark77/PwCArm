@@ -3,22 +3,22 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "availabilitySets_hostnameprefix_as01_name": {
-      "value": "opaprdappddu-as01"
+      "value": "opaprdwebecw-as01"
     },
     "disks_hostname_disk1_name": {
-      "value": "opaprdappddu02_disk1"
+      "value": "opaprdwebecw01_disk1"
     },
     "disks_hostname_disk2_name": {
-      "value": "opaprdappddu02_disk2"
+      "value": "opaprdwebecw01_disk2"
     },
     "virtualMachines_hostname_name": {
-      "value": "opaprdappddu02"
+      "value": "opaprdwebecw01"
     },
     "networkInterfaces_hostname_nic1_name": {
-      "value": "opaprdappddu02-nic1"
+      "value": "opaprdwebecw01-nic1"
     },
     "networkSecurityGroups_nsg_name": {
-      "value": "opaprdapp-nsg"
+      "value": "opaprdweb-nsg"
     },
     "initializeDiskScript_name": {
       "value": "initializeDisk.txt"
