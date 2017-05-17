@@ -2,8 +2,52 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+
   },
   "variables": {
+
+    "intTotalSubnets": 5,
+
+    //Test Start:   Testing calculating subnets off base..this would move to components network
+    "NetworkData": "10.101.0.0",
+    "arrBaseNetwork": "[split(variables('NetworkData'), '.')]",
+    "strBaseFirstTwoOctets": "[concat(variables('arrBaseNetwork')[0], '.',variables('arrBaseNetwork')[1], '.')]",
+    "addressPrefix1": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]",
+    //Test end
+
+
+    "arrSubnet": [
+      {
+        "name": "snet-smststweb",
+        "properties": {
+          "addressPrefix": "[variables('addressPrefix1')]"
+        }
+      },
+      {
+        "name": "snet-smststapp",
+        "properties": {
+          "addressPrefix": "10.101.1.0/24"
+        }
+      },
+      {
+        "name": "snet-smststdba",
+        "properties": {
+          "addressPrefix": "10.101.2.0/24"
+        }
+      },
+      {
+        "name": "snet-smststrep",
+        "properties": {
+          "addressPrefix": "10.101.4.0/24"
+        }
+      },
+      {
+        "name": "snet-smststrca",
+        "properties": {
+          "addressPrefix": "10.101.6.0/24"
+        }
+      }
+    ],
 
     "objUriPath": {
       "strTemplateBaseUri": "https://raw.githubusercontent.com/gstark77/PwCArm/master/Standard%20Templates/Standard%20Templates/Main%20Driver/",
@@ -15,14 +59,14 @@
         "strAddSnettoVnetFileName": "addSnettoVnet.json"
       }
     },
-    
+
     /*  
     +---------------------------------------------------------------------------------------------------------+
     |  Complex object for the base data needed to name resources.                                             |
     +---------------------------------------------------------------------------------------------------------+*/
     "objBaseData": {
-      "strAppName": "dar",
-      "strAppEnv": "dev"
+      "strAppName": "sms",
+      "strAppEnv": "tst"
     },
 
 
@@ -37,30 +81,13 @@
         "strRemoteVnetName" "strResourceId"
     +---------------------------------------------------------------------------------------------------------+*/
     "objNetworkData": {
-      "strBaseNetwork": "10.100.8.0/21",
-      /* 0 = false, 1 = true (use in copy downstream to see if 0 is a valid arguement) */
-
-      "objSubnet": {
-        "objSubnet1": {
-          "strSubnetPrefix": "10.100.8.0/24",
-          "strSubnetTier": "web"
-        },
-        "objSubnet2": {
-          "strSubnetPrefix": "10.100.9.0/24",
-          "strSubnetTier": "app"
-        },
-        "objSubnet3": {
-          "strSubnetPrefix": "10.100.10.0/24",
-          "strSubnetTier": "web"
-        }
-      },
-      "testTrueFalseCreateVnet": "0",
+      "strBaseNetwork": "10.100.1.0",
+      "strBaseMask": "/21",
       "strDnsServer": {
         "strDnsServer1": "10.99.0.4",
         "strDnsServer2": "10.99.0.5"
       }
     }
-
   },
   "resources": [
     {
@@ -76,7 +103,9 @@
         "parameters": {
           "objUriPath": { "value": "[variables('objUriPath')]" },
           "objBaseData": { "value": "[variables('objBaseData')]" },
-          "objNetworkData": { "value": "[variables('objNetworkData')]" }
+          "objNetworkData": { "value": "[variables('objNetworkData')]" },
+          "arrSubnet": { "value": "[variables('arrSubnet')]" },
+          "intTotalSubnets": { "value": "[variables('intTotalSubnets')]"}
         }
       }
     }

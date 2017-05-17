@@ -90,6 +90,7 @@
     <None Include="VMs\LoadBalancedVirtualMachine.parameters.json" />
     <None Include="VMs\VirtualMachines.json" />
     <None Include="VMs\VirtualMachines.parameters.json" />
+    <None Include="zzz_Network\NSG\NSG.json" />
     <None Include="zzz_Network\Objects\Vnet.json" />
     <None Include="zzz_Network\Objects\Vnet.parameters.json" />
     <None Include="zzz_Network\Objects\VnetandSnet.json" />

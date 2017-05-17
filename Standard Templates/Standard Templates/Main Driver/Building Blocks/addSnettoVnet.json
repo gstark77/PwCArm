@@ -1,34 +1,68 @@
 ﻿{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-
-    "objBaseData": { "type": "object" },
-    "objNetworkData": { "type": "object" }
-
+      "existingVNETName": {
+        "type": "string",
+        "defaultValue": "vnet-dardev",
+        "metadata": {
+          "description": "Name of the VNET to add a subnet to"
+        }
+      },
+      "newSubnetName": {
+        "type": "string",
+        "defaultValue": "snet-dardevapp",
+        "metadata": {
+          "description": "Name of the subnet to add"
+        }
+      },
+      "newSubnetAddressPrefix": {
+        "type": "string",
+        "defaultValue": "10.100.9.0/24",
+        "metadata": {
+          "description": "Address space of the subnet to add"
+        }
+      }
   },
   "variables": {
- 
+    "apiVersion": "2015-06-15"
   },
-
   "resources": [
     {
-
-      /* "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]"*/
-
-
-      /*"name": "[concat('vnet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'/','snet-',parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,parameters('objNetworkData').objSubnet.objSubnet1.strSubnetTier)]",*/
-      "name": "vnet-dardev/snet-dardevapp",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/virtualNetworks/subnets",
+      "name": "[concat(parameters('existingVNETName'), '/', parameters('newSubnetName'))]",
       "location": "[resourceGroup().location]",
-      /*"dependsOn": [
-        "Microsoft.Network/virtualNetworks/vnet-dardev"
-      ],*/
       "properties": {
-        "addressPrefix": [ "parameters('objNetworkData').objSubnet.objSubnet1.strSubnetPrefix" ]
+        "addressPrefix": "[parameters('newSubnetAddressPrefix')]"
       }
     }
   ],
   "outputs": {}
 }
+//{
+//  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+//  "contentVersion": "1.0.0.0",
+//  "parameters": {
+
+//    "objBaseData": { "type": "object" },
+//    "objNetworkData": { "type": "object" }
+
+//  },
+//  "variables": {
+
+//  },
+//  "resources": [
+//    {
+//      //    "apiVersion": "[providers('Microsoft.Network','virtualNetworks/subnets').apiVersions[0]]",
+//      "apiVersion": "2016-09-01",
+//      "type": "Microsoft.Network/virtualNetworks/subnets",
+//      "name": "vnet-dardev/snet-dardevapp",
+//      "location": "[resourceGroup().location]",
+//      "properties": {
+//        "addressPrefix": "10.100.9.0/24"
+//      }
+//    }
+//  ],
+//  "outputs": {}
+//}

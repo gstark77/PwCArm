@@ -1,23 +1,47 @@
 ﻿{
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
+  "parameters": {
 
-      "objUriPath": { "type": "object" },
-      "objBaseData": { "type": "object" },
-      "objNetworkData": { "type": "object" }
+    "objUriPath": { "type": "object" },
+    "objBaseData": { "type": "object" },
+    "objNetworkData": { "type": "object" },
+    "arrSubnet": { "type": "array" },
+    "intTotalSubnets": { "type": "int" }
 
-    },
-    "variables": {
+  },
+  "variables": {
 
-      /* Calculate vnet and snets here */
+    //"arrBaseNetwork": "[split(parameters('objNetworkData').strBaseNetwork, '.')]",
+    //"strBaseFirstTwoOctets": "[concat(variables('arrBaseNetwork')[0], '.',variables('arrBaseNetwork')[1], '.')]",
 
-    },
+    //"arrSubnet": [
+    //  {
+    //    "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'web')]",
+    //    "properties": {
+    //      "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),0)),'.',variables('arrBaseNetwork')[3],'/24')]"
+    //    }
+    //  },
+    //  {
+    //    "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'app')]",
+    //    "properties": {
+    //      "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),1)),'.',variables('arrBaseNetwork')[3],'/24')]"
+    //    }
+    //  },
+    //  {
+    //    "name": "[concat(parameters('objBaseData').strAppName,parameters('objBaseData').strAppEnv,'dba')]",
+    //    "properties": {
+    //      "addressPrefix": "[concat(variables('strBaseFirstTwoOctets'),string(add(int(variables('arrBaseNetwork')[2]),2)),'.',variables('arrBaseNetwork')[3],'/24')]"
+    //    }
+    //  }
+    //]
+
+  },
 
   "resources": [
     {
       "apiVersion": "2015-01-01",
-      "name": "[concat(deployment().name,'-vnet')]", /*  needs to be unique */
+      "name": "[concat(deployment().name,'-vnet')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -27,23 +51,9 @@
         },
         "parameters": {
           "objBaseData": { "value": "[parameters('objBaseData')]" },
-          "objNetworkData": { "value": "[parameters('objNetworkData')]" }
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
-      "name": "[concat(deployment().name,'-addsubnet')]",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('objUriPath').strTemplateBaseUri,parameters('objUriPath').objBuildingBlocks.strBuildingBlockFolderPath,parameters('objUriPath').objBuildingBlocks.strAddSnettoVnetFileName)]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "objBaseData": { "value": "[parameters('objBaseData')]" },
-          "objNetworkData": { "value": "[parameters('objNetworkData')]" }
+          "objNetworkData": { "value": "[parameters('objNetworkData')]" },
+          "arrSubnet": { "value": "[parameters('arrSubnet')]" },
+          "intTotalSubnets": { "value": "[parameters('intTotalSubnets')]" }
         }
       }
     }
