@@ -1,0 +1,42 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentPardardevwebameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "availabilitySets_hostnameprefix_as01_name": {
+      "value": "smsdevdba-as02"
+    },
+    "disks_hostname_disk1_name": {
+      "value": "smsdevdba04_disk1"
+    },
+    "disks_hostname_disk2_name": {
+      "value": "smsdevdba04_disk2"
+    },
+    "virtualMachines_hostname_name": {
+      "value": "smsdevdba04"
+    },
+    "networkInterfaces_hostname_nic1_name": {
+      "value": "smsdevdba04-nic1"
+    }, 
+    "networkSecurityGroups_nsg_name": {
+      "value": "smsdevdba-nsg"
+    },
+    // "initializeDiskScript_name": {
+    //   "value": "initializeDisk.txt"
+    // },
+    // "publicIPAddresses_hostname_pip_name": {
+    //   "value": "dardevweb01-pip"
+    // },
+    "virtualNetworks_vnet_name": {
+      "value": "vnet-smsdev"
+    },
+    "storageAccounts_diag_name": {
+      "value": "smsdevdiag"
+    },
+    "privateip": {
+      "value": "10.100.2.23"
+    },
+    "subnet_name": {
+      "value": "snet-smsdevdba"
+    }
+  }
+}
